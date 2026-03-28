@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 U-12リーグin千葉 N12ブロック</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #f5f6f8;
+    color: #222;
+    font-size: 14px;
+  }
+
+  header {
+    background: #1a3a6b;
+    color: #fff;
+    padding: 20px 16px 16px;
+    text-align: center;
+  }
+  header .label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  header .sub {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  .container {
+    padding: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a3a6b;
+    letter-spacing: 1px;
+    margin: 0 0 8px;
+    padding-left: 8px;
+    border-left: 3px solid #1a3a6b;
+  }
+
+  /* ── 連絡先テーブル ── */
+  .contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+  }
+  .contact-table thead tr {
+    background: #1a3a6b;
+    color: #fff;
+  }
+  .contact-table thead th {
+    padding: 10px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .contact-table tbody tr {
+    border-bottom: 1px solid #eee;
+  }
+  .contact-table tbody tr:last-child { border-bottom: none; }
+  .contact-table tbody tr:nth-child(even) { background: #f9fafc; }
+  .contact-table tbody tr.hl { background: #e8f4e8 !important; }
+  .contact-table td {
+    padding: 10px 10px;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+  .block-badge {
+    display: inline-block;
+    background: #1a3a6b;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .hl .block-badge { background: #2a7a2a; }
+  .team-name { font-weight: 700; }
+  .tel-link {
+    color: #1a3a6b;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ── ユニフォームテーブル ── */
+  .scroll-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .uni-table {
+    width: 100%;
+    min-width: 500px;
+    border-collapse: collapse;
+    background: #fff;
+  }
+  .uni-table thead tr.head1 {
+    background: #2c5282;
+    color: #fff;
+  }
+  .uni-table thead tr.head1 th {
+    padding: 10px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .uni-table thead tr.head1 th:first-child {
+    text-align: left;
+    padding-left: 12px;
+  }
+  .uni-table thead tr.head2 {
+    background: #dde3ed;
+  }
+  .uni-table thead tr.head2 th {
+    padding: 5px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #666;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .uni-table thead tr.head2 th:first-child {
+    text-align: left;
+    padding-left: 12px;
+  }
+  .uni-table tbody tr {
+    border-bottom: 1px solid #eee;
+  }
+  .uni-table tbody tr:last-child { border-bottom: none; }
+  .uni-table tbody tr:nth-child(even) { background: #f9fafc; }
+  .uni-table tbody tr.hl { background: #e8f4e8 !important; }
+  .uni-table td {
+    padding: 9px 8px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .uni-table td:first-child {
+    text-align: left;
+    padding-left: 12px;
+    font-weight: 700;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.18);
+    flex-shrink: 0;
+  }
+  .ct { font-size: 11px; color: #333; white-space: nowrap; }
+
+  .map-link {
+    display: inline-block;
+    background: #1a3a6b;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .map-link:active { opacity: 0.7; }
+  .hl .map-link { background: #2a7a2a; }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: #888;
+    border-top: 1px solid #ddd;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">千葉県サッカー協会第４種委員会</div>
+  <h1>2026 U-12サッカーリーグin千葉</h1>
+  <div class="sub">N12ブロック　チーム・エントリー一覧</div>
+</header>
+
+<div class="container">
+
+  <!-- 連絡先 -->
+  <div class="section-title">📋 チーム連絡先一覧</div>
+  <table class="contact-table">
+    <thead>
+      <tr>
+        <th>ブロック</th>
+        <th>チーム名</th>
+        <th>担当者</th>
+        <th>電話番号</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="block-badge">N12-A</span></td><td class="team-name">行田東FC</td><td>菅原 寛</td><td><a class="tel-link" href="tel:090-6188-4003">090-6188-4003</a></td></tr>
+      <tr><td><span class="block-badge">N12-B</span></td><td class="team-name">滝野FC</td><td>松元 智哉</td><td><a class="tel-link" href="tel:090-2744-0838">090-2744-0838</a></td></tr>
+      <tr class="hl"><td><span class="block-badge">N12-C</span></td><td class="team-name">松戸旭SC ⭐</td><td>南原 龍司</td><td><a class="tel-link" href="tel:090-5952-1955">090-5952-1955</a></td></tr>
+      <tr><td><span class="block-badge">N12-D</span></td><td class="team-name">つくし野ホワイト</td><td>飯島 悠介</td><td><a class="tel-link" href="tel:090-7833-6262">090-7833-6262</a></td></tr>
+      <tr><td><span class="block-badge">N12-E</span></td><td class="team-name">高洲SCホッパーズ白</td><td>多賀 敦也</td><td><a class="tel-link" href="tel:090-4066-4876">090-4066-4876</a></td></tr>
+      <tr><td><span class="block-badge">N12-F</span></td><td class="team-name">FC芝山クルセイド</td><td>河合 博幸</td><td><a class="tel-link" href="tel:090-9851-7581">090-9851-7581</a></td></tr>
+      <tr><td><span class="block-badge">N12-G</span></td><td class="team-name">ルキナス印西SC白</td><td>半田 淳一</td><td><a class="tel-link" href="tel:090-2940-8737">090-2940-8737</a></td></tr>
+      <tr><td><span class="block-badge">N12-H</span></td><td class="team-name">FC八幡ビーバーズ</td><td>石井 和幸</td><td><a class="tel-link" href="tel:090-5765-5503">090-5765-5503</a></td></tr>
+      <tr><td><span class="block-badge">N12-I</span></td><td class="team-name">鎌ヶ谷少年SC</td><td>福留 政崇</td><td><a class="tel-link" href="tel:090-5799-6725">090-5799-6725</a></td></tr>
+      <tr><td><span class="block-badge">N12-J</span></td><td class="team-name">NSP CLUB</td><td>工藤 央</td><td><a class="tel-link" href="tel:090-8800-7087">090-8800-7087</a></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ユニフォーム -->
+  <div class="section-title">👕 ユニフォーム一覧（シャツ / ショーツ / ソックス）</div>
+  <div class="scroll-wrap">
+    <table class="uni-table">
+      <thead>
+        <tr class="head1">
+          <th>チーム名</th>
+          <th>FP 正</th>
+          <th>FP 副</th>
+          <th>GK 正</th>
+          <th>GK 副</th>
+        </tr>
+        <tr class="head2">
+          <th>シャツ/ショーツ/ソックス</th>
+          <th>シャツ/ショーツ/ソックス</th>
+          <th>シャツ/ショーツ/ソックス</th>
+          <th>シャツ/ショーツ/ソックス</th>
+          <th>シャツ/ショーツ/ソックス</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- A -->
+        <tr>
+          <td>N12-A 行田東FC</td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/緑/緑</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#aaa;"></span><span class="ct">灰/灰/紺</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ff6600;"></span><span class="ct">橙/橙/橙</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ffdd00;"></span><span class="ct">黄/黄/黄</span></div></td>
+        </tr>
+
+        <!-- B -->
+        <tr>
+          <td>N12-B 滝野FC</td>
+          <td><div class="cell"><span class="dot" style="background:#1565c0;"></span><span class="ct">青/紺/紺</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ffdd00;"></span><span class="ct">黄/緑/黄</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ff69b4;"></span><span class="ct">ピンク×3</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#888;"></span><span class="ct">グレー×3</span></div></td>
+        </tr>
+
+        <!-- C -->
+        <tr class="hl">
+          <td>N12-C 松戸旭SC ⭐</td>
+          <td><div class="cell"><span class="dot" style="background:#fff;border-color:#999;"></span><span class="ct">白/白/白</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#e53935;"></span><span class="ct">赤/黒/赤</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ffb6c1;"></span><span class="ct">桃/桃/桃</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/緑/緑</span></div></td>
+        </tr>
+
+        <!-- D -->
+        <tr>
+          <td>N12-D つくし野白</td>
+          <td><div class="cell"><span class="dot" style="background:#e53935;"></span><span class="ct">赤/白/赤</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#1a237e;"></span><span class="ct">紺/紺/青</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ffdd00;"></span><span class="ct">黄/黄/黄</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/緑/緑</span></div></td>
+        </tr>
+
+        <!-- E -->
+        <tr>
+          <td>N12-E 高洲SCホッパーズ</td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/白/緑</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#fff;border-color:#999;"></span><span class="ct">白/緑/白</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#e53935;"></span><span class="ct">赤/赤/赤</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ffdd00;"></span><span class="ct">黄/黄/黄</span></div></td>
+        </tr>
+
+        <!-- F -->
+        <tr>
+          <td>N12-F FC芝山クルセイド</td>
+          <td><div class="cell"><span class="dot" style="background:#fff;border-color:#999;"></span><span class="ct">白/白/青</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ff69b4;"></span><span class="ct">桃/桃/赤</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ffdd00;"></span><span class="ct">黄/黄/黄</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#888;"></span><span class="ct">灰/黒/黄</span></div></td>
+        </tr>
+
+        <!-- G -->
+        <tr>
+          <td>N12-G ルキナス印西SC</td>
+          <td><div class="cell"><span class="dot" style="background:#e53935;"></span><span class="ct">赤/赤/赤</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#fff;border-color:#999;"></span><span class="ct">白/白/白</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/緑/緑</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#aaa;"></span><span class="ct">灰/灰/灰</span></div></td>
+        </tr>
+
+        <!-- H -->
+        <tr>
+          <td>N12-H FC八幡ビーバーズ</td>
+          <td><div class="cell"><span class="dot" style="background:#ffdd00;"></span><span class="ct">黄/黒/黄</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#e53935;"></span><span class="ct">赤/赤/赤</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/緑/緑</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ff69b4;"></span><span class="ct">桃/エンジ/エンジ</span></div></td>
+        </tr>
+
+        <!-- I -->
+        <tr>
+          <td>N12-I 鎌ヶ谷少年SC</td>
+          <td><div class="cell"><span class="dot" style="background:#1565c0;"></span><span class="ct">青/紺/青</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/緑/緑</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ff69b4;"></span><span class="ct">桃/灰/桃</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ff6600;"></span><span class="ct">橙/橙/橙</span></div></td>
+        </tr>
+
+        <!-- J -->
+        <tr>
+          <td>N12-J NSP CLUB</td>
+          <td><div class="cell"><span class="dot" style="background:#c0392b;"></span><span class="ct">赤黒/赤/赤</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ccc;"></span><span class="ct">白灰/白/白</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#2ecc40;"></span><span class="ct">緑/緑/緑</span></div></td>
+          <td><div class="cell"><span class="dot" style="background:#ffdd00;"></span><span class="ct">黄/黄/黄</span></div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 提供会場 -->
+  <div class="section-title">📍 提供会場一覧</div>
+  <table class="contact-table">
+    <thead>
+      <tr>
+        <th>ブロック</th>
+        <th>チーム名</th>
+        <th>会場名</th>
+        <th>地図</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="block-badge">N12-A</span></td>
+        <td class="team-name">行田東FC</td>
+        <td style="font-size:12px;">船橋市立行田東小学校<br><span style="color:#888;font-size:11px;">千葉県船橋市行田二丁目4-1</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県船橋市行田二丁目4-1+船橋市立行田東小学校" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-B</span></td>
+        <td class="team-name">滝野FC</td>
+        <td style="font-size:12px;">滝野小学校<br><span style="color:#888;font-size:11px;">千葉県印西市滝野5-1</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県印西市滝野5-1+滝野小学校" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr class="hl">
+        <td><span class="block-badge">N12-C</span></td>
+        <td class="team-name">松戸旭SC ⭐</td>
+        <td style="font-size:12px;">松戸旭町小学校<br><span style="color:#888;font-size:11px;">千葉県松戸市旭町1丁目20-2</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県松戸市旭町1丁目20-2+松戸旭町小学校" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-D</span></td>
+        <td class="team-name">つくし野ホワイト</td>
+        <td style="font-size:12px;">利根川ゆうゆう公園サッカーグランド<br><span style="color:#888;font-size:11px;">千葉県我孫子市古戸696</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県我孫子市古戸696+利根川ゆうゆう公園" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-E</span></td>
+        <td class="team-name">高洲SCホッパーズ</td>
+        <td style="font-size:12px;">浦安市立高洲小学校<br><span style="color:#888;font-size:11px;">千葉県浦安市高洲4-2-1</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県浦安市高洲4-2-1+浦安市立高洲小学校" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-F</span></td>
+        <td class="team-name">FC芝山クルセイド</td>
+        <td style="font-size:12px;">船橋市立芝山西小学校<br><span style="color:#888;font-size:11px;">千葉県船橋市芝山2-4-1</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県船橋市芝山2-4-1+船橋市立芝山西小学校" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-G</span></td>
+        <td class="team-name">ルキナス印西SC</td>
+        <td style="font-size:12px;">L-FIELD<br><span style="color:#888;font-size:11px;">千葉県印西市草深146-1</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県印西市草深146-1+L-FIELD" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-H</span></td>
+        <td class="team-name">FC八幡ビーバーズ</td>
+        <td style="font-size:12px;">市川市立国分小学校<br><span style="color:#888;font-size:11px;">千葉県市川市東国分2丁目4-1</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県市川市東国分2丁目4-1+市川市立国分小学校" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-I</span></td>
+        <td class="team-name">鎌ヶ谷少年SC</td>
+        <td style="font-size:12px;">福太郎スタジアム<br><span style="color:#888;font-size:11px;">千葉県鎌ヶ谷市初富924-283</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県鎌ヶ谷市初富924-283+福太郎スタジアム" target="_blank">🗺 地図</a></td>
+      </tr>
+      <tr>
+        <td><span class="block-badge">N12-J</span></td>
+        <td class="team-name">NSP CLUB</td>
+        <td style="font-size:12px;">松戸市立栗ケ沢小学校<br><span style="color:#888;font-size:11px;">千葉県松戸市小金原7-16</span></td>
+        <td><a class="map-link" href="https://maps.google.com/?q=千葉県松戸市小金原7-16+松戸市立栗ケ沢小学校" target="_blank">🗺 地図</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<footer>
+  （公社）千葉県サッカー協会第４種委員会<br>
+  2026 U-12サッカーリーグin千葉<br>
+  提出先：<a href="/cdn-cgi/l/email-protection" class="__cf_em
