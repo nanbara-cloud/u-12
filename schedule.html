@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>松戸旭SC 2026年度 年間スケジュール</title>
+<style>
+:root {
+  --navy: #1a2a4a;
+  --navy-mid: #243560;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --green: #16a34a;
+  --green-light: #dcfce7;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --orange: #d97706;
+  --orange-light: #fef3c7;
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+  --gray: #6b7280;
+  --bg: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-sub: #64748b;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Meiryo','メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: #fff;
+  padding: 32px 20px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '⚽';
+  position: absolute;
+  font-size: 180px;
+  opacity: 0.04;
+  top: -20px; right: -20px;
+}
+.site-header .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 999px;
+  padding: 3px 14px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.site-header h1 {
+  font-size: clamp(20px, 5vw, 30px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.site-header .sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+}
+.site-header .updated {
+  margin-top: 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── NAV ── */
+.month-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 16px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.month-nav a {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 0;          /* 角付き */
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  transition: all 0.15s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.month-nav a:hover  { background: var(--navy); color: #fff; border-color: var(--navy); }
+.month-nav a.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+/* ── LEGEND ── */
+.legend {
+  max-width: 860px;
+  margin: 20px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-sub);
+}
+.legend-dot {
+  width: 12px; height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── MAIN ── */
+.main { max-width: 860px; margin: 20px auto 60px; padding: 0 16px; }
+
+/* ── MONTH SECTION ── */
+.month-section {
+  margin-bottom: 32px;
+  scroll-margin-top: 62px;   /* sticky nav の高さ分オフセット */
+}
+.month-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.month-heading h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.month-heading .count-badge {
+  background: var(--blue);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+.month-heading .line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── EVENT TABLE ── */
+.event-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.event-table th {
+  background: var(--navy);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 12px;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+.event-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  font-size: 13px;
+}
+.event-table tr:last-child td { border-bottom: none; }
+
+/* 日付列 */
+.td-date { white-space: nowrap; font-weight: 600; }
+
+/* 行の背景色：土・日・祝日（予定あり）のみ */
+.row-sat td { background: #e8f4fd; }   /* 土曜：水色 */
+.row-sun td { background: #fdecea; }   /* 日曜：薄赤 */
+.row-hol td { background: #e8f5e9; }   /* 祝日（予定あり）：薄緑 */
+/* 祝日（予定なし）・平日：白のまま */
+/* タグ */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+.tag-sl     { background: var(--blue-light); color: #1d4ed8; }
+.tag-u12    { background: var(--green-light); color: #15803d; }
+.tag-spare  { background: var(--orange-light); color: #92400e; }
+.tag-matsudo{ background: var(--purple-light); color: #6d28d9; }
+.tag-camp     { background: #ffedd5; color: #9a3412; }
+.tag-holiday  { background: #f1f5f9; color: #475569; }
+.tag-practice { background: #ecfdf5; color: #065f46; }
+.row-practice td { background: #f0fdf4; }
+.note-pending { font-size: 11px; color: #d97706; font-weight: 600; margin-left: 4px; }
+.note-adjust  { font-size: 11px; color: #6b7280; margin-left: 4px; }
+.team-red   { color: #dc2626; font-weight: 700; font-size: 11px; margin-right: 3px; }
+.team-white { background: #1a2a4a; color: #ffffff; font-weight: 700; font-size: 11px; margin-right: 3px; border-radius: 3px; padding: 1px 5px; }
+.multi-row  { display: flex; flex-direction: column; gap: 4px; }
+
+/* ── UPCOMING ── */
+.upcoming-section {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.upcoming-section h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.upcoming-list { display: flex; flex-direction: column; gap: 8px; }
+.upcoming-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+.upcoming-item.sl     { background: #eff6ff; border-color: var(--blue); }
+.upcoming-item.u12    { background: #f0fdf4; border-color: var(--green); }
+.upcoming-item.matsudo{ background: #fdf4ff; border-color: var(--purple); }
+.upcoming-item .u-date {
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  min-width: 90px;
+}
+.upcoming-item .u-event { font-size: 13px; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+  color: var(--text-sub);
+  border-top: 1px solid var(--border);
+}
+
+/* ── SCHOOL EVENT ── */
+.tag-school { background: #fef9c3; color: #854d0e; }
+.school-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+.school-label.ko  { background: #dbeafe; color: #1d4ed8; }
+.school-label.asa { background: #dcfce7; color: #15803d; }
+.row-school td { background: #fefce8; }
+
+/* ── DETAIL BUTTON ── */
+.detail-btn {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--white);
+  border: 1.5px solid var(--navy);
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: all 0.15s;
+  font-family: 'Meiryo','メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+}
+.detail-btn:hover { background: var(--navy); color: #fff; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--white);
+  border-radius: 12px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  animation: modalIn 0.18s ease;
+}
+@keyframes modalIn {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.modal-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-header .modal-title { font-size: 14px; font-weight: 700; }
+.modal-close {
+  background: none; border: none; color: #fff;
+  font-size: 20px; cursor: pointer; line-height: 1; padding: 0 2px;
+}
+.modal-body { padding: 18px 20px; }
+.modal-body table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.modal-body table td {
+  padding: 5px 6px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.6;
+}
+.modal-body table tr:last-child td { border-bottom: none; }
+.modal-body table td:first-child {
+  white-space: nowrap;
+  color: var(--text-sub);
+  font-weight: 600;
+  width: 90px;
+}
+.modal-notes {
+  margin-top: 12px;
+  background: var(--bg);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #334155;
+  line-height: 1.8;
+}
+.modal-match-row {
+  font-size: 13px;
+  padding: 4px 0;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  border-bottom: 1px dotted var(--border);
+}
+.modal-match-row:last-child { border-bottom: none; }
+.modal-match-row .match-time { color: var(--blue); font-weight: 700; min-width: 90px; }
+.modal-section-title { margin: 12px 0 6px; font-size: 12px; font-weight: 700; color: var(--navy); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .site-header { padding: 24px 16px 20px; }
+  .event-table th, .event-table td { padding: 7px 7px; font-size: 11px; }
+  .tag { font-size: 9px; padding: 1px 5px; margin-right: 3px; }
+  .detail-btn { font-size: 9px; padding: 1px 5px; margin-left: 3px; }
+  .upcoming-item .u-date { min-width: 75px; font-size: 12px; }
+  .upcoming-item .u-event { font-size: 12px; }
+  .team-red, .team-white { font-size: 9px; }
+  .note-pending, .note-adjust { font-size: 9px; }
+}
+
+/* ── U12 TABLE ── */
+.u12-wrap { padding:16px; background:#f5f6f8; }
+.u12-sec-title { font-size:12px;font-weight:700;color:#1a3a6b;letter-spacing:1px;margin:0 0 8px;padding-left:8px;border-left:3px solid #1a3a6b; }
+.u12-tbl-wrap { overflow-x:auto;margin-bottom:20px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08); }
+.u12-tbl { width:100%;border-collapse:collapse;background:#fff;min-width:340px; }
+.u12-tbl thead tr.u12-head { background:#1a3a6b;color:#fff; }
+.u12-tbl thead tr.u12-head2 { background:#2c5282;color:#fff; }
+.u12-tbl thead tr.u12-head3 { background:#dde3ed; }
+.u12-tbl th { padding:10px 8px;font-size:12px;font-weight:700;text-align:left; }
+.u12-tbl td { padding:9px 10px;font-size:12px;vertical-align:middle;border-bottom:1px solid #eee; }
+.u12-tbl tr:last-child td { border-bottom:none; }
+.u12-tbl tr.u12-hl { background:#e8f4e8 !important; }
+.u12-badge { background:#1a3a6b;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px; }
+.u12-badge-hl { background:#2a7a2a;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px; }
+.u12-team { font-weight:700; }
+.u12-addr { font-size:10px;color:#94a3b8; }
+.u12-map-btn { display:inline-block;background:#16a34a;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px;text-decoration:none;cursor:pointer; }
+.u12-dot { display:inline-block;width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,0.18);margin-right:3px;vertical-align:middle; }
+.u12-uni { font-size:11px; }
+.u12-tc { text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="badge">2026年度</div>
+  <h1>⚽ 松戸旭SC 年間スケジュール</h1>
+  <div class="sub">松戸旭サッカークラブ｜45期生</div>
+  <div class="updated">最終更新：2026年3月12日</div>
+</header>
+
+<!-- NOTICE & YOUTUBE -->
+<div style="max-width:860px;margin:20px auto 0;padding:0 16px;display:flex;flex-direction:column;gap:14px;">
+
+  <!-- 基本持ち物 -->
+  <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 20px;">
+    <div style="font-size:12px;font-weight:700;color:#1d4ed8;margin-bottom:8px;">🎒 基本的な持ち物</div>
+    <div style="font-size:13px;color:#1e3a5f;font-weight:600;letter-spacing:0.3px;">
+      用具一式（シューズ・ボール・脛当て・ビブス）　／　水筒　／　軽食　／　着替え　／　防寒具　／　折りたたみハンガー
+    </div>
+  </div>
+
+  <!-- 注意事項 -->
+  <div style="background:#fff;border:1px solid #e2e8f0;border-left:4px solid #2563eb;border-radius:0 8px 8px 0;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+    <div style="font-size:13px;font-weight:700;color:#1a2a4a;margin-bottom:10px;">📋 保護者の方へ　ご注意事項</div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+      <li style="font-size:13px;color:#b91c1c;font-weight:600;line-height:1.6;">※　ユニホームはTOPユニに変わるので注意</li>
+      <li style="font-size:13px;color:#b91c1c;font-weight:600;line-height:1.6;">※　トップユニ（白・赤）は着てこないこと（会場で着替えます）</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　持ち物にはチーム名・名前を記入しておいて下さい。</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　車内マスク着用お願いします。</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　乗合の方は、替えの靴など、配慮お願いします。</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　車移動の際心配な子は酔い止めをお願いします。</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　TMや大会に（H）がある場合「ホーム」で行います。</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　予定変更の際は、都度ご連絡いたします。</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　食育のため補食のご協力よろしくお願いします。</li>
+      <li style="font-size:13px;color:#334155;line-height:1.6;">※　TM詳細や大会の詳細はいつも通り別途ノートでお知らせします。</li>
+    </ul>
+  </div>
+
+  <!-- YouTube -->
+  <div style="background:#fff;border:1px solid #e2e8f0;border-left:4px solid #dc2626;border-radius:0 8px 8px 0;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <span style="font-size:13px;font-weight:700;color:#1a2a4a;">▶ YouTubeチャンネル</span>
+      <span style="background:#fef2f2;color:#dc2626;font-size:11px;font-weight:700;border:1px solid #fecaca;border-radius:4px;padding:2px 8px;">🔒 限定公開</span>
+    </div>
+    <p style="font-size:13px;color:#475569;line-height:1.7;margin-bottom:12px;">
+      試合を見に行けない保護者の方や、お子様とのコミュニケーションの一環で、<br>
+      試合の振り返りを褒めながら是非見てあげてください！
+    </p>
+    <a href="https://youtube.com/playlist?list=PLGehdTjQO7opJFdNEZtsfVmAon3taLHKx"
+      
+       style="display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:#fff;font-size:13px;font-weight:700;padding:9px 18px;border-radius:6px;text-decoration:none;">
+      ▶ プレイリストを開く
+    </a>
+  </div>
+
+
+  <!-- U-12 チーム情報 アコーディオン -->
+  <div style="background:#fff;border:1px solid #e2e8f0;border-left:4px solid #16a34a;border-radius:0 8px 8px 0;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+    <button onclick="toggleU12()" id="u12-toggle-btn"
+      style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:none;border:none;cursor:pointer;text-align:left;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:13px;font-weight:700;color:#1a2a4a;">⚽ U-12前期チーム情報</span>
+        <span style="background:#dcfce7;color:#15803d;font-size:11px;font-weight:700;border:1px solid #bbf7d0;border-radius:4px;padding:2px 8px;">前期</span>
+      </div>
+      <span id="u12-arrow" style="font-size:13px;color:#16a34a;font-weight:700;transition:transform 0.2s;">▼</span>
+    </button>
+    <div id="u12-content" style="display:none;border-top:1px solid #e2e8f0;">
+      <!-- ────── ここからu12_teams_lp.htmlの内容 ────── -->
+      <div class="u12-wrap">
+        <div class="u12-sec-title">📍 チーム会場情報</div>
+        <div class="u12-tbl-wrap">
+        <table class="u12-tbl">
+          <thead><tr class="u12-head">
+            <th>ブロック</th><th>チーム名</th><th>会場名</th><th class="u12-tc">地図</th>
+          </tr></thead>
+          <tbody>
+            <tr class=""><td><span class="u12-badge">N12-A</span></td><td class="u12-team">行田東FC</td><td>船橋市立行田東小学校<br><span class="u12-addr">千葉県船橋市行田二丁目4-1</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E8%88%B9%E6%A9%8B%E5%B8%82%E8%A1%8C%E7%94%B0%E4%BA%8C%E4%B8%81%E7%9B%AE4-1" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-B</span></td><td class="u12-team">滝野FC</td><td>滝野小学校<br><span class="u12-addr">千葉県印西市滝野5-1</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E5%8D%B0%E8%A5%BF%E5%B8%82%E6%BB%9D%E9%87%8E5-1" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=" u12-hl"><td><span class="u12-badge-hl">N12-C</span></td><td class="u12-team">松戸旭SC ⭐</td><td>松戸旭町小学校<br><span class="u12-addr">千葉県松戸市旭町1丁目20-2</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E6%9D%BE%E6%88%B8%E5%B8%82%E6%97%AD%E7%94%BA1%E4%B8%81%E7%9B%AE20-2" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-D</span></td><td class="u12-team">つくし野ホワイト</td><td>利根川ゆうゆう公園サッカーグランド<br><span class="u12-addr">千葉県我孫子市古戸696</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E6%88%91%E5%AD%AB%E5%AD%90%E5%B8%82%E5%8F%A4%E6%88%B8696" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-E</span></td><td class="u12-team">高洲SCホッパーズ白</td><td>浦安市立高洲小学校<br><span class="u12-addr">千葉県浦安市高洲4-2-1</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E6%B5%A6%E5%AE%89%E5%B8%82%E9%AB%98%E6%B4%B24-2-1" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-F</span></td><td class="u12-team">FC芝山クルセイド</td><td>船橋市立芝山西小学校<br><span class="u12-addr">千葉県船橋市芝山2-4-1</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E8%88%B9%E6%A9%8B%E5%B8%82%E8%8A%9D%E5%B1%B12-4-1" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-G</span></td><td class="u12-team">ルキナス印西SC白</td><td>L-FIELD<br><span class="u12-addr">千葉県印西市草深146-1</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E5%8D%B0%E8%A5%BF%E5%B8%82%E8%8D%89%E6%B7%B1146-1" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-H</span></td><td class="u12-team">FC八幡ビーバーズ</td><td>市川市立国分小学校<br><span class="u12-addr">千葉県市川市東国分2丁目4-1</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E5%B8%82%E5%B7%9D%E5%B8%82%E6%9D%B1%E5%9B%BD%E5%88%862%E4%B8%81%E7%9B%AE4-1" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-I</span></td><td class="u12-team">鎌ヶ谷少年SC</td><td>福太郎スタジアム<br><span class="u12-addr">千葉県鎌ヶ谷市初富924-283</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E9%8E%8C%E3%83%B6%E8%B0%B7%E5%B8%82%E5%88%9D%E5%AF%8C924-283" class="u12-map-btn">🗺 地図</a></td></tr>
+<tr class=""><td><span class="u12-badge">N12-J</span></td><td class="u12-team">NSP CLUB</td><td>松戸市立栗ケ沢小学校<br><span class="u12-addr">千葉県松戸市小金原7-16</span></td><td class="u12-tc"><a href="https://maps.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E6%9D%BE%E6%88%B8%E5%B8%82%E5%B0%8F%E9%87%91%E5%8E%9F7-16" class="u12-map-btn">🗺 地図</a></td></tr>
+
+          </tbody>
+        </table>
+        </div>
+        <div class="u12-sec-title">👕 ユニフォーム一覧（シャツ / ショーツ / ソックス）</div>
+        <div class="u12-tbl-wrap">
+        <table class="u12-tbl" style="min-width:480px;">
+          <thead>
+            <tr class="u12-head2"><th>チーム名</th><th class="u12-tc">FP 正</th><th class="u12-tc">FP 副</th><th class="u12-tc">GK 正</th><th class="u12-tc">GK 副</th></tr>
+            <tr class="u12-head3"><th style="font-size:10px;color:#666;">シャツ/ショーツ/ソックス</th><th style="font-size:10px;color:#666;text-align:center;">シャツ/ショーツ/ソックス</th><th style="font-size:10px;color:#666;text-align:center;">シャツ/ショーツ/ソックス</th><th style="font-size:10px;color:#666;text-align:center;">シャツ/ショーツ/ソックス</th><th style="font-size:10px;color:#666;text-align:center;">シャツ/ショーツ/ソックス</th></tr>
+          </thead>
+          <tbody>
+            <tr class=""><td class="u12-team">N12-A 行田東FC</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/緑/緑</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#aaa;"></span>灰/灰/紺</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ff6600;"></span>橙/橙/橙</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffdd00;"></span>黄/黄/黄</td></tr>
+<tr class=""><td class="u12-team">N12-B 滝野FC</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#1565c0;"></span>青/紺/紺</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffdd00;"></span>黄/緑/黄</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ff69b4;"></span>ピンク×3</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#888;"></span>グレー×3</td></tr>
+<tr class=" u12-hl"><td class="u12-team">N12-C 松戸旭SC ⭐</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#fff;"></span>白/白/白</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#e53935;"></span>赤/黒/赤</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffb6c1;"></span>桃/桃/桃</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/緑/緑</td></tr>
+<tr class=""><td class="u12-team">N12-D つくし野ホワイト</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#e53935;"></span>赤/白/赤</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#1a237e;"></span>紺/紺/青</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffdd00;"></span>黄/黄/黄</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/緑/緑</td></tr>
+<tr class=""><td class="u12-team">N12-E 高洲SCホッパーズ白</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/白/緑</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#fff;"></span>白/緑/白</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#e53935;"></span>赤/赤/赤</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffdd00;"></span>黄/黄/黄</td></tr>
+<tr class=""><td class="u12-team">N12-F FC芝山クルセイド</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#fff;"></span>白/白/青</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ff69b4;"></span>桃/桃/赤</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffdd00;"></span>黄/黄/黄</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#888;"></span>灰/黒/黄</td></tr>
+<tr class=""><td class="u12-team">N12-G ルキナス印西SC白</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#e53935;"></span>赤/赤/赤</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#fff;"></span>白/白/白</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/緑/緑</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#aaa;"></span>灰/灰/灰</td></tr>
+<tr class=""><td class="u12-team">N12-H FC八幡ビーバーズ</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffdd00;"></span>黄/黒/黄</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#e53935;"></span>赤/赤/赤</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/緑/緑</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ff69b4;"></span>桃/エンジ/エンジ</td></tr>
+<tr class=""><td class="u12-team">N12-I 鎌ヶ谷少年SC</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#1565c0;"></span>青/紺/青</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/緑/緑</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ff69b4;"></span>桃/灰/桃</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ff6600;"></span>橙/橙/橙</td></tr>
+<tr class=""><td class="u12-team">N12-J NSP CLUB</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#c0392b;"></span>赤黒/赤/赤</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ccc;"></span>白灰/白/白</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#2ecc40;"></span>緑/緑/緑</td><td class="u12-tc u12-uni"><span class="u12-dot" style="background:#ffdd00;"></span>黄/黄/黄</td></tr>
+
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MONTH NAV -->
+<nav class="month-nav">
+  <a href="javascript:void(0)" data-target="m2026-04" onclick="scrollToMonth(this)">4月</a>
+  <a href="javascript:void(0)" data-target="m2026-05" onclick="scrollToMonth(this)">5月</a>
+  <a href="javascript:void(0)" data-target="m2026-06" onclick="scrollToMonth(this)">6月</a>
+  <a href="javascript:void(0)" data-target="m2026-07" onclick="scrollToMonth(this)">7月</a>
+  <a href="javascript:void(0)" data-target="m2026-08" onclick="scrollToMonth(this)">8月</a>
+  <a href="javascript:void(0)" data-target="m2026-09" onclick="scrollToMonth(this)">9月</a>
+  <a href="javascript:void(0)" data-target="m2026-10" onclick="scrollToMonth(this)">10月</a>
+  <a href="javascript:void(0)" data-target="m2026-11" onclick="scrollToMonth(this)">11月</a>
+  <a href="javascript:void(0)" data-target="m2026-12" onclick="scrollToMonth(this)">12月</a>
+  <a href="javascript:void(0)" data-target="m2027-01" onclick="scrollToMonth(this)">1月</a>
+  <a href="javascript:void(0)" data-target="m2027-02" onclick="scrollToMonth(this)">2月</a>
+  <a href="javascript:void(0)" data-target="m2027-03" onclick="scrollToMonth(this)">3月</a>
+</nav>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#bfdbfe"></div>江戸川サテライトリーグ</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#bbf7d0"></div>U-12リーグin千葉</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ddd6fe"></div>松戸リーグ</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#d1fae5"></div>通常練習（TR）</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fed7aa"></div>合宿・その他</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fde68a"></div>予備日</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fef9c3"></div>学校行事（土日）</div>
+</div>
+
+<main class="main">
+
+<!-- ════════════ 4月 ════════════ -->
+<div class="month-section" id="m2026-04">
+  <div class="month-heading"><h2>2026年 4月</h2><span class="count-badge">9件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">4月 4日（土）</td><td><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></td></tr>
+      <tr class="row-sun"><td class="td-date">4月 5日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>1st 第1節　<span class="team-white">WHITE</span><button class="detail-btn" onclick="openDetail('2026-04-05-white')">詳細</button></div><div><span class="tag tag-matsudo">松戸L</span>1st 第1節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-04-05-red')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">4月11日（土）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>2nd 第2節　<span class="team-white">WHITE</span><button class="detail-btn" onclick="openDetail('2026-04-11-white')">詳細</button></div><div><span class="tag tag-matsudo">松戸L</span>2nd 第2節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-04-11-red')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">4月12日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>3rd 第3節　<span class="team-white">WHITE</span><button class="detail-btn" onclick="openDetail('2026-04-12-white')">詳細</button></div><div><span class="tag tag-matsudo">松戸L</span>3rd 第3節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-04-12-red')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">4月18日（土）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ グランドゴルフ予備日　AM不可</div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">4月19日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドA・G　<span style="font-size:11px;color:var(--text-sub);">10:00 vs つくし野ホワイト　／　12:00 vs 滝野FC</span></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">4月25日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span><span class="team-red">RED</span>前期 第2節</div><div><span class="tag tag-practice">練習</span><span class="team-white">WHITE</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">4月26日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>エンデバーさん　TM（A）<button class="detail-btn" onclick="openDetail('2026-04-26')">詳細</button></div></div></td></tr>
+      <tr class="row-hol"><td class="td-date">4月29日（水・祝）</td><td><span class="tag tag-practice">練習</span>TR　13:00〜　<span class="tag tag-holiday">祝</span>昭和の日<button class="detail-btn" onclick="openDetail('practice')">詳細</button></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 5月 ════════════ -->
+<div class="month-section" id="m2026-05">
+  <div class="month-heading"><h2>2026年 5月</h2><span class="count-badge">13件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">5月 2日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-hol"><td class="td-date">5月 3日（日・祝）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドB・I　<span style="font-size:11px;color:var(--text-sub);">9:00 vs 行田東FC　／　12:00 vs 高洲SCホッパーズ白</span>　<span class="tag tag-holiday">祝</span>憲法記念日</div></div></td></tr>
+      <tr><td class="td-date">5月 4日（月・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div><span class="tag tag-holiday">祝日</span>みどりの日</div></div></td></tr>
+      <tr><td class="td-date">5月 5日（火・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div><span class="tag tag-holiday">祝日</span>こどもの日</div></div></td></tr>
+      <tr><td class="td-date">5月 6日（水・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div><span class="tag tag-holiday">祝日</span>振替休日</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">5月 9日（土）</td><td><span class="tag tag-sl">江戸川SL</span>前期 第3節</td></tr>
+      <tr class="row-sun"><td class="td-date">5月10日（日）</td><td><span class="tag tag-matsudo">松戸L</span>1st 第2節【6年】</td></tr>
+      <tr class="row-sat" style="outline: 2px solid #dc2626; outline-offset:-1px;"><td class="td-date">5月16日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label asa">旭</span>春季大運動会</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会　グランド不可</div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">5月17日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドC　<span style="font-size:11px;color:var(--text-sub);">10:00 vs FC八幡ビーバーズ　／　13:00 vs 鎌ヶ谷少年SC</span></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会予備日　グランド不可</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">5月23日（土）</td><td><span class="tag tag-sl">江戸川SL</span>前期 第4節</td></tr>
+      <tr class="row-sun"><td class="td-date">5月24日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ソフト大会</span></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">5月30日（土）</td><td><span class="tag tag-sl">江戸川SL</span>前期 第5節</td></tr>
+      <tr class="row-sun"><td class="td-date">5月31日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 6月 ════════════ -->
+<div class="month-section" id="m2026-06">
+  <div class="month-heading"><h2>2026年 6月</h2><span class="count-badge">9件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">6月 6日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">6月 7日（日）</td><td><span class="tag tag-u12">U-12L</span>ラウンドH　<span style="font-size:11px;color:var(--text-sub);">11:00 vs FC芝山クルセイド</span></td></tr>
+      <tr class="row-sat"><td class="td-date">6月13日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ 土曜参観　AM不可</span></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">6月14日（日）</td><td><span class="tag tag-matsudo">松戸L</span>1st 第4節【6年】</td></tr>
+      <tr class="row-sat"><td class="td-date">6月20日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">6月21日（日）</td><td><span class="tag tag-u12">U-12L</span>ラウンドF・J　<span style="font-size:11px;color:var(--text-sub);">11:00 vs NSP CLUB　／　13:00 vs ルキナス印西SC白</span></td></tr>
+      <tr class="row-sat"><td class="td-date">6月27日（土）</td><td><span class="tag tag-school">学校</span><span class="school-label ko">古</span>土曜参観・引き渡し訓練</td></tr>
+      <tr class="row-sun"><td class="td-date">6月28日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 7月 ════════════ -->
+<div class="month-section" id="m2026-07">
+  <div class="month-heading"><h2>2026年 7月</h2><span class="count-badge">9件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">7月 4日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">7月 5日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">7月11日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">7月12日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">7月18日（土）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 前期 予備日</td></tr>
+      <tr class="row-sun"><td class="td-date">7月19日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">7月20日（月・祝）</td><td><span class="tag tag-holiday">祝日</span>海の日</td></tr>
+      <tr class="row-sat"><td class="td-date">7月25日（土）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 前期 予備日</td></tr>
+      <tr class="row-sun"><td class="td-date">7月26日（日）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 前期 予備日</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 8月 ════════════ -->
+<div class="month-section" id="m2026-08">
+  <div class="month-heading"><h2>2026年 8月</h2><span class="count-badge">13件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">8月 1日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">8月 2日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">8月 6日（木）</td><td><span class="tag tag-camp">合宿</span>夏の合宿 1日目</td></tr>
+      <tr><td class="td-date">8月 7日（金）</td><td><span class="tag tag-camp">合宿</span>夏の合宿 2日目</td></tr>
+      <tr class="row-sat"><td class="td-date">8月 8日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">8月 9日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">8月11日（火・祝）</td><td><span class="tag tag-holiday">祝日</span>山の日</td></tr>
+      <tr class="row-sat"><td class="td-date">8月15日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">8月16日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">8月22日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">8月23日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">8月29日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">8月30日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 9月 ════════════ -->
+<div class="month-section" id="m2026-09">
+  <div class="month-heading"><h2>2026年 9月</h2><span class="count-badge">11件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">9月 5日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">9月 6日（日）</td><td><span class="tag tag-matsudo">松戸L</span>2nd 第1節【6年】</td></tr>
+      <tr class="row-sat"><td class="td-date">9月12日（土）</td><td><span class="tag tag-matsudo">松戸L</span>2nd 第2節【6年】</td></tr>
+      <tr class="row-sun"><td class="td-date">9月13日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>2nd 第3節【6年】</div><div><span class="tag tag-school">学校</span><span class="school-label ko">古</span>修学旅行</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">9月19日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">9月20日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ソフト大会</span></div></div></td></tr>
+      <tr><td class="td-date">9月21日（月・祝）</td><td><span class="tag tag-holiday">祝日</span>敬老の日</td></tr>
+      <tr><td class="td-date">9月22日（火・祝）</td><td><span class="tag tag-holiday">祝日</span>国民の休日</td></tr>
+      <tr><td class="td-date">9月23日（水・祝）</td><td><span class="tag tag-holiday">祝日</span>秋分の日</td></tr>
+      <tr class="row-sat"><td class="td-date">9月26日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">9月27日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ソフト大会予備日</span></div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 10月 ════════════ -->
+<div class="month-section" id="m2026-10">
+  <div class="month-heading"><h2>2026年 10月</h2><span class="count-badge">10件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">10月 3日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">10月 4日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ソフト</span></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">10月10日（土）</td><td><span class="tag tag-sl">江戸川SL</span>後期 第1節</td></tr>
+      <tr class="row-sun"><td class="td-date">10月11日（日）</td><td><span class="tag tag-matsudo">松戸L</span>2nd 第3節【6年】</td></tr>
+      <tr><td class="td-date">10月12日（月・祝）</td><td><div class="multi-row"><div><span class="tag tag-holiday">祝日</span>スポーツの日</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト予備日</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">10月17日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">10月18日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ５丁目運動会</span></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">10月24日（土）</td><td><span class="tag tag-sl">江戸川SL</span>後期 第2節</td></tr>
+      <tr class="row-sun"><td class="td-date">10月25日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ５丁目運動会予備日</span></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">10月31日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>後期 第3節</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 土曜参観　AM不可</div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 11月 ════════════ -->
+<div class="month-section" id="m2026-11">
+  <div class="month-heading"><h2>2026年 11月</h2><span class="count-badge">11件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sun"><td class="td-date">11月 1日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">11月 3日（火・祝）</td><td><span class="tag tag-holiday">祝日</span>文化の日</td></tr>
+      <tr class="row-sat" style="outline: 2px solid #dc2626; outline-offset:-1px;"><td class="td-date">11月 7日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>後期 第4節</div><div><span class="tag tag-school">学校</span><span class="school-label ko">古</span>運動会　<span class="note-adjust" style="color:#dc2626;font-weight:700;">⚠ 日程被り要確認</span></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">11月 8日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">11月14日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">11月15日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">11月21日（土）</td><td><span class="tag tag-sl">江戸川SL</span>後期 第5節</td></tr>
+      <tr class="row-sun"><td class="td-date">11月22日（日）</td><td><span class="tag tag-matsudo">松戸L</span>2nd 第4節【6年】</td></tr>
+      <tr><td class="td-date">11月23日（月・祝）</td><td><span class="tag tag-holiday">祝日</span>勤労感謝の日</td></tr>
+      <tr class="row-sat"><td class="td-date">11月28日（土）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 後期 予備日</td></tr>
+      <tr class="row-sun"><td class="td-date">11月29日（日）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 後期 予備日</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 12月 ════════════ -->
+<div class="month-section" id="m2026-12">
+  <div class="month-heading"><h2>2026年 12月</h2><span class="count-badge">8件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">12月 5日（土）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 後期 予備日</td></tr>
+      <tr class="row-sun"><td class="td-date">12月 6日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">12月12日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">12月13日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">12月19日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">12月20日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">12月26日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">12月27日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 1月 ════════════ -->
+<div class="month-section" id="m2027-01">
+  <div class="month-heading"><h2>2027年 1月</h2><span class="count-badge">12件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr><td class="td-date">1月 1日（金・祝）</td><td><span class="tag tag-holiday">祝日</span>元日</td></tr>
+      <tr class="row-sat"><td class="td-date">1月 2日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">1月 3日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">1月 9日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">1月10日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">1月11日（月・祝）</td><td><span class="tag tag-holiday">祝日</span>成人の日</td></tr>
+      <tr class="row-sat"><td class="td-date">1月16日（土）</td><td><span class="tag tag-matsudo">松戸L</span>市長杯【6年・4年】1日目</td></tr>
+      <tr class="row-sun"><td class="td-date">1月17日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>市長杯【6年・4年】2日目</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ グランドゴルフ（スポ推）AM不可</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">1月23日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">1月24日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">1月30日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">1月31日（日）</td><td><span class="tag tag-matsudo">松戸L</span>市議長杯 Final【6・4年】</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 2月 ════════════ -->
+<div class="month-section" id="m2027-02">
+  <div class="month-heading"><h2>2027年 2月</h2><span class="count-badge">10件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">2月 6日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">2月 7日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">2月11日（木・祝）</td><td><span class="tag tag-matsudo">松戸L</span>市長杯 6年生決勝　<span class="tag tag-holiday">祝</span>建国記念の日</td></tr>
+      <tr class="row-sat"><td class="td-date">2月13日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">2月14日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">2月20日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">2月21日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">2月23日（火・祝）</td><td><span class="tag tag-holiday">祝日</span>天皇誕生日</td></tr>
+      <tr class="row-sat"><td class="td-date">2月27日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">2月28日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════ 3月 ════════════ -->
+<div class="month-section" id="m2027-03">
+  <div class="month-heading"><h2>2027年 3月</h2><span class="count-badge">8件</span><div class="line"></div></div>
+  <table class="event-table">
+    <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
+    <tbody>
+      <tr class="row-sat"><td class="td-date">3月 6日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">3月 7日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">3月13日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">3月14日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr><td class="td-date">3月20日（土・祝）</td><td><span class="tag tag-holiday">祝日</span>春分の日</td></tr>
+      <tr class="row-sun"><td class="td-date">3月21日（日）</td><td><span class="tag tag-camp">行事</span>お別れサッカー大会</td></tr>
+      <tr class="row-sat"><td class="td-date">3月27日（土）</td><td><span class="tag tag-matsudo">松戸L</span>松戸市近隣招待</td></tr>
+      <tr class="row-sun"><td class="td-date">3月28日（日）</td><td><span class="tag tag-matsudo">松戸L</span>松戸市近隣招待</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</main>
+
+<footer>
+  <p>⚽ 松戸旭SC 2026年度 年間スケジュール｜※行事予定は変更になる場合があります</p>
+</footer>
+
+<!-- ── MODAL OVERLAY ── -->
+<div class="modal-overlay" id="detailModal" onclick="closeDetailOutside(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title" id="modalTitle"></span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+function toggleU12() {
+  var content = document.getElementById('u12-content');
+  var arrow = document.getElementById('u12-arrow');
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    arrow.style.transform = 'rotate(180deg)';
+  } else {
+    content.style.display = 'none';
+    arrow.style.transform = 'rotate(0deg)';
+  }
+}
+
+// ── スムーズスクロール & アクティブナビ ──────────────────
+function scrollToMonth(el) {
+  var targetId = el.getAttribute('data-target');
+  var target = document.getElementById(targetId);
+  if (!target) return;
+  var navH = document.querySelector('.month-nav').offsetHeight;
+  var top = target.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+  document.querySelectorAll('.month-nav a').forEach(function(a){ a.classList.remove('active'); });
+  el.classList.add('active');
+}
+var sections = document.querySelectorAll('.month-section');
+var navLinks = document.querySelectorAll('.month-nav a');
+window.addEventListener('scroll', function() {
+  var navH = document.querySelector('.month-nav').offsetHeight + 16;
+  var current = '';
+  sections.forEach(function(s) {
+    if (window.pageYOffset >= s.offsetTop - navH) current = s.id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.remove('active');
+    if (a.getAttribute('data-target') === current) a.classList.add('active');
+  });
+}, { passive: true });
+
+// ── 詳細モーダル ──────────────────────────────────────────
+var details = {
+  'practice': {
+    title: '通常練習　詳細',
+    html: `<table>
+      <tr><td>時間</td><td>13:00〜16:00</td></tr>
+      <tr><td>場所</td><td>旭町小学校</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ 16時を過ぎることがあります。お迎えの際はご注意ください。<br>
+      ※ 食育のため軽食をお願いします。
+    </div>`
+  },
+
+  /* ── 4/26 エンデバーTM ── */
+  '2026-04-26': {
+    title: '4月26日（日）エンデバーさん　TM',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:40</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>開場時間</td><td>8:30</td></tr>
+      <tr><td>試合会場</td><td>七光台小学校</td></tr>
+      <tr><td>終了予定</td><td>12:00頃</td></tr>
+      <tr><td>コーチ</td><td>南原、石井、菅原、永戸、会田、石橋</td></tr>
+      <tr><td>車台数</td><td>5台以下</td></tr>
+    </table>
+    <div class="modal-section-title">ユニフォーム</div>
+    <div style="font-size:13px;padding:4px 0;">白着用</div>
+    <div class="modal-notes">
+      ※ 持ち物にはチーム名・名前を記入しておいて下さい。
+    </div>`
+  },
+
+  /* ── 4/5 WHITE ── */
+  '2026-04-05-white': {
+    title: '4月5日（日）松戸L 1st【WHITE】',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:40</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>松戸市江戸川河川敷主水グラウンド</td></tr>
+      <tr><td>試合時間</td><td>40分</td></tr>
+      <tr><td>コーチ</td><td>田邊副監督、石井、永戸</td></tr>
+      <tr><td>車出し</td><td>自転車で行きます　帯同：石井、永戸</td></tr>
+      <tr><td>設営</td><td>7:30　南原、石橋、たいき（＋審判）</td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">9:25〜</span><span>vs トリプレッタSC B（アウェイ）</span></div>
+    <div class="modal-match-row"><span class="match-time">13:05〜</span><span>vs 新松戸SC B（ホーム）</span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>①C3：新松戸SC B vs つくしSC</span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>①C7：つくしSC vs ラビットキッカーズB</span></div>
+    <div class="modal-section-title">選手（WHITE）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;font-size:12px;margin-top:4px;">
+      <div>リュウガ　5年</div><div>ショウタ　4年</div>
+      <div>シュント　5年</div><div>コウサク　4年</div>
+      <div>ソラ　　　5年</div><div>タイシ　　4年</div>
+      <div>カツマ　　5年</div><div>リョウマ　4年</div>
+      <div>リュウ　　5年</div><div></div>
+      <div>ソウスケ　5年</div><div></div>
+      <div>トラト　　5年</div><div></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <div style="font-size:13px;padding:4px 0;">白ユニ着用　赤ユニ持参</div>
+
+    </div>`
+  },
+
+  /* ── 4/5 RED ── */
+  '2026-04-05-red': {
+    title: '4月5日（日）松戸L 1st【RED】',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:40</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>松戸市江戸川河川敷主水グラウンド</td></tr>
+      <tr><td>試合時間</td><td>40分</td></tr>
+      <tr><td>コーチ</td><td>南原、会田、石橋、たいき</td></tr>
+      <tr><td>車出し</td><td>自転車で行きます　帯同：石井、永戸</td></tr>
+      <tr><td>設営</td><td>7:30　南原、石橋、たいき（＋審判）</td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">11:15〜</span><span>vs エクサスSC U-12（ホーム）</span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs FC ALMA B（アウェイ）</span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">8:30〜</span><span>①B1：エクサスSC U-12 vs きぼうSC A</span></div>
+    <div class="modal-match-row"><span class="match-time">12:10〜</span><span>①B5：きぼうSC A vs カンガルーFC</span></div>
+    <div class="modal-section-title">選手（RED）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;font-size:12px;margin-top:4px;">
+      <div>ナルキ　　5年</div><div>ユウト　　5年</div>
+      <div>コウヤ　　5年</div><div>ミウマ　　4年</div>
+      <div>アイト　　5年</div><div>リョウヤ　4年</div>
+      <div>コウガ　　5年</div><div></div>
+      <div>ユウタ　　5年</div><div></div>
+      <div>ナリムネ　5年</div><div></div>
+      <div>ソウイチロウ 5年</div><div></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <div style="font-size:13px;padding:4px 0;">白ユニ着用　赤ユニ持参</div>
+
+    </div>`
+  },
+
+  /* ── 4/11 WHITE ── */
+  '2026-04-11-white': {
+    title: '4月11日（土）松戸L 2nd【WHITE】',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:30</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>松戸市江戸川河川敷主水グラウンド</td></tr>
+      <tr><td>試合時間</td><td>40分</td></tr>
+      <tr><td>コーチ</td><td>田邊副監督、石井、永戸</td></tr>
+      <tr><td>車出し</td><td>審判の兼ね合いで車で行きます</td></tr>
+      <tr><td>設営</td><td>7:30　南原</td></tr>
+    </table>
+    <div class="modal-notes" style="color:#dc2626;">
+      ※ 選手の待ち時間が長くなりますが、よろしくお願いします。
+    </div>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">11:15〜</span><span>vs 矢切SC（ホーム）</span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs ラビットキッカーズB（アウェイ）</span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">8:30〜</span><span>②C1：矢切SC vs 新松戸SC B</span></div>
+    <div class="modal-match-row"><span class="match-time">12:10〜</span><span>②C5：新松戸SC B vs 常盤平SC</span></div>
+    <div class="modal-section-title">選手（WHITE）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;font-size:12px;margin-top:4px;">
+      <div>リュウガ　5年</div><div>ショウタ　4年</div>
+      <div>シュント　5年</div><div>コウサク　4年</div>
+      <div>ソラ　　　5年</div><div>タイシ　　4年</div>
+      <div>カツマ　　5年</div><div>リョウマ　4年</div>
+      <div>リュウ　　5年</div><div></div>
+      <div>ソウスケ　5年</div><div></div>
+      <div>トラト　　5年</div><div></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <div style="font-size:13px;padding:4px 0;">白ユニ着用　赤ユニ持参</div>
+
+    </div>`
+  },
+
+  /* ── 4/11 RED ── */
+  '2026-04-11-red': {
+    title: '4月11日（土）松戸L 2nd【RED】',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:30</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>松戸市江戸川河川敷主水グラウンド</td></tr>
+      <tr><td>試合時間</td><td>40分</td></tr>
+      <tr><td>コーチ</td><td>南原、石橋、たいき</td></tr>
+      <tr><td>車出し</td><td>審判の兼ね合いで車で行きます</td></tr>
+      <tr><td>設営</td><td>7:30　南原</td></tr>
+    </table>
+    <div class="modal-notes" style="color:#dc2626;">
+      ※ 選手の待ち時間が長くなりますが、よろしくお願いします。
+    </div>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>vs カンガルーFC（アウェイ）</span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs トリプレッタSC A（ホーム）</span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">8:30〜</span><span>②B1：エクサスSC U-12 vs まつひだいSC A</span></div>
+    <div class="modal-match-row"><span class="match-time">11:15〜</span><span>②B4：トリプレッタSC A vs エクサスSC U-12</span></div>
+    <div class="modal-section-title">選手（RED）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;font-size:12px;margin-top:4px;">
+      <div>ナルキ　　5年</div><div>ユウト　　5年</div>
+      <div>コウヤ　　5年</div><div>ミウマ　　4年</div>
+      <div>アイト　　5年</div><div>リョウヤ　4年</div>
+      <div>コウガ　　5年</div><div></div>
+      <div>ユウタ　　5年</div><div></div>
+      <div>ナリムネ　5年</div><div></div>
+      <div>ソウイチロウ 5年</div><div></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <div style="font-size:13px;padding:4px 0;">白ユニ着用　赤ユニ持参</div>
+
+    </div>`
+  },
+
+  /* ── 4/12 WHITE ── */
+  '2026-04-12-white': {
+    title: '4月12日（日）松戸L 3rd【WHITE】',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:40</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>松戸市江戸川河川敷主水グラウンド</td></tr>
+      <tr><td>試合時間</td><td>40分</td></tr>
+      <tr><td>コーチ</td><td>田邊副監督、石井、永戸</td></tr>
+      <tr><td>車出し</td><td>自転車で行きます</td></tr>
+      <tr><td>設営</td><td>7:30　南原、石井、永戸（＋審判）</td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">9:25〜</span><span>vs 常盤平SC（アウェイ）</span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs つくしSC（ホーム）</span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">8:30〜</span><span>③C1：矢切SC vs トリプレッタSC B</span></div>
+    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>③C3：新松戸SC B vs ラビットキッカーズB</span></div>
+    <div class="modal-section-title">選手（WHITE）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;font-size:12px;margin-top:4px;">
+      <div>リュウガ　5年</div><div>ショウタ　4年</div>
+      <div>シュント　5年</div><div>コウサク　4年</div>
+      <div>ソラ　　　5年</div><div>タイシ　　4年</div>
+      <div>カツマ　　5年</div><div>リョウマ　4年</div>
+      <div>リュウ　　5年</div><div></div>
+      <div>ソウスケ　5年</div><div></div>
+      <div>トラト　　5年</div><div></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <div style="font-size:13px;padding:4px 0;">白ユニ着用　赤ユニ持参</div>
+
+    </div>`
+  },
+
+  /* ── 4/12 RED ── */
+  '2026-04-12-red': {
+    title: '4月12日（日）松戸L 3rd【RED】',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:40</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>松戸市江戸川河川敷主水グラウンド</td></tr>
+      <tr><td>試合時間</td><td>40分</td></tr>
+      <tr><td>コーチ</td><td>南原、菅原、会田、石橋</td></tr>
+      <tr><td>車出し</td><td>自転車で行きます</td></tr>
+      <tr><td>設営</td><td>7:30　南原、石井、永戸（＋審判）</td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>vs まつひだいSC A（アウェイ）</span></div>
+    <div class="modal-match-row"><span class="match-time">12:10〜</span><span>vs きぼうSC A（ホーム）</span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">11:15〜</span><span>③B4：FC ALMA B vs エクサスSC U-12</span></div>
+    <div class="modal-match-row"><span class="match-time">13:05〜</span><span>③B6：カンガルーFC vs まつひだいSC A</span></div>
+    <div class="modal-section-title">選手（RED）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;font-size:12px;margin-top:4px;">
+      <div>ナルキ　　5年</div><div>ユウト　　5年</div>
+      <div>コウヤ　　5年</div><div>ミウマ　　4年</div>
+      <div>アイト　　5年</div><div>リョウヤ　4年</div>
+      <div>コウガ　　5年</div><div></div>
+      <div>ユウタ　　5年</div><div></div>
+      <div>ナリムネ　5年</div><div></div>
+      <div>ソウイチロウ 5年</div><div></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <div style="font-size:13px;padding:4px 0;">白ユニ着用　赤ユニ持参</div>
+
+    </div>`
+  }
+};
+
+function openDetail(key) {
+  var d = details[key];
+  if (!d) return;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalBody').innerHTML = d.html;
+  document.getElementById('detailModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeDetail() {
+  document.getElementById('detailModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeDetailOutside(e) {
+  if (e.target === document.getElementById('detailModal')) closeDetail();
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDetail(); });
+</script>
+</body>
+</html>
