@@ -568,7 +568,7 @@ footer {
       <tr class="row-sat"><td class="td-date">4月11日（土）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>2nd 第2節　<span class="team-white">WHITE</span><button class="detail-btn" onclick="openDetail('2026-04-11-white')">詳細</button></div><div><span class="tag tag-matsudo">松戸L</span>2nd 第2節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-04-11-red')">詳細</button></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">4月12日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>3rd 第3節　<span class="team-white">WHITE</span><button class="detail-btn" onclick="openDetail('2026-04-12-white')">詳細</button></div><div><span class="tag tag-matsudo">松戸L</span>3rd 第3節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-04-12-red')">詳細</button></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">4月18日（土）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ グランドゴルフ予備日　AM不可</div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">4月19日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドA・G　<span style="font-size:11px;color:var(--text-sub);">10:00 vs つくし野ホワイト　／　12:00 vs 滝野FC</span></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">4月19日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドA・G　<span style="font-size:11px;color:var(--text-sub);">11:00 vs つくし野ホワイト　／　13:00 vs 滝野FC</span><button class="detail-btn" onclick="openDetail('2026-04-19')">詳細</button></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">4月25日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span><span class="team-red">RED</span>前期 第2節</div><div><span class="tag tag-practice">練習</span><span class="team-white">WHITE</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">4月26日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>エンデバーさん　TM（A）<button class="detail-btn" onclick="openDetail('2026-04-26')">詳細</button></div></div></td></tr>
       <tr class="row-hol"><td class="td-date">4月29日（水・祝）</td><td><span class="tag tag-practice">練習</span>TR　13:00〜　<span class="tag tag-holiday">祝</span>昭和の日<button class="detail-btn" onclick="openDetail('practice')">詳細</button></td></tr>
@@ -868,7 +868,29 @@ var details = {
     </div>`
   },
 
-  /* ── 4/26 エンデバーTM ── */
+  /* ── 4/19 U-12L ラウンドA・G ── */
+  '2026-04-19': {
+    title: '4月19日（日）U-12L 第1節 ラウンドA・G',
+    html: `<table>
+      <tr><td>入場時間</td><td>8:45〜（試合1時間前到着目安）</td></tr>
+      <tr><td>試合会場</td><td>行田東小学校<br><span style="font-size:11px;color:#94a3b8;">船橋市行田2-4-1</span></td></tr>
+      <tr><td>駐車台数</td><td>1チーム4台まで（行田公園駐車場は厳禁）</td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">11:00〜11:45</span><span>vs つくし野SCホワイト（ホーム）　FP白/GK桃</span></div>
+    <div class="modal-match-row"><span class="match-time">13:00〜13:45</span><span>vs 滝野FC（アウェイ）　FP赤黒/GK緑</span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">12:00〜12:45</span><span>第3試合　主審/四審（行田東FC vs 高洲SCホッパーズ）</span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜14:45</span><span>第5試合　副審（つくし野SC白 vs 高洲SCホッパーズ白）</span></div>
+    <div class="modal-notes">
+      ※ メンバー表（3部）は試合30分前までに提出<br>
+      ※ 帯同審判は該当試合30分前までに打ち合わせ<br>
+      ※ 校内禁煙<br>
+      ※ 校門前は一方通行。出る際は<span style="color:#dc2626;font-weight:700;">必ず門を左折</span>
+    </div>`
+  },
+
+    /* ── 4/26 エンデバーTM ── */
   '2026-04-26': {
     title: '4月26日（日）エンデバーさん　TM',
     html: `<table>
