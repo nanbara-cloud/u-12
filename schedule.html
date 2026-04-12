@@ -582,10 +582,10 @@ footer {
   <table class="event-table">
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
-      <tr class="row-sat"><td class="td-date">5月 2日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">5月 2日（土）</td><td><span class="tag tag-camp">TM</span>藤崎SC　13:00〜16:00<button class="detail-btn" onclick="openDetail('2026-05-02')">詳細</button></td></tr>
       <tr class="row-hol"><td class="td-date">5月 3日（日・祝）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドB・I　<span style="font-size:11px;color:var(--text-sub);">9:00 vs 行田東FC　／　12:00 vs 高洲SCホッパーズ白</span>　<span class="tag tag-holiday">祝</span>憲法記念日<button class="detail-btn" onclick="openDetail('2026-05-03')">詳細</button></div></div></td></tr>
       <tr><td class="td-date">5月 4日（月・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div><span class="tag tag-holiday">祝</span>みどりの日</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B　グランド使用不可</div></div></td></tr>
-      <tr><td class="td-date">5月 5日（火・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div><span class="tag tag-holiday">祝日</span>こどもの日</div></div></td></tr>
+      <tr><td class="td-date">5月 5日（火・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　6:00〜9:00<button class="detail-btn" onclick="openDetail('2026-05-05')">詳細</button></div><div><span class="tag tag-holiday">祝</span>こどもの日</div></div></td></tr>
       <tr><td class="td-date">5月 6日（水・祝）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>カラクテル招待大会<button class="detail-btn" onclick="openDetail('2026-05-06')">詳細</button></div><div><span class="tag tag-holiday">祝</span>振替休日</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月 9日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第3節</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月10日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B予備日　グランド使用不可</div></div></td></tr>
@@ -875,12 +875,16 @@ var details = {
       ⚠️ トップユニを着て来ないこと！（会場で着替えます）
     </div>
     <table>
-      <tr><td>集合時間</td><td>8:30</td></tr>
+      <tr><td>集合時間</td><td>8:00</td></tr>
       <tr><td>集合場所</td><td>旭町小学校</td></tr>
       <tr><td>入場時間</td><td>8:45〜（試合1時間前到着目安）</td></tr>
       <tr><td>試合会場</td><td>行田東小学校<br><span style="font-size:11px;color:#94a3b8;">船橋市行田2-4-1</span></td></tr>
       <tr><td>駐車台数</td><td>1チーム4台まで（行田公園駐車場は厳禁）</td></tr>
+      <tr><td>車出し</td><td>5年1台・6年3台（石井号・石橋号・菅原号）<br><span style="font-size:11px;color:#94a3b8;">保護者カー候補：永戸号・会田号</span></td></tr>
     </table>
+    <div class="modal-notes" style="color:#dc2626;font-size:12px;font-weight:700;margin:8px 0;">
+      ※ できるだけ台数を少なく。最寄りのパーキングをご活用ください。
+    </div>
     <div class="modal-section-title">試合スケジュール</div>
     <div class="modal-match-row"><span class="match-time">11:00〜11:45</span><span>vs つくし野SCホワイト（ホーム）　FP白/GK桃</span></div>
     <div class="modal-match-row"><span class="match-time">13:00〜13:45</span><span>vs 滝野FC（アウェイ）　FP赤黒/GK緑</span></div>
@@ -899,7 +903,31 @@ var details = {
     <img src="n12_round1.png" style="width:100%;border-radius:6px;margin-top:4px;" alt="第1節案内">`
   },
 
-    /* ── 5/6 カラクテル招待大会 ── */
+    /* ── 5/2 TM 藤崎SC ── */
+  '2026-05-02': {
+    title: '5月2日（土）TM　藤崎SC',
+    html: `<table>
+      <tr><td>試合会場</td><td>袖ヶ浦少年サッカー場</td></tr>
+      <tr><td>時間</td><td>13:00〜16:00</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ コーチ・集合時間等は後日追加予定
+    </div>`
+  },
+
+  /* ── 5/5 TR ── */
+  '2026-05-05': {
+    title: '5月5日（火・祝）通常練習',
+    html: `<table>
+      <tr><td>時間</td><td>6:00〜9:00</td></tr>
+      <tr><td>場所</td><td>旭町小学校</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ 食育のため軽食をお願いします。
+    </div>`
+  },
+
+  /* ── 5/6 カラクテル招待大会 ── */
   '2026-05-06': {
     title: '5月6日（水・祝）カラクテル招待大会',
     html: `<table>
@@ -1144,8 +1172,8 @@ var details = {
       ※ 選手の待ち時間が長くなりますが、よろしくお願いします。
     </div>
     <div class="modal-section-title">試合スケジュール</div>
-    <div class="modal-match-row"><span class="match-time">11:15〜</span><span>vs 矢切SC（ホーム）</span></div>
-    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs ラビットキッカーズB（アウェイ）</span></div>
+    <div class="modal-match-row"><span class="match-time">11:15〜</span><span>vs 矢切SC（ホーム）　<span style="color:#dc2626;font-weight:700;">0-2 負け</span></span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs ラビットキッカーズB（アウェイ）　<span style="color:#16a34a;font-weight:700;">4-0 勝ち</span></span></div>
     <div class="modal-section-title">審判当番</div>
     <div class="modal-match-row"><span class="match-time">8:30〜</span><span>②C1：矢切SC vs 新松戸SC B</span></div>
     <div class="modal-match-row"><span class="match-time">12:10〜</span><span>②C5：新松戸SC B vs 常盤平SC</span></div>
@@ -1180,8 +1208,8 @@ var details = {
       ※ 選手の待ち時間が長くなりますが、よろしくお願いします。
     </div>
     <div class="modal-section-title">試合スケジュール</div>
-    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>vs カンガルーFC（アウェイ）</span></div>
-    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs トリプレッタSC A（ホーム）</span></div>
+    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>vs カンガルーFC（アウェイ）　<span style="color:#d97706;font-weight:700;">1-1 引き分け</span></span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs トリプレッタSC A（ホーム）　<span style="color:#dc2626;font-weight:700;">0-9 負け</span></span></div>
     <div class="modal-section-title">審判当番</div>
     <div class="modal-match-row"><span class="match-time">8:30〜</span><span>②B1：エクサスSC U-12 vs まつひだいSC A</span></div>
     <div class="modal-match-row"><span class="match-time">11:15〜</span><span>②B4：トリプレッタSC A vs エクサスSC U-12</span></div>
@@ -1213,8 +1241,8 @@ var details = {
       <tr><td>設営</td><td>7:30　南原</td></tr>
     </table>
     <div class="modal-section-title">試合スケジュール</div>
-    <div class="modal-match-row"><span class="match-time">9:25〜</span><span>vs 常盤平SC（アウェイ）</span></div>
-    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs つくしSC（ホーム）</span></div>
+    <div class="modal-match-row"><span class="match-time">9:25〜</span><span>vs 常盤平SC（アウェイ）　<span style="color:#d97706;font-weight:700;">0-0 引き分け</span></span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜</span><span>vs つくしSC（ホーム）　<span style="color:#dc2626;font-weight:700;">0-1 負け</span></span></div>
     <div class="modal-section-title">審判当番</div>
     <div class="modal-match-row"><span class="match-time">8:30〜</span><span>③C1：矢切SC vs トリプレッタSC B</span></div>
     <div class="modal-match-row"><span class="match-time">10:20〜</span><span>③C3：新松戸SC B vs ラビットキッカーズB</span></div>
@@ -1246,8 +1274,8 @@ var details = {
       <tr><td>設営</td><td>7:30　南原</td></tr>
     </table>
     <div class="modal-section-title">試合スケジュール</div>
-    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>vs まつひだいSC A（アウェイ）</span></div>
-    <div class="modal-match-row"><span class="match-time">12:10〜</span><span>vs きぼうSC A（ホーム）</span></div>
+    <div class="modal-match-row"><span class="match-time">10:20〜</span><span>vs まつひだいSC A（アウェイ）　<span style="color:#dc2626;font-weight:700;">0-9 負け</span></span></div>
+    <div class="modal-match-row"><span class="match-time">12:10〜</span><span>vs きぼうSC A（ホーム）　<span style="color:#dc2626;font-weight:700;">0-3 負け</span></span></div>
     <div class="modal-section-title">審判当番</div>
     <div class="modal-match-row"><span class="match-time">11:15〜</span><span>③B4：FC ALMA B vs エクサスSC U-12</span></div>
     <div class="modal-match-row"><span class="match-time">13:05〜</span><span>③B6：カンガルーFC vs まつひだいSC A</span></div>
