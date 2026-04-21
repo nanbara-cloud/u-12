@@ -639,7 +639,7 @@ footer {
       <tr class="row-sun"><td class="td-date">6月 7日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドH　<span style="font-size:11px;color:var(--text-sub);">11:00 vs FC芝山クルセイド</span><button class="detail-btn" onclick="openDetail('2026-06-07')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B予備日　グランド使用不可</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">6月13日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ 土曜参観　AM不可</span></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">6月14日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>1st 予備日</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B　グランド使用不可</div></div></td></tr>
-      <tr class="row-sat"><td class="td-date">6月20日（土）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B予備日　グランド使用不可</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">6月20日（土）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>きぼう招待　Bチームメイン大会<button class="detail-btn" onclick="openDetail('2026-06-20')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B予備日　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">6月21日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドF・J　🏠ホーム　<span style="font-size:11px;color:var(--text-sub);">11:00 vs NSP CLUB　／　13:00 vs ルキナス印西SC白</span><button class="detail-btn" onclick="openDetail('2026-06-21')">詳細</button></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">6月27日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label ko">古</span>土曜参観・引き渡し訓練</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年東葛　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">6月28日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B　グランド使用不可</div></div></td></tr>
@@ -936,13 +936,43 @@ var details = {
     /* ── 5/2 TM 藤崎SC ── */
   '2026-05-02': {
     title: '5月2日（土）TM　藤崎SC',
-    html: `<table>
+    html: `<div style="background:#fee2e2;border-radius:6px;padding:8px 12px;margin-bottom:10px;color:#dc2626;font-size:12px;font-weight:700;">
+      ⚠️ トップユニは持ってこないこと！（通常ユニホームで参加）
+    </div>
+    <table>
+      <tr><td>集合時間</td><td>10:30　<span style="font-size:11px;color:#94a3b8;">※混雑予想のため早めに</span></td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
       <tr><td>試合会場</td><td>袖ヶ浦少年サッカー場</td></tr>
-      <tr><td>時間</td><td>13:00〜16:00</td></tr>
+      <tr><td>開門</td><td>12:00〜</td></tr>
+      <tr><td>試合開始</td><td>13:00〜（1本20分）</td></tr>
+      <tr><td>終了予定</td><td>16:00〜片付け</td></tr>
     </table>
+    <div class="modal-section-title">ユニフォーム</div>
+    <table>
+      <tr><td>フィールド</td><td>白着用　赤持参</td></tr>
+      <tr><td>キーパー</td><td>緑着用　黄色持参<br><span style="font-size:11px;color:#94a3b8;">※近くなったら改めてアナウンスします</span></td></tr>
+    </table>
+    <div class="modal-section-title">駐車場案内</div>
+    <div style="font-size:12px;line-height:1.8;padding:4px 0;">
+      <div>🅿 12:00〜　駐車場A・B・C利用可（習志野3中側道路沿い）</div>
+      <div>🅿 13:00〜　体育館裏の臨時駐車場も使用可（A/B/C満車時）</div>
+      <div style="color:#dc2626;font-weight:700;margin-top:4px;">🚫 グラウンド周辺道路・近隣商業施設への駐車は厳禁</div>
+      <div style="color:#dc2626;">🚫 テニスコート・体育館専用・第２駐車場は利用不可</div>
+    </div>
+    <div class="modal-section-title">注意事項</div>
     <div class="modal-notes">
-      ※ コーチ・集合時間等は後日追加予定
-    </div>`
+      ※ 体育館内トイレ使用時は、玄関前で靴の泥を落としてからお入りください。<br>
+      ※ アップ場・プールのフェンス内にボールを入れないよう注意。入った場合は勝手に入らず会場責任者へ連絡。<br>
+      ※ プールと松林の間の通路はボール使用禁止（他利用者のアップスペース）。
+    </div>
+    <div class="modal-section-title">会場責任者（藤崎SC）</div>
+    <table>
+      <tr><td>担当</td><td>内藤 潤 さん</td></tr>
+      <tr><td>連絡先</td><td><a href="tel:080-4617-1834" style="color:#1a2a4a;font-weight:700;">080-4617-1834</a></td></tr>
+      <tr><td>連絡先</td><td style="font-size:11px;color:#94a3b8;">緊急時・ボールがフェンス内に入った際</td></tr>
+    </table>
+    <div class="modal-section-title">会場マップ</div>
+    <a href="https://share.google/zCkAubU4tXFiYxhtf" style="display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:6px;text-decoration:none;margin-top:4px;">🗺 会場マップを開く</a>`
   },
 
   /* ── 5/5 TR ── */
@@ -960,25 +990,49 @@ var details = {
   /* ── 5/6 カラクテル招待大会 ── */
   '2026-05-06': {
     title: '5月6日（水・祝）カラクテル招待大会',
-    html: `<table>
+    html: `<div style="background:#fee2e2;border-radius:6px;padding:8px 12px;margin-bottom:10px;color:#dc2626;font-size:12px;font-weight:700;">
+      ⚠️ トップユニは持ってこないこと！（通常ユニホームで参加）
+    </div>
+    <table>
+      <tr><td>集合時間</td><td>6:00　<span style="font-size:11px;color:#94a3b8;">※高速で約1時間半</span></td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
       <tr><td>試合会場</td><td>吉田工業FOOTBALL FIELD（萱場グランド）</td></tr>
+      <tr><td>試合開始</td><td>9:00〜（15分ハーフ）</td></tr>
+      <tr><td>終了予定</td><td>14:30〜片付け</td></tr>
       <tr><td>参加費</td><td>10,000円</td></tr>
-      <tr><td>駐車台数</td><td>8台（スタッフ車無料・その他1台500円）</td></tr>
-      <tr><td>形式</td><td>8人制・15分ハーフ　予選3試合＋順位決定戦1試合</td></tr>
     </table>
-    <div class="modal-section-title">タイムスケジュール</div>
-    <div class="modal-match-row"><span class="match-time">13:00</span><span>Aグループ 2試合</span></div>
-    <div class="modal-match-row"><span class="match-time">13:40</span><span>Bグループ 2試合</span></div>
-    <div class="modal-match-row"><span class="match-time">14:20</span><span>Aグループ 2試合</span></div>
-    <div class="modal-match-row"><span class="match-time">15:00</span><span>Bグループ 2試合</span></div>
-    <div class="modal-match-row"><span class="match-time">15:40</span><span>Aグループ 2試合</span></div>
-    <div class="modal-match-row"><span class="match-time">16:20</span><span>Bグループ 2試合</span></div>
-    <div class="modal-match-row"><span class="match-time">17:00</span><span>順位決定戦①</span></div>
-    <div class="modal-match-row"><span class="match-time">17:40</span><span>順位決定戦②</span></div>
-    <div class="modal-match-row"><span class="match-time">18:30</span><span>撤収</span></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <table>
+      <tr><td>フィールド</td><td>白着用　赤持参</td></tr>
+      <tr><td>キーパー</td><td>緑着用　黄色持参<br><span style="font-size:11px;color:#94a3b8;">※近くなったら改めてアナウンスします</span></td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-notes">※ 試合スケジュールは後日追加予定</div>
+    <div class="modal-section-title">駐車場案内</div>
+    <div style="font-size:12px;line-height:1.8;padding:4px 0;">
+      <div>🅿 水色エリア・赤色エリア　両方駐車可</div>
+      <div>⚠️ 駐車場隣の民家前は<strong>必ず前向き駐車</strong>（排気口が民家側に向かないよう）</div>
+      <div style="margin-top:6px;font-weight:700;">無料：審判車・スタッフ車・チームマイクロバス・関係者車両</div>
+      <div style="color:#dc2626;font-weight:700;">有料：保護者・一般利用　1台500円<br><span style="font-size:11px;">駐車後、速やかに現地QRコード看板からお支払いください</span></div>
+    </div>
+    <div class="modal-section-title">観戦について</div>
     <div class="modal-notes">
-      ※ コーチ・集合時間等は後日追加予定
-    </div>`
+      ※ ネット内側・道路側の人工芝（黄緑）が観戦スペース<br>
+      ※ 折りたたみ椅子・日傘などをご持参ください<br>
+      ※ 観戦は決められたスペース内でお願いします<br>
+      ※ グラウンド付近での駐停車はご遠慮ください<br>
+      ※ <span style="color:#dc2626;font-weight:700;">カフェ・イチゴ農家さんの敷地への駐車は絶対禁止</span>
+    </div>
+    <div class="modal-section-title">施設利用ルール</div>
+    <div class="modal-notes">
+      ※ 水道：飲料水として利用可<br>
+      ※ ゴミ：必ずお持ち帰りください<br>
+      ※ 喫煙：公道・近隣住宅付近での喫煙はご遠慮ください<br>
+      ※ <span style="color:#dc2626;font-weight:700;">クラブハウス内は土足禁止</span>　靴を下駄箱にしまいスリッパに履き替えてください<br>
+      ※ 使用時間外入場禁止・活動終了後は速やかにご退場ください
+    </div>
+    <div class="modal-section-title">会場マップ</div>
+    <a href="https://maps.app.goo.gl/TbVLmB4YGX7oNtX87" style="display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:6px;text-decoration:none;margin-top:4px;">🗺 会場マップを開く</a>`
   },
 
   /* ── 5/3 U-12L 第2節 ── */
@@ -1058,6 +1112,14 @@ var details = {
       ※ 観戦はベンチと逆サイド<br>
       ※ 校内外禁煙<br>
       ※ 当日案内人がいますので指示に従ってください
+    </div>`
+  },
+
+  /* ── 6/20 きぼう招待 ── */
+  '2026-06-20': {
+    title: '6月20日（土）きぼう招待　Bチームメイン大会',
+    html: `<div class="modal-notes">
+      ※ 詳細は後日追加予定
     </div>`
   },
 
