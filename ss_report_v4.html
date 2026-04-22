@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS事業部 営業レポート</title>
+<style>
+:root{--primary:#2563eb;--primary-lt:#eff6ff;--border:#e5e7eb;--bg:#f9fafb;--white:#fff;--text:#111827;--muted:#6b7280;--subtle:#9ca3af;--success:#16a34a;--warn:#d97706;--danger:#dc2626;--c1:#2563eb;--c2:#db2777;--c3:#16a34a;--c4:#d97706;--c5:#7c3aed;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Meiryo','メイリオ','Hiragino Kaku Gothic Pro',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.6;}
+.hdr{background:var(--white);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;}
+.hdr-ttl{font-size:14px;font-weight:700;display:flex;align-items:center;gap:9px;}
+.hdr-badge{background:var(--primary);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;}
+.upbar{background:var(--white);border-bottom:1px solid var(--border);padding:10px 28px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.up-lbl{font-size:11px;color:var(--muted);font-weight:700;}
+.upz{display:flex;align-items:center;gap:6px;border:1.5px dashed var(--border);border-radius:5px;padding:5px 12px;cursor:pointer;background:var(--bg);}
+.upz:hover{border-color:var(--primary);} .upz.loaded{border-color:var(--success);border-style:solid;background:#f0fdf4;}
+.upz input{display:none;} .upz-lbl{font-size:12px;color:var(--muted);cursor:pointer;} .upz.loaded .upz-lbl{color:var(--success);font-weight:700;}
+.cst{padding:6px 12px;border-radius:5px;font-size:11px;display:none;} .cst.ok{background:#f0fdf4;color:var(--success);border:1px solid #bbf7d0;} .cst.err{background:#fef2f2;color:var(--danger);border:1px solid #fecaca;}
+.nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 28px;display:flex;overflow-x:auto;}
+.na{padding:11px 14px;font-size:12px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;text-decoration:none;white-space:nowrap;} .na:hover{color:var(--text);} .na.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:700;}
+.main{max-width:1300px;margin:0 auto;padding:24px 28px;}
+.sec{margin-bottom:32px;}
+.sec-ttl{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.sec-ttl::before{content:'';display:block;width:3px;height:18px;border-radius:2px;background:var(--primary);}
+.ym-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:20px;background:var(--white);border:1px solid var(--border);border-radius:7px;padding:12px 16px;}
+.yl{font-size:11px;color:var(--muted);white-space:nowrap;}
+select.ysel{padding:4px 8px;border:1px solid var(--border);border-radius:5px;font-family:inherit;font-size:12px;background:var(--white);color:var(--text);cursor:pointer;outline:none;} select.ysel:focus{border-color:var(--primary);}
+.mbtns{display:flex;gap:4px;flex-wrap:wrap;}
+.mbtn{padding:4px 10px;border-radius:4px;font-size:12px;border:1px solid var(--border);background:var(--white);color:var(--muted);cursor:pointer;font-family:inherit;} .mbtn:hover{border-color:var(--primary);color:var(--primary);} .mbtn.active{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:700;}
+.sum-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px;}
+.sc{background:var(--white);border:1px solid var(--border);border-radius:7px;padding:14px;} .sc-lbl{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.04em;} .sc-val{font-size:22px;font-weight:700;margin-top:2px;} .sc-unit{font-size:10px;color:var(--muted);}
+.tw{background:var(--white);border:1px solid var(--border);border-radius:7px;overflow:hidden;} .tws{overflow-x:auto;}
+table.dt{width:100%;border-collapse:collapse;font-size:12px;}
+table.dt thead th{background:var(--bg);padding:8px 12px;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.04em;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap;}
+table.dt thead th.r{text-align:right;} table.dt tbody td{padding:8px 12px;border-bottom:1px solid var(--border);white-space:nowrap;} table.dt tbody td.r{text-align:right;}
+table.dt tbody tr:last-child td{border-bottom:none;} table.dt tbody tr:hover td{background:#fafafa;} table.dt .tot td{font-weight:700;background:var(--primary-lt);}
+.md{display:inline-flex;align-items:center;gap:5px;font-weight:700;} .dot{width:7px;height:7px;border-radius:50%;display:inline-block;}
+.d1{background:var(--c1);} .d2{background:var(--c2);} .d3{background:var(--c3);} .d4{background:var(--c4);} .d5{background:var(--c5);}
+.bd{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;}
+.ba{background:#eff6ff;color:var(--c1);} .bm{background:#f0fdf4;color:var(--success);} .bj{background:#fffbeb;color:var(--warn);} .bt{background:#f5f3ff;color:var(--c5);}
+.rs{color:#b45309;font-weight:700;} .ra{color:var(--success);font-weight:700;} .rb{color:var(--primary);font-weight:700;} .rc{color:var(--muted);} .rd{color:var(--danger);}
+.rtag{background:#f3f4f6;padding:1px 6px;border-radius:3px;font-size:10px;}
+.acc{background:var(--white);border:1px solid var(--border);border-radius:7px;overflow:hidden;}
+.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;user-select:none;} .acc-hdr:hover{background:#fafafa;}
+.acc-ttl{font-size:13px;font-weight:700;} .acc-sub{font-size:11px;font-weight:400;color:var(--muted);margin-left:8px;}
+.acc-arr{font-size:11px;color:var(--muted);transition:transform .2s;display:inline-block;}
+.acc-body{display:none;border-top:1px solid var(--border);} .acc-body.open{display:block;}
+.fbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--border);}
+.fin{padding:5px 10px;border:1px solid var(--border);border-radius:5px;font-family:inherit;font-size:12px;width:180px;outline:none;background:var(--white);} .fin:focus{border-color:var(--primary);}
+.fbl{padding:3px 10px;border-radius:14px;font-size:11px;border:1px solid var(--border);background:var(--white);color:var(--muted);cursor:pointer;font-family:inherit;} .fbl:hover{border-color:var(--primary);color:var(--primary);} .fbl.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+.fl{font-size:11px;color:var(--muted);white-space:nowrap;}
+.pipe-wrap{background:var(--white);border:1px solid var(--border);border-radius:7px;overflow:hidden;}
+.tab-row{display:flex;border-bottom:1px solid var(--border);}
+.tab-btn{padding:10px 16px;font-size:12px;color:var(--muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;font-family:inherit;} .tab-btn:hover{color:var(--text);} .tab-btn.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:700;}
+.tab-pane{display:none;} .tab-pane.active{display:block;}
+.mrr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.mrr-c{background:var(--white);border:1px solid var(--border);border-radius:7px;padding:14px;} .mrr-lbl{font-size:10px;color:var(--muted);font-weight:700;margin-bottom:5px;} .mrr-val{font-size:20px;font-weight:700;} .mrr-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+.tp-card{background:var(--white);border:1px solid var(--border);border-radius:7px;padding:18px;}
+.tp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.tp-lbl{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;margin-bottom:8px;}
+.tp-text{font-size:13px;line-height:1.9;color:var(--text);white-space:pre-wrap;}
+.nodata{text-align:center;padding:28px;color:var(--subtle);}
+/* セクション区切り（安全な最小限スタイル） */
+.main>.sec{border-top:1px solid transparent;padding-top:4px;}
+.main>.sec+.sec{border-top:1px solid var(--border);margin-top:8px;}
+
+/* 商談NG / 前確NG / 契約完了バッジ */
+.bng{background:#fef2f2;color:var(--danger);font-size:10px;font-weight:700;}
+.bkc{background:#f0fdf4;color:var(--success);font-size:10px;font-weight:700;}
+/* 大項目セクション交互背景 */
+.main>.sec:nth-child(even){background:#f3f6fb;border-radius:10px;padding:22px 20px;margin-left:-4px;margin-right:-4px;}
+.churn-drop{margin-top:6px;text-align:left;}
+.churn-item{display:flex;justify-content:space-between;align-items:center;padding:4px 8px;border-radius:4px;background:#fef2f2;border-left:2px solid var(--danger);margin-bottom:3px;font-size:11px;color:var(--text);white-space:normal;}
+.churn-item span{color:var(--danger);font-weight:700;margin-left:8px;white-space:nowrap;}
+/* 概算・確定バッジ */
+.est-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;}
+.est-badge.est{background:#fff7ed;color:var(--warn);border:1px solid #fed7aa;}
+.est-badge.confirmed{background:#f0fdf4;color:var(--success);border:1px solid #bbf7d0;}
+.mrr-status-note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6;}
+
+/* 目標 vs 実績 */
+.tgt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.tgt-card{background:var(--white);border:1px solid var(--border);border-radius:7px;padding:16px;}
+.tgt-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.tgt-lbl{font-size:11px;font-weight:700;color:var(--muted);}
+.tgt-nums{text-align:right;}
+.tgt-act{font-size:22px;font-weight:700;color:var(--text);}
+.tgt-sep{font-size:13px;color:var(--subtle);margin:0 3px;}
+.tgt-goal{font-size:11px;color:var(--muted);}
+.pbar-wrap{background:#f3f4f6;border-radius:99px;height:8px;overflow:hidden;margin-bottom:8px;}
+.pbar{height:100%;border-radius:99px;transition:width .6s ease;width:0%;}
+.tgt-rate{font-size:12px;font-weight:700;}
+.tgt-rate.over{color:var(--success);}
+.tgt-rate.mid{color:var(--warn);}
+.tgt-rate.low{color:var(--danger);}
+@media(max-width:700px){.tgt-grid{grid-template-columns:1fr;}}
+@media(max-width:1000px){.sum-grid{grid-template-columns:repeat(3,1fr);}.mrr-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:700px){.main,.hdr,.upbar,.nav{padding-left:14px;padding-right:14px;}.sum-grid{grid-template-columns:repeat(2,1fr);}.mrr-grid{grid-template-columns:1fr;}#topics .tp-card>div{grid-template-columns:1fr !important;}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-ttl"><span class="hdr-badge">SS</span>SS事業部　営業ダッシュボード</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="https://nanbara-cloud.github.io/cf/cashflow.html" target="_blank"
+       style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:#7c3aed;color:#fff;border-radius:5px;font-size:12px;font-weight:700;text-decoration:none;">
+      💹 キャッシュフロー
+    </a>
+    <a href="https://nanbara-cloud.github.io/h2tyosan/yosan.html" target="_blank"
+       style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--primary);color:#fff;border-radius:5px;font-size:12px;font-weight:700;text-decoration:none;">
+      📊 予算進捗
+    </a>
+    <span style="font-size:11px;color:var(--muted);" id="updAt">最終更新: —</span>
+  </div>
+</header>
+<div class="upbar">
+  <span class="up-lbl">📂 データ更新:</span>
+  <div class="upz" id="z1" onclick="document.getElementById('ci1').click()">
+    <span>📊</span><label class="upz-lbl" id="z1l">営業マスタCSV</label>
+    <input type="file" id="ci1" accept=".csv" onchange="loadSalesCSV(this)">
+  </div>
+  <div class="up-zone" id="z2" onclick="document.getElementById('ci2').click()" style="display:none;">
+    <span>💳</span><label class="upz-lbl" id="z2l">請求データCSV</label>
+    <input type="file" id="ci2" accept=".csv" onchange="loadBillingCSV(this)">
+  </div>
+  <span id="cst" class="cst"></span>
+</div>
+<nav class="nav">
+  <a class="na active" href="#kpi">月次KPI</a>
+  <a class="na" href="#finder">月別ファインダー</a>
+  <a class="na" href="#mrr">保有売上・チャーン</a>
+  <a class="na" href="#closing">当月クロージング</a>
+  <a class="na" href="#pipeline">パイプライン</a>
+  <a class="na" href="#routes">アポ経路別</a>
+  <a class="na" href="#topics">週間トピック</a>
+</nav>
+<div class="main">
+  <div class="ym-row">
+    <span class="yl">年：</span>
+    <select class="ysel" id="yearSel" onchange="onYearChange()"></select>
+    <span class="yl" style="margin-left:8px;">月：</span>
+    <div class="mbtns" id="mbtns"></div>
+  </div>
+  <section class="sec" id="kpi">
+    <div class="sec-ttl" id="kpiTtl">月次KPIサマリー</div>
+
+    <!-- 目標 vs 実績 進捗カード -->
+    <div class="tgt-grid" id="tgtGrid">
+      <div class="tgt-card">
+        <div class="tgt-head">
+          <div class="tgt-lbl">商談数</div>
+          <div class="tgt-nums"><span class="tgt-act" id="tgt-act-s">—</span><span class="tgt-sep">/</span><span class="tgt-goal">目標 25件</span></div>
+        </div>
+        <div class="pbar-wrap"><div class="pbar" id="pbar-s" style="background:var(--c1)"></div></div>
+        <div class="tgt-rate" id="rate-s">—</div>
+      </div>
+      <div class="tgt-card">
+        <div class="tgt-head">
+          <div class="tgt-lbl">契約数</div>
+          <div class="tgt-nums"><span class="tgt-act" id="tgt-act-k">—</span><span class="tgt-sep">/</span><span class="tgt-goal">目標 6件</span></div>
+        </div>
+        <div class="pbar-wrap"><div class="pbar" id="pbar-k" style="background:var(--success)"></div></div>
+        <div class="tgt-rate" id="rate-k">—</div>
+      </div>
+      <div class="tgt-card">
+        <div class="tgt-head">
+          <div class="tgt-lbl">契約売上 <span style="font-weight:400;font-size:10px;">（実際の月額単価合計）</span></div>
+          <div class="tgt-nums"><span class="tgt-act" id="tgt-act-u">—</span><span class="tgt-sep">/</span><span class="tgt-goal" id="tgt-goal-u">目標 ¥175,000</span></div>
+        </div>
+        <div class="pbar-wrap"><div class="pbar" id="pbar-u" style="background:var(--warn)"></div></div>
+        <div class="tgt-rate" id="rate-u">—</div>
+      </div>
+      <div class="tgt-card" id="tgt-budget-churn" style="display:none;">
+        <div class="tgt-head">
+          <div class="tgt-lbl">解約金額 <span style="font-weight:400;font-size:10px;">（予算比較・低いほど良）</span></div>
+          <div class="tgt-nums"><span class="tgt-act" id="tgt-act-bchurn">—</span><span class="tgt-sep">/</span><span class="tgt-goal" id="tgt-goal-bchurn">—</span></div>
+        </div>
+        <div class="pbar-wrap"><div class="pbar" id="pbar-bchurn" style="background:var(--danger)"></div></div>
+        <div class="tgt-rate" id="rate-bchurn">—</div>
+      </div>
+    </div>
+
+    <!-- 担当者別サマリーカード -->
+    <div class="sum-grid">
+      <div class="sc"><div class="sc-lbl">合計アポ数</div><div class="sc-val" id="sa">—</div></div>
+      <div class="sc"><div class="sc-lbl">合計契約数</div><div class="sc-val" id="sk">—</div></div>
+      <div class="sc"><div class="sc-lbl">課金開始数</div><div class="sc-val" id="skk">—</div></div>
+      <div class="sc"><div class="sc-lbl">契約売上合計</div><div class="sc-val" id="su">—</div><div class="sc-unit" id="suu"></div></div>
+      <div class="sc"><div class="sc-lbl">成約率(契約/アポ)</div><div class="sc-val" id="sr">—</div></div>
+      <div class="sc"><div class="sc-lbl">見込み件数</div><div class="sc-val" id="sm">—</div></div>
+    </div>
+
+    <!-- 担当者別KPI表 -->
+    <div class="tw tws">
+      <table class="dt"><thead><tr>
+        <th>担当者</th><th class="r">アポ数</th><th class="r">商談数</th>
+        <th class="r">契約数</th><th class="r">契約売上</th>
+        <th class="r">課金開始数</th><th class="r">成約率</th><th class="r">見込み件数</th>
+      </tr></thead><tbody id="kpiTb"></tbody></table>
+    </div>
+  </section>
+  <section class="sec" id="finder">
+    <div class="acc" id="accFinder">
+      <div class="acc-hdr" onclick="toggleAcc('accFinder')">
+        <div><span class="acc-ttl">月別 担当者別 ファインダー</span><span class="acc-sub">直近12ヶ月 · 検索・絞り込み対応</span></div>
+        <span class="acc-arr" id="arwFinder">▼</span>
+      </div>
+      <div class="acc-body" id="bodyFinder">
+        <div class="fbar">
+          <input class="fin" id="fSearch" placeholder="担当者・金額で検索…" oninput="renderFinder()">
+          <span class="fl">担当者：</span>
+          <button class="fbl active" onclick="setMF('all',this)">全員</button>
+          <button class="fbl" onclick="setMF('南原龍司',this)">南原</button>
+          <button class="fbl" onclick="setMF('田中莉奈',this)">田中</button>
+          <button class="fbl" onclick="setMF('中岡世里菜',this)">中岡</button>
+          <button class="fbl" onclick="setMF('高橋広輝',this)">高橋</button>
+        </div>
+        <div class="tws">
+          <table class="dt"><thead><tr>
+            <th>月</th><th>担当者</th>
+            <th class="r">アポ</th><th class="r">商談</th><th class="r">契約</th>
+            <th class="r">課金開始</th><th class="r">契約売上</th><th class="r">見込み</th>
+          </tr></thead><tbody id="finderTb"></tbody></table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="mrr">
+    <div class="sec-ttl">保有売上（MRR）・チャーンレート
+      <span style="font-size:11px;font-weight:400;color:var(--muted);margin-left:6px;">ユニーク店舗 × 月額単価ベース</span>
+    </div>
+
+    <!-- 現在稼働サマリー（概算/確定 JS制御） -->
+    <div id="mrrSummaryWrap"></div>
+
+    <!-- 担当者別 MRR（月選択 + JS制御） -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+      <span class="fl">月を選択：</span>
+      <select class="ysel" id="mrrPersonYear" onchange="onMrrPersonYear()"></select>
+      <select class="ysel" id="mrrPersonMonth" onchange="renderMrrPerson()"></select>
+      <span id="mrrPersonBadgeWrap" style="margin-left:4px;"></span>
+    </div>
+    <div class="tw tws" style="margin-bottom:20px;">
+      <table class="dt" id="mrrPersonTable"><thead><tr>
+        <th>担当者</th>
+        <th class="r">稼働MRR</th>
+        <th class="r">稼働件数</th>
+        <th class="r" style="color:var(--primary);">新規MRR</th>
+        <th class="r">解約件数 <span style="font-weight:400;font-size:10px;">クリックで詳細</span></th>
+        <th class="r">解約MRR</th>
+        <th class="r">チャーン率</th>
+      </tr></thead>
+      <tbody id="mrrPersonTb">
+        <!-- JS で描画 -->
+      </tbody></table>
+    </div>
+
+    <!-- 月別MRR推移 -->
+    <div style="font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+      <span style="display:inline-block;width:3px;height:16px;background:var(--primary);border-radius:2px;"></span>
+      月別MRR推移
+      <span style="font-size:11px;font-weight:400;color:var(--muted);">※ユニーク店舗×月額単価ベース　※2026年4月は集計途中</span>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:7px;overflow:hidden;">
+
+      <!-- 上段：表示モード切り替え -->
+      <div class="tab-row" id="mrrModeRow">
+        <button class="tab-btn active" onclick="mrrSwMode('mrrByMonth')">📅 月別比較</button>
+        <button class="tab-btn" onclick="mrrSwMode('mrrByPerson')">👤 個人別推移</button>
+      </div>
+
+      <!-- ① 月別比較ビュー -->
+      <div id="mrrByMonth">
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--border);">
+          <span class="fl">対象月：</span>
+          <select class="ysel" id="mrrMonthSel" onchange="renderMrrMonth()"></select>
+        </div>
+        <div class="tws">
+          <table class="dt" id="mrrMonthTb">
+            <thead><tr><th>担当者</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead>
+            <tbody id="mrrMonthBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② 個人別推移ビュー -->
+      <div id="mrrByPerson" style="display:none;">
+        <!-- 担当者タブ -->
+        <div class="tab-row" id="mrrPersonRow" style="background:var(--bg);border-bottom:1px solid var(--border);">
+          <button class="tab-btn active" onclick="mrrSwPerson('mrrPAll')">全体</button>
+          <button class="tab-btn" onclick="mrrSwPerson('mrrP0')"><span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--c1);display:inline-block;"></span>南原</span></button>
+          <button class="tab-btn" onclick="mrrSwPerson('mrrP1')"><span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--c2);display:inline-block;"></span>田中</span></button>
+          <button class="tab-btn" onclick="mrrSwPerson('mrrP2')"><span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--c3);display:inline-block;"></span>中岡</span></button>
+          <button class="tab-btn" onclick="mrrSwPerson('mrrP3')"><span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--c4);display:inline-block;"></span>高橋</span></button>
+        </div>
+
+        <!-- 全体 -->
+        <div id="mrrPAll">
+          <div class="tab-row" id="mrrPAllYRow">
+            <button class="tab-btn active" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrPAllY25','mrrPAllYRow')">2025年</button>
+            <button class="tab-btn" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrPAllY26','mrrPAllYRow')">2026年</button>
+          </div>
+          <div id="mrrPAllY25"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2025年4月</strong></td><td class="r">¥9,125,996</td><td class="r">716件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥207,273<span style="font-size:10px;color:var(--muted);margin-left:3px;">23件</span></td><td class="r" style="color:var(--success)">¥185,000</td><td class="r">11件</td><td class="r"><strong style="color:var(--success);">2.0%</strong></td></tr><tr><td><strong>2025年5月</strong></td><td class="r">¥9,152,796</td><td class="r">733件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥258,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">31件</span></td><td class="r" style="color:var(--warn)">¥298,500</td><td class="r">16件</td><td class="r"><strong style="color:var(--warn);">3.2%</strong></td></tr><tr><td><strong>2025年6月</strong></td><td class="r">¥9,159,696</td><td class="r">742件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥225,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">21件</span></td><td class="r" style="color:var(--warn)">¥484,800</td><td class="r">44件</td><td class="r"><strong style="color:var(--warn);">5.0%</strong></td></tr><tr><td><strong>2025年7月</strong></td><td class="r">¥8,938,096</td><td class="r">701件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥169,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">6件</span></td><td class="r" style="color:var(--warn)">¥345,000</td><td class="r">14件</td><td class="r"><strong style="color:var(--warn);">3.7%</strong></td></tr><tr><td><strong>2025年8月</strong></td><td class="r">¥8,415,588</td><td class="r">586件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥166,092<span style="font-size:10px;color:var(--muted);margin-left:3px;">6件</span></td><td class="r" style="color:var(--success)">¥222,000</td><td class="r">9件</td><td class="r"><strong style="color:var(--success);">2.6%</strong></td></tr><tr><td><strong>2025年9月</strong></td><td class="r">¥8,693,588</td><td class="r">690件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥119,400<span style="font-size:10px;color:var(--muted);margin-left:3px;">5件</span></td><td class="r" style="color:var(--danger)">¥808,000</td><td class="r">147件</td><td class="r"><strong style="color:var(--danger);">8.5%</strong></td></tr><tr><td><strong>2025年10月</strong></td><td class="r">¥7,970,388</td><td class="r">554件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥163,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">11件</span></td><td class="r" style="color:var(--warn)">¥328,000</td><td class="r">44件</td><td class="r"><strong style="color:var(--warn);">4.0%</strong></td></tr><tr><td><strong>2025年11月</strong></td><td class="r">¥7,999,388</td><td class="r">512件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥369,400<span style="font-size:10px;color:var(--muted);margin-left:3px;">4件</span></td><td class="r" style="color:var(--warn)">¥420,000</td><td class="r">42件</td><td class="r"><strong style="color:var(--warn);">5.0%</strong></td></tr><tr><td><strong>2025年12月</strong></td><td class="r">¥7,659,288</td><td class="r">473件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥89,100<span style="font-size:10px;color:var(--muted);margin-left:3px;">4件</span></td><td class="r" style="color:var(--warn)">¥399,500</td><td class="r">44件</td><td class="r"><strong style="color:var(--warn);">5.0%</strong></td></tr></tbody></table></div></div>
+          <div id="mrrPAllY26" style="display:none;"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2026年1月</strong></td><td class="r">¥7,375,188</td><td class="r">435件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥117,300<span style="font-size:10px;color:var(--muted);margin-left:3px;">4件</span></td><td class="r" style="color:var(--warn)">¥248,500</td><td class="r">24件</td><td class="r"><strong style="color:var(--warn);">3.3%</strong></td></tr><tr><td><strong>2026年2月</strong></td><td class="r">¥7,230,888</td><td class="r">411件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥191,300<span style="font-size:10px;color:var(--muted);margin-left:3px;">7件</span></td><td class="r" style="color:var(--success)">¥160,500</td><td class="r">18件</td><td class="r"><strong style="color:var(--success);">2.2%</strong></td></tr><tr><td><strong>2026年3月</strong></td><td class="r">¥7,154,988</td><td class="r">442件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥228,500<span style="font-size:10px;color:var(--muted);margin-left:3px;">34件</span></td><td class="r" style="color:var(--success)">¥132,600</td><td class="r">7件</td><td class="r"><strong style="color:var(--success);">1.8%</strong></td></tr><tr><td><strong>2026年4月</strong><span style="font-size:10px;color:var(--muted);margin-left:4px;">集計途中</span></td><td class="r">¥7,571,661</td><td class="r">463件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥62,273<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--success)">¥143,000</td><td class="r">5件</td><td class="r"><strong style="color:var(--success);">1.9%</strong></td></tr></tbody></table></div></div>
+        </div>
+        <!-- 南原 -->
+        <div id="mrrP0" style="display:none;">
+          <div class="tab-row" id="mrrP0YRow">
+            <button class="tab-btn active" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP0Y25','mrrP0YRow')">2025年</button>
+            <button class="tab-btn" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP0Y26','mrrP0YRow')">2026年</button>
+          </div>
+          <div id="mrrP0Y25"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2025年4月</strong></td><td class="r">¥1,925,000</td><td class="r">367件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥75,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">18件</span></td><td class="r" style="color:var(--warn)">¥86,000</td><td class="r">5件</td><td class="r"><strong style="color:var(--warn);">4.3%</strong></td></tr><tr><td><strong>2025年5月</strong></td><td class="r">¥1,915,000</td><td class="r">387件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥81,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">25件</span></td><td class="r" style="color:var(--danger)">¥154,000</td><td class="r">11件</td><td class="r"><strong style="color:var(--danger);">7.4%</strong></td></tr><tr><td><strong>2025年6月</strong></td><td class="r">¥1,924,000</td><td class="r">392件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥83,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">16件</span></td><td class="r" style="color:var(--warn)">¥63,000</td><td class="r">21件</td><td class="r"><strong style="color:var(--warn);">3.2%</strong></td></tr><tr><td><strong>2025年7月</strong></td><td class="r">¥1,846,000</td><td class="r">370件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--success)">¥12,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">0.6%</strong></td></tr><tr><td><strong>2025年8月</strong></td><td class="r">¥1,576,000</td><td class="r">281件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--success)">¥40,000</td><td class="r">2件</td><td class="r"><strong style="color:var(--success);">2.5%</strong></td></tr><tr><td><strong>2025年9月</strong></td><td class="r">¥1,809,000</td><td class="r">368件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥15,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--danger)">¥531,000</td><td class="r">129件</td><td class="r"><strong style="color:var(--danger);">22.7%</strong></td></tr><tr><td><strong>2025年10月</strong></td><td class="r">¥1,293,000</td><td class="r">241件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥3,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--danger)">¥140,000</td><td class="r">36件</td><td class="r"><strong style="color:var(--danger);">9.8%</strong></td></tr><tr><td><strong>2025年11月</strong></td><td class="r">¥1,141,000</td><td class="r">204件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--danger)">¥144,000</td><td class="r">29件</td><td class="r"><strong style="color:var(--danger);">11.2%</strong></td></tr><tr><td><strong>2025年12月</strong></td><td class="r">¥1,042,600</td><td class="r">177件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥21,600<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--danger)">¥125,000</td><td class="r">9件</td><td class="r"><strong style="color:var(--danger);">10.7%</strong></td></tr></tbody></table></div></div>
+          <div id="mrrP0Y26" style="display:none;"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2026年1月</strong></td><td class="r">¥998,600</td><td class="r">169件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥70,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--success)">¥27,000</td><td class="r">9件</td><td class="r"><strong style="color:var(--success);">2.6%</strong></td></tr><tr><td><strong>2026年2月</strong></td><td class="r">¥952,600</td><td class="r">158件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥27,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--danger)">¥71,000</td><td class="r">13件</td><td class="r"><strong style="color:var(--danger);">6.9%</strong></td></tr><tr><td><strong>2026年3月</strong></td><td class="r">¥1,160,600</td><td class="r">185件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥170,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">24件</span></td><td class="r" style="color:var(--success)">¥24,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">2.0%</strong></td></tr><tr><td><strong>2026年4月</strong><span style="font-size:10px;color:var(--muted);margin-left:4px;">集計途中</span></td><td class="r">¥426,000</td><td class="r">30件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr></tbody></table></div></div>
+        </div>
+        <!-- 田中 -->
+        <div id="mrrP1" style="display:none;">
+          <div class="tab-row" id="mrrP1YRow">
+            <button class="tab-btn active" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP1Y25','mrrP1YRow')">2025年</button>
+            <button class="tab-btn" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP1Y26','mrrP1YRow')">2026年</button>
+          </div>
+          <div id="mrrP1Y25"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2025年4月</strong></td><td class="r">¥2,001,766</td><td class="r">99件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥48,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年5月</strong></td><td class="r">¥2,058,766</td><td class="r">101件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥57,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--success)">¥35,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">1.7%</strong></td></tr><tr><td><strong>2025年6月</strong></td><td class="r">¥2,132,766</td><td class="r">108件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥84,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">3件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年7月</strong></td><td class="r">¥2,194,766</td><td class="r">102件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥92,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">3件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年8月</strong></td><td class="r">¥2,335,858</td><td class="r">108件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥136,092<span style="font-size:10px;color:var(--muted);margin-left:3px;">5件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年9月</strong></td><td class="r">¥2,357,858</td><td class="r">108件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥27,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年10月</strong></td><td class="r">¥2,482,858</td><td class="r">117件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥125,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">9件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年11月</strong></td><td class="r">¥2,479,858</td><td class="r">117件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥27,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年12月</strong></td><td class="r">¥2,577,358</td><td class="r">121件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥67,500<span style="font-size:10px;color:var(--muted);margin-left:3px;">3件</span></td><td class="r" style="color:var(--success)">¥30,000</td><td class="r">6件</td><td class="r"><strong style="color:var(--success);">1.2%</strong></td></tr></tbody></table></div></div>
+          <div id="mrrP1Y26" style="display:none;"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2026年1月</strong></td><td class="r">¥2,604,658</td><td class="r">122件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥27,300<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2026年2月</strong></td><td class="r">¥2,698,658</td><td class="r">121件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥153,500<span style="font-size:10px;color:var(--muted);margin-left:3px;">5件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2026年3月</strong></td><td class="r">¥2,741,658</td><td class="r">122件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥13,500<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--success)">¥10,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">0.4%</strong></td></tr><tr><td><strong>2026年4月</strong><span style="font-size:10px;color:var(--muted);margin-left:4px;">集計途中</span></td><td class="r">¥1,199,592</td><td class="r">45件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--danger)">¥108,000</td><td class="r">4件</td><td class="r"><strong style="color:var(--danger);">8.3%</strong></td></tr></tbody></table></div></div>
+        </div>
+        <!-- 中岡 -->
+        <div id="mrrP2" style="display:none;">
+          <div class="tab-row" id="mrrP2YRow">
+            <button class="tab-btn active" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP2Y25','mrrP2YRow')">2025年</button>
+            <button class="tab-btn" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP2Y26','mrrP2YRow')">2026年</button>
+          </div>
+          <div id="mrrP2Y25"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2025年4月</strong></td><td class="r">¥2,215,730</td><td class="r">81件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥54,273<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年5月</strong></td><td class="r">¥2,335,730</td><td class="r">85件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥120,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">4件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年6月</strong></td><td class="r">¥2,363,730</td><td class="r">86件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥28,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年7月</strong></td><td class="r">¥2,440,730</td><td class="r">89件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥77,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">3件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年8月</strong></td><td class="r">¥2,440,730</td><td class="r">89件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--success)">¥35,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">1.4%</strong></td></tr><tr><td><strong>2025年9月</strong></td><td class="r">¥2,470,730</td><td class="r">90件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥65,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年10月</strong></td><td class="r">¥2,435,730</td><td class="r">89件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--success)">¥35,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">1.4%</strong></td></tr><tr><td><strong>2025年11月</strong></td><td class="r">¥2,678,130</td><td class="r">89件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥312,400<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--success)">¥30,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">1.1%</strong></td></tr><tr><td><strong>2025年12月</strong></td><td class="r">¥2,683,130</td><td class="r">89件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr></tbody></table></div></div>
+          <div id="mrrP2Y26" style="display:none;"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2026年1月</strong></td><td class="r">¥2,678,630</td><td class="r">89件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥20,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--success)">¥70,000</td><td class="r">2件</td><td class="r"><strong style="color:var(--success);">2.5%</strong></td></tr><tr><td><strong>2026年2月</strong></td><td class="r">¥2,608,630</td><td class="r">87件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2026年3月</strong></td><td class="r">¥2,326,230</td><td class="r">86件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2026年4月</strong><span style="font-size:10px;color:var(--muted);margin-left:4px;">集計途中</span></td><td class="r">¥1,609,503</td><td class="r">56件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥62,273<span style="font-size:10px;color:var(--muted);margin-left:3px;">2件</span></td><td class="r" style="color:var(--success)">¥35,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">2.1%</strong></td></tr></tbody></table></div></div>
+        </div>
+        <!-- 高橋 -->
+        <div id="mrrP3" style="display:none;">
+          <div class="tab-row" id="mrrP3YRow">
+            <button class="tab-btn active" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP3Y25','mrrP3YRow')">2025年</button>
+            <button class="tab-btn" style="font-size:11px;padding:7px 16px;" onclick="mrrSwYear('mrrP3Y26','mrrP3YRow')">2026年</button>
+          </div>
+          <div id="mrrP3Y25"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2025年4月</strong></td><td class="r">¥814,500</td><td class="r">38件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年5月</strong></td><td class="r">¥811,300</td><td class="r">36件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年6月</strong></td><td class="r">¥813,700</td><td class="r">36件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--success)">¥12,000</td><td class="r">1件</td><td class="r"><strong style="color:var(--success);">1.5%</strong></td></tr><tr><td><strong>2025年7月</strong></td><td class="r">¥826,100</td><td class="r">37件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年8月</strong></td><td class="r">¥814,500</td><td class="r">38件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年9月</strong></td><td class="r">¥834,500</td><td class="r">37件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥12,400<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年10月</strong></td><td class="r">¥874,300</td><td class="r">41件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥35,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年11月</strong></td><td class="r">¥873,900</td><td class="r">40件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2025年12月</strong></td><td class="r">¥870,700</td><td class="r">39件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr></tbody></table></div></div>
+          <div id="mrrP3Y26" style="display:none;"><div class="tws"><table class="dt"><thead><tr><th>月</th><th class="r">稼働MRR</th><th class="r">件数</th><th class="r" style="color:var(--primary);">新規MRR</th><th class="r">解約MRR</th><th class="r">解約件数</th><th class="r">チャーン率</th></tr></thead><tbody><tr><td><strong>2026年1月</strong></td><td class="r">¥870,300</td><td class="r">38件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2026年2月</strong></td><td class="r">¥881,500</td><td class="r">40件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥10,800<span style="font-size:10px;color:var(--muted);margin-left:3px;">1件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr><tr><td><strong>2026年3月</strong></td><td class="r">¥926,500</td><td class="r">49件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥45,000<span style="font-size:10px;color:var(--muted);margin-left:3px;">9件</span></td><td class="r" style="color:var(--danger)">¥98,600</td><td class="r">5件</td><td class="r"><strong style="color:var(--danger);">9.6%</strong></td></tr><tr><td><strong>2026年4月</strong><span style="font-size:10px;color:var(--muted);margin-left:4px;">集計途中</span></td><td class="r">¥365,200</td><td class="r">13件</td><td class="r" style="color:var(--primary);font-weight:700;">+¥0<span style="font-size:10px;color:var(--muted);margin-left:3px;">0件</span></td><td class="r" style="color:var(--muted)">¥0</td><td class="r">0件</td><td class="r"><strong style="color:var(--success);">0.0%</strong></td></tr></tbody></table></div></div>
+        </div>
+
+      </div><!-- /mrrByPerson -->
+    </div>
+  </section>
+
+  <!-- 当月クロージング管理 -->
+  <section class="sec" id="closing">
+    <div class="sec-ttl">当月クロージング管理
+      <span style="font-size:11px;font-weight:400;color:var(--muted);margin-left:6px;">締結日または回答予定日が当月の案件</span>
+    </div>
+
+    <!-- 月選択 -->
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+      <span class="fl">対象月：</span>
+      <select class="ysel" id="clYear" onchange="onClYear()"></select>
+      <select class="ysel" id="clMonth" onchange="renderClosing()"></select>
+      <span class="fl" style="margin-left:8px;">担当者：</span>
+      <button class="fbl active" onclick="setClF('all',this)">全員</button>
+      <button class="fbl" onclick="setClF('南原龍司',this)">南原</button>
+      <button class="fbl" onclick="setClF('田中莉奈',this)">田中</button>
+      <button class="fbl" onclick="setClF('中岡世里菜',this)">中岡</button>
+      <button class="fbl" onclick="setClF('高橋広輝',this)">高橋</button>
+    </div>
+
+    <!-- サマリーカード -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;" id="clCards">
+      <div class="sc"><div class="sc-lbl">契約完了（当月）</div><div class="sc-val" id="cl-juc" style="color:var(--danger)">—</div><div class="sc-unit" id="cl-juc-u"></div></div>
+      <div class="sc"><div class="sc-lbl">見込み（当月内回答予定）</div><div class="sc-val" id="cl-mik" style="color:var(--success)">—</div><div class="sc-unit" id="cl-mik-u"></div></div>
+      <div class="sc"><div class="sc-lbl">合計件数</div><div class="sc-val" id="cl-all">—</div></div>
+      <div class="sc"><div class="sc-lbl">当月契約売上合計</div><div class="sc-val" id="cl-uriage" style="color:var(--primary)">—</div></div>
+    </div>
+
+    <!-- 見込み -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--success);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+        <span style="display:inline-block;width:3px;height:14px;background:var(--success);border-radius:2px;"></span>
+        見込み案件 <span id="cl-mik-cnt" style="font-weight:400;color:var(--muted);"></span>
+      </div>
+      <div class="tw tws">
+        <table class="dt"><thead><tr>
+          <th>担当</th><th>屋号 / 法人名</th><th>見込みランク</th>
+          <th class="r">月額単価</th><th>アポ経路</th>
+          <th>商談予定日</th><th>回答予定日</th>
+        </tr></thead><tbody id="clMikTb"></tbody></table>
+      </div>
+    </div>
+
+    <!-- 契約完了 -->
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--danger);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+        <span style="display:inline-block;width:3px;height:14px;background:var(--danger);border-radius:2px;"></span>
+        契約完了案件 <span id="cl-juc-cnt" style="font-weight:400;color:var(--muted);"></span>
+      </div>
+      <div class="tw tws">
+        <table class="dt"><thead><tr>
+          <th>担当</th><th>屋号 / 法人名</th><th>アポ経路</th>
+          <th>締結日</th><th>課金開始日</th>
+          <th class="r">月額単価</th><th class="r">契約期間</th><th class="r">契約売上</th>
+        </tr></thead><tbody id="clJucTb"></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pipeline">
+    <div class="sec-ttl">パイプライン</div>
+    <div class="pipe-wrap">
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="swTab('tActive',this)">進行中・見込み</button>
+        <button class="tab-btn" onclick="swTab('tJuchu',this)">受注（契約完了）</button>
+      </div>
+      <div class="tab-pane active" id="tActive">
+        <div class="fbar">
+          <span class="fl">商談予定月：</span>
+          <select class="ysel" id="pyear" onchange="onPipeYear()"></select>
+          <select class="ysel" id="pmonth" onchange="renderPipe()"><option value="all">全月</option></select>
+          <span class="fl" style="margin-left:8px;">ステータス：</span>
+          <button class="fbl active" onclick="setPF('all',this)">すべて</button>
+          <button class="fbl" onclick="setPF('見込み',this)">見込み</button>
+          <button class="fbl" onclick="setPF('アポ',this)">アポ</button>
+          <button class="fbl" onclick="setPF('時期改め',this)">時期改め</button>
+          <button class="fbl" onclick="setPF('仮アポ',this)">仮アポ</button>
+        </div>
+        <div class="tws"><table class="dt"><thead><tr>
+          <th>担当</th><th>ステータス</th><th>屋号 / 法人名</th>
+          <th>見込みランク</th><th class="r">月額単価</th>
+          <th>アポ経路</th><th>商談予定日</th><th>回答予定日</th>
+        </tr></thead><tbody id="pipeTb"></tbody></table></div>
+      </div>
+      <div class="tab-pane" id="tJuchu">
+        <div class="fbar">
+          <span class="fl">締結月：</span>
+          <select class="ysel" id="jyear" onchange="onJuchuYear()"></select>
+          <select class="ysel" id="jmonth" onchange="renderJuchu()"><option value="all">全月</option></select>
+          <span class="fl" style="margin-left:6px;">担当：</span>
+          <button class="fbl active" onclick="setJF('all',this)">全員</button>
+          <button class="fbl" onclick="setJF('南原龍司',this)">南原</button>
+          <button class="fbl" onclick="setJF('田中莉奈',this)">田中</button>
+          <button class="fbl" onclick="setJF('中岡世里菜',this)">中岡</button>
+          <button class="fbl" onclick="setJF('高橋広輝',this)">高橋</button>
+          <input class="fin" id="jSearch" placeholder="屋号・経路で検索…" oninput="renderJuchu()" style="width:160px;margin-left:6px;">
+        </div>
+        <div class="tws"><table class="dt"><thead><tr>
+          <th>担当</th><th>屋号 / 法人名</th><th>アポ経路</th>
+          <th>締結日</th><th>課金開始日</th>
+          <th class="r">月額単価</th><th class="r">契約期間</th><th class="r">契約売上</th>
+        </tr></thead><tbody id="juchuTb"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アポ経路別 案件一覧 -->
+  <section class="sec" id="routes">
+    <div class="sec-ttl">アポ経路別 案件一覧</div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:7px;overflow:hidden;">
+      <div class="tab-row" id="routeTabRow">
+        <button class="tab-btn active" onclick="swRouteTab('routeSWW',this)">📞 SWW経由</button>
+        <button class="tab-btn" onclick="swRouteTab('routeInquiry',this)">📩 問い合わせ</button>
+      </div>
+
+      <!-- SWW -->
+      <div id="routeSWW">
+        <!-- SWW成果サマリー -->
+        <div style="padding:14px 16px;background:#f8fafc;border-bottom:1px solid var(--border);" id="swwSummaryWrap"></div>
+
+        <!-- フィルター -->
+        <div class="fbar">
+          <span class="fl">商談月：</span>
+          <select class="ysel" id="swwYear" onchange="onRouteYear('SWW')"></select>
+          <select class="ysel" id="swwMonth" onchange="renderRoute('SWW')"><option value="all">全月</option></select>
+          <span class="fl" style="margin-left:8px;">担当者：</span>
+          <button class="fbl active" onclick="setRouteF('SWW','all',this)">全員</button>
+          <button class="fbl" onclick="setRouteF('SWW','南原龍司',this)">南原</button>
+          <button class="fbl" onclick="setRouteF('SWW','田中莉奈',this)">田中</button>
+          <button class="fbl" onclick="setRouteF('SWW','中岡世里菜',this)">中岡</button>
+          <button class="fbl" onclick="setRouteF('SWW','高橋広輝',this)">高橋</button>
+          <span class="fl" style="margin-left:8px;">ステータス：</span>
+          <button class="fbl active" onclick="setRouteSF('SWW','all',this)">すべて</button>
+          <button class="fbl" onclick="setRouteSF('SWW','見込み',this)">見込み</button>
+          <button class="fbl" onclick="setRouteSF('SWW','アポ',this)">アポ</button>
+          <button class="fbl" onclick="setRouteSF('SWW','時期改め',this)">時期改め</button>
+          <button class="fbl" onclick="setRouteSF('SWW','商談NG',this)">商談NG</button>
+          <button class="fbl" onclick="setRouteSF('SWW','前確NG',this)">前確NG</button>
+          <button class="fbl" onclick="setRouteSF('SWW','契約完了',this)">契約完了</button>
+        </div>
+
+        <!-- 案件テーブル（アコーディオン） -->
+        <div class="acc-hdr" onclick="toggleRouteTable('swwTable','swwTableArr')" style="padding:10px 16px;background:var(--bg);border-top:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:12px;font-weight:700;color:var(--muted);">案件一覧</span>
+          <span id="swwTableArr" style="font-size:11px;color:var(--muted);transition:transform .2s;display:inline-block;">▼</span>
+        </div>
+        <div id="swwTable">
+          <div class="tws">
+            <table class="dt"><thead><tr>
+              <th>担当</th><th>屋号 / 法人名</th><th>ステータス</th>
+              <th>見込みランク</th><th class="r">月額単価</th>
+              <th>商談日時</th><th>回答予定日</th>
+            </tr></thead><tbody id="swwTb"></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 問い合わせ -->
+      <div id="routeInquiry" style="display:none;">
+        <div class="fbar">
+          <span class="fl">商談月：</span>
+          <select class="ysel" id="inqYear" onchange="onRouteYear('INQ')"></select>
+          <select class="ysel" id="inqMonth" onchange="renderRoute('INQ')"><option value="all">全月</option></select>
+          <span class="fl" style="margin-left:8px;">担当者：</span>
+          <button class="fbl active" onclick="setRouteF('INQ','all',this)">全員</button>
+          <button class="fbl" onclick="setRouteF('INQ','南原龍司',this)">南原</button>
+          <button class="fbl" onclick="setRouteF('INQ','田中莉奈',this)">田中</button>
+          <button class="fbl" onclick="setRouteF('INQ','中岡世里菜',this)">中岡</button>
+          <button class="fbl" onclick="setRouteF('INQ','高橋広輝',this)">高橋</button>
+          <span class="fl" style="margin-left:8px;">ステータス：</span>
+          <button class="fbl active" onclick="setRouteSF('INQ','all',this)">すべて</button>
+          <button class="fbl" onclick="setRouteSF('INQ','見込み',this)">見込み</button>
+          <button class="fbl" onclick="setRouteSF('INQ','アポ',this)">アポ</button>
+          <button class="fbl" onclick="setRouteSF('INQ','時期改め',this)">時期改め</button>
+          <button class="fbl" onclick="setRouteSF('INQ','商談NG',this)">商談NG</button>
+          <button class="fbl" onclick="setRouteSF('INQ','前確NG',this)">前確NG</button>
+          <button class="fbl" onclick="setRouteSF('INQ','契約完了',this)">契約完了</button>
+        </div>
+        <!-- 案件テーブル（アコーディオン） -->
+        <div class="acc-hdr" onclick="toggleRouteTable('inqTable','inqTableArr')" style="padding:10px 16px;background:var(--bg);border-top:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:12px;font-weight:700;color:var(--muted);">案件一覧</span>
+          <span id="inqTableArr" style="font-size:11px;color:var(--muted);transition:transform .2s;display:inline-block;">▼</span>
+        </div>
+        <div id="inqTable">
+          <div class="tws">
+            <table class="dt"><thead><tr>
+              <th>担当</th><th>屋号 / 法人名</th><th>ステータス</th>
+              <th>見込みランク</th><th class="r">月額単価</th>
+              <th>商談日時</th><th>回答予定日</th>
+            </tr></thead><tbody id="inqTb"></tbody></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="topics">
+    <div class="sec-ttl">週間トピック<span id="wkLbl" style="font-size:11px;font-weight:400;color:var(--muted);margin-left:8px;"></span></div>
+    <div class="tp-card" style="display:flex;flex-direction:column;gap:16px;">
+      <div>
+        <div class="tp-lbl">📋 今週のトピック</div>
+        <div class="tp-text" id="tp1">1. 外注SWW実績：3月8件実施　受注0、見込み3件
+2. 売るナビ検討中
+3. リロさんOEM提案予定
+4. ゲンダイ経由サクラフィットネスさま（フィットネスジム）Lステップ提案
+5. ノットさん、TOYOTA MEO提案中（長期案件）
+6. ゲンダイ経由 極楽湯横浜芹が谷店さま　5月開始
+7. 歯医者向けウェビナー実施準備</div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:14px;">
+        <div class="tp-lbl">🎯 次週アクション</div>
+        <div class="tp-text" id="tp2">1. 上記1〜6の案件で動くものは早めに受注できるよう対応
+2. 高橋担当のエンプラ案件 見積もり予定（約20万〜で検討）
+3. 歯医者向けウェビナーの準備を進める</div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:14px;">
+        <div class="tp-lbl">💬 その他相談事項</div>
+        <div class="tp-text" id="tp3">なし</div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+const STATIC_KPI = {"2023-04": {"中岡世里菜": {"apo": 0, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 0, "price_sum": 0}}, "2023-06": {"南原龍司": {"apo": 1, "keiyaku": 1, "kakin": 1, "uriage": 60000, "mikomi": 0, "shodan": 2, "price_sum": 5000}}, "2023-08": {"南原龍司": {"apo": 3, "keiyaku": 2, "kakin": 0, "uriage": 744000, "mikomi": 0, "shodan": 2, "price_sum": 62000}}, "2023-09": {"南原龍司": {"apo": 0, "keiyaku": 1, "kakin": 2, "uriage": 360000, "mikomi": 0, "shodan": 1, "price_sum": 30000}}, "2023-10": {"南原龍司": {"apo": 0, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 0, "price_sum": 0}}, "2023-11": {"南原龍司": {"apo": 2, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}}, "2023-12": {"南原龍司": {"apo": 6, "keiyaku": 1, "kakin": 0, "uriage": 180000, "mikomi": 0, "shodan": 6, "price_sum": 15000}}, "2024-01": {"南原龍司": {"apo": 7, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 7, "price_sum": 0}}, "2024-02": {"南原龍司": {"apo": 5, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 3, "price_sum": 0}}, "2024-03": {"南原龍司": {"apo": 11, "keiyaku": 1, "kakin": 0, "uriage": 360000, "mikomi": 0, "shodan": 9, "price_sum": 30000}}, "2024-04": {"南原龍司": {"apo": 18, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 1, "shodan": 9, "price_sum": 0}, "中岡世里菜": {"apo": 1, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 0, "price_sum": 0}}, "2024-05": {"南原龍司": {"apo": 23, "keiyaku": 4, "kakin": 0, "uriage": 1125000, "mikomi": 0, "shodan": 14, "price_sum": 135000}, "田中莉奈": {"apo": 1, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}, "中岡世里菜": {"apo": 2, "keiyaku": 1, "kakin": 1, "uriage": 420000, "mikomi": 0, "shodan": 1, "price_sum": 35000}}, "2024-06": {"南原龍司": {"apo": 25, "keiyaku": 2, "kakin": 4, "uriage": 630000, "mikomi": 1, "shodan": 24, "price_sum": 70000}, "田中莉奈": {"apo": 1, "keiyaku": 1, "kakin": 0, "uriage": 324000, "mikomi": 0, "shodan": 1, "price_sum": 27000}, "中岡世里菜": {"apo": 3, "keiyaku": 1, "kakin": 0, "uriage": 360000, "mikomi": 0, "shodan": 2, "price_sum": 30000}}, "2024-07": {"南原龍司": {"apo": 11, "keiyaku": 5, "kakin": 2, "uriage": 540000, "mikomi": 0, "shodan": 10, "price_sum": 90000}, "田中莉奈": {"apo": 0, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 0, "price_sum": 0}, "中岡世里菜": {"apo": 1, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}, "高橋広輝": {"apo": 1, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}}, "2024-08": {"南原龍司": {"apo": 6, "keiyaku": 5, "kakin": 4, "uriage": 690000, "mikomi": 0, "shodan": 5, "price_sum": 65000}, "中岡世里菜": {"apo": 2, "keiyaku": 1, "kakin": 0, "uriage": 360000, "mikomi": 0, "shodan": 1, "price_sum": 30000}}, "2024-09": {"南原龍司": {"apo": 1, "keiyaku": 1, "kakin": 6, "uriage": 420000, "mikomi": 0, "shodan": 3, "price_sum": 35000}, "中岡世里菜": {"apo": 2, "keiyaku": 3, "kakin": 2, "uriage": 1050000, "mikomi": 0, "shodan": 1, "price_sum": 105000}}, "2024-10": {"南原龍司": {"apo": 11, "keiyaku": 4, "kakin": 3, "uriage": 4230000, "mikomi": 0, "shodan": 10, "price_sum": 352500}, "田中莉奈": {"apo": 0, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 2, "price_sum": 0}, "中岡世里菜": {"apo": 2, "keiyaku": 1, "kakin": 2, "uriage": 105000, "mikomi": 0, "shodan": 3, "price_sum": 35000}, "高橋広輝": {"apo": 1, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}}, "2024-11": {"南原龍司": {"apo": 12, "keiyaku": 2, "kakin": 4, "uriage": 420000, "mikomi": 0, "shodan": 10, "price_sum": 35000}, "田中莉奈": {"apo": 8, "keiyaku": 2, "kakin": 1, "uriage": 10000, "mikomi": 0, "shodan": 4, "price_sum": 10000}, "中岡世里菜": {"apo": 6, "keiyaku": 1, "kakin": 1, "uriage": 420000, "mikomi": 0, "shodan": 5, "price_sum": 35000}}, "2024-12": {"南原龍司": {"apo": 10, "keiyaku": 2, "kakin": 1, "uriage": 360000, "mikomi": 1, "shodan": 13, "price_sum": 30000}, "田中莉奈": {"apo": 10, "keiyaku": 5, "kakin": 1, "uriage": 708000, "mikomi": 0, "shodan": 11, "price_sum": 114000}, "中岡世里菜": {"apo": 12, "keiyaku": 1, "kakin": 2, "uriage": 360000, "mikomi": 0, "shodan": 6, "price_sum": 30000}}, "2025-01": {"南原龍司": {"apo": 5, "keiyaku": 2, "kakin": 2, "uriage": 1032000, "mikomi": 0, "shodan": 3, "price_sum": 86000}, "田中莉奈": {"apo": 15, "keiyaku": 14, "kakin": 1, "uriage": 2268000, "mikomi": 0, "shodan": 15, "price_sum": 189000}, "中岡世里菜": {"apo": 5, "keiyaku": 1, "kakin": 1, "uriage": 420000, "mikomi": 0, "shodan": 7, "price_sum": 35000}}, "2025-02": {"南原龍司": {"apo": 9, "keiyaku": 0, "kakin": 3, "uriage": 0, "mikomi": 0, "shodan": 9, "price_sum": 0}, "田中莉奈": {"apo": 9, "keiyaku": 4, "kakin": 15, "uriage": 705000, "mikomi": 1, "shodan": 5, "price_sum": 65500}, "中岡世里菜": {"apo": 8, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}}, "2025-03": {"南原龍司": {"apo": 10, "keiyaku": 1, "kakin": 0, "uriage": 360000, "mikomi": 0, "shodan": 11, "price_sum": 30000}, "田中莉奈": {"apo": 14, "keiyaku": 2, "kakin": 2, "uriage": 744000, "mikomi": 0, "shodan": 17, "price_sum": 62000}, "中岡世里菜": {"apo": 5, "keiyaku": 2, "kakin": 0, "uriage": 651276, "mikomi": 0, "shodan": 9, "price_sum": 54273}, "高橋広輝": {"apo": 2, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 2, "price_sum": 0}}, "2025-04": {"南原龍司": {"apo": 3, "keiyaku": 3, "kakin": 2, "uriage": 480000, "mikomi": 0, "shodan": 3, "price_sum": 40000}, "田中莉奈": {"apo": 7, "keiyaku": 2, "kakin": 0, "uriage": 660000, "mikomi": 0, "shodan": 4, "price_sum": 55000}, "中岡世里菜": {"apo": 7, "keiyaku": 1, "kakin": 1, "uriage": 420000, "mikomi": 0, "shodan": 5, "price_sum": 35000}}, "2025-05": {"南原龍司": {"apo": 3, "keiyaku": 4, "kakin": 0, "uriage": 750000, "mikomi": 0, "shodan": 4, "price_sum": 62500}, "田中莉奈": {"apo": 10, "keiyaku": 2, "kakin": 1, "uriage": 684000, "mikomi": 0, "shodan": 9, "price_sum": 57000}, "中岡世里菜": {"apo": 5, "keiyaku": 1, "kakin": 1, "uriage": 336000, "mikomi": 0, "shodan": 5, "price_sum": 28000}}, "2025-06": {"南原龍司": {"apo": 3, "keiyaku": 3, "kakin": 5, "uriage": 151000, "mikomi": 0, "shodan": 3, "price_sum": 108500}, "田中莉奈": {"apo": 6, "keiyaku": 2, "kakin": 0, "uriage": 600000, "mikomi": 0, "shodan": 4, "price_sum": 65000}, "中岡世里菜": {"apo": 3, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 3, "price_sum": 0}}, "2025-07": {"南原龍司": {"apo": 0, "keiyaku": 0, "kakin": 2, "uriage": 0, "mikomi": 0, "shodan": 0, "price_sum": 0}, "田中莉奈": {"apo": 8, "keiyaku": 7, "kakin": 5, "uriage": 1687104, "mikomi": 0, "shodan": 7, "price_sum": 154092}, "中岡世里菜": {"apo": 5, "keiyaku": 1, "kakin": 1, "uriage": 450000, "mikomi": 1, "shodan": 1, "price_sum": 37500}}, "2025-08": {"南原龍司": {"apo": 4, "keiyaku": 4, "kakin": 0, "uriage": 1440000, "mikomi": 0, "shodan": 4, "price_sum": 120000}, "田中莉奈": {"apo": 7, "keiyaku": 1, "kakin": 4, "uriage": 162000, "mikomi": 0, "shodan": 7, "price_sum": 27000}, "中岡世里菜": {"apo": 5, "keiyaku": 1, "kakin": 1, "uriage": 360000, "mikomi": 0, "shodan": 6, "price_sum": 30000}, "高橋広輝": {"apo": 2, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}}, "2025-09": {"南原龍司": {"apo": 0, "keiyaku": 0, "kakin": 4, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}, "田中莉奈": {"apo": 8, "keiyaku": 7, "kakin": 1, "uriage": 450000, "mikomi": 0, "shodan": 8, "price_sum": 60000}, "中岡世里菜": {"apo": 6, "keiyaku": 1, "kakin": 1, "uriage": 420000, "mikomi": 0, "shodan": 3, "price_sum": 35000}, "高橋広輝": {"apo": 2, "keiyaku": 2, "kakin": 0, "uriage": 570000, "mikomi": 0, "shodan": 1, "price_sum": 65000}}, "2025-10": {"南原龍司": {"apo": 4, "keiyaku": 1, "kakin": 0, "uriage": 50000, "mikomi": 0, "shodan": 3, "price_sum": 50000}, "田中莉奈": {"apo": 3, "keiyaku": 1, "kakin": 8, "uriage": 360000, "mikomi": 0, "shodan": 3, "price_sum": 30000}, "中岡世里菜": {"apo": 1, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}, "高橋広輝": {"apo": 2, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 2, "price_sum": 0}}, "2025-11": {"南原龍司": {"apo": 5, "keiyaku": 1, "kakin": 1, "uriage": 324000, "mikomi": 0, "shodan": 4, "price_sum": 27000}, "田中莉奈": {"apo": 1, "keiyaku": 1, "kakin": 0, "uriage": 144000, "mikomi": 0, "shodan": 1, "price_sum": 24000}, "高橋広輝": {"apo": 1, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 1, "price_sum": 0}}, "2025-12": {"南原龍司": {"apo": 8, "keiyaku": 3, "kakin": 1, "uriage": 597000, "mikomi": 0, "shodan": 12, "price_sum": 94000}, "田中莉奈": {"apo": 3, "keiyaku": 2, "kakin": 1, "uriage": 489600, "mikomi": 0, "shodan": 3, "price_sum": 40800}, "中岡世里菜": {"apo": 1, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 3, "price_sum": 0}}, "2026-01": {"南原龍司": {"apo": 2, "keiyaku": 1, "kakin": 3, "uriage": 162000, "mikomi": 0, "shodan": 2, "price_sum": 27000}, "田中莉奈": {"apo": 4, "keiyaku": 4, "kakin": 1, "uriage": 1422000, "mikomi": 0, "shodan": 4, "price_sum": 118500}, "中岡世里菜": {"apo": 0, "keiyaku": 1, "kakin": 1, "uriage": 240000, "mikomi": 0, "shodan": 0, "price_sum": 20000}}, "2026-02": {"南原龍司": {"apo": 20, "keiyaku": 4, "kakin": 1, "uriage": 5580000, "mikomi": 1, "shodan": 14, "price_sum": 465000}, "田中莉奈": {"apo": 2, "keiyaku": 1, "kakin": 4, "uriage": 420000, "mikomi": 0, "shodan": 2, "price_sum": 35000}, "中岡世里菜": {"apo": 2, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 3, "price_sum": 0}}, "2026-03": {"南原龍司": {"apo": 22, "keiyaku": 6, "kakin": 4, "uriage": 360000, "mikomi": 0, "shodan": 21, "price_sum": 30000}, "田中莉奈": {"apo": 4, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 0, "shodan": 4, "price_sum": 0}, "中岡世里菜": {"apo": 1, "keiyaku": 3, "kakin": 0, "uriage": 1167276, "mikomi": 0, "shodan": 1, "price_sum": 97273}, "高橋広輝": {"apo": 1, "keiyaku": 0, "kakin": 0, "uriage": 0, "mikomi": 1, "shodan": 1, "price_sum": 0}}, "2026-04": {"南原龍司": {"apo": 18, "keiyaku": 5, "kakin": 6, "uriage": 888000, "mikomi": 5, "shodan": 11, "price_sum": 79000}, "田中莉奈": {"apo": 2, "keiyaku": 1, "kakin": 0, "uriage": 240000, "mikomi": 0, "shodan": 1, "price_sum": 20000}, "中岡世里菜": {"apo": 3, "keiyaku": 3, "kakin": 5, "uriage": 1620000, "mikomi": 0, "shodan": 3, "price_sum": 135000}}, "2026-05": {"南原龍司": {"apo": 0, "keiyaku": 0, "kakin": 5, "uriage": 0, "mikomi": 0, "shodan": 0, "price_sum": 0}, "田中莉奈": {"apo": 0, "keiyaku": 0, "kakin": 1, "uriage": 0, "mikomi": 0, "shodan": 0, "price_sum": 0}}};
+
+const STATIC_PIPE = [{"person": "南原龍司", "status": "アポ", "name": "株式会社コモンズ不動産", "rank": "", "price": 0, "shodan_d": "2026/04/27", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "アポ", "name": "リラクゼーションサロンHANABI熊本", "rank": "", "price": 0, "shodan_d": "2026/05/01", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "アポ", "name": "MONAL nail&eyebrow", "rank": "", "price": 0, "shodan_d": "2026/05/01", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "アポ", "name": "トライプラス仙台落合校", "rank": "", "price": 0, "shodan_d": "2026/05/11", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "見込み", "name": "CHILL kagurazaka", "rank": "B+", "price": 40000, "shodan_d": "2026/04/20", "ans_d": "2026/04/24", "route": "問い合わせ"}, {"person": "南原龍司", "status": "アポ", "name": "株式会社シーエスケイ放課後等デイサービスあじさい浜町", "rank": "", "price": 0, "shodan_d": "2026/04/21", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "アポ", "name": "ホグレルスペース横浜阪東橋店", "rank": "", "price": 0, "shodan_d": "2026/04/23", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "アポ", "name": "株式会社OZPLAN", "rank": "", "price": 0, "shodan_d": "2026/04/27", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "見込み", "name": "株式会社プロスパーサンダ", "rank": "C", "price": 0, "shodan_d": "2026/04/20", "ans_d": "2026/04/27", "route": "SWW"}, {"person": "南原龍司", "status": "アポ", "name": "beautysalon　CREER（クレエ）", "rank": "", "price": 0, "shodan_d": "2026/04/23", "ans_d": "", "route": "SWW"}, {"person": "南原龍司", "status": "見込み", "name": "櫻井釣漁具株式会社", "rank": "B", "price": 20000, "shodan_d": "2026/04/17", "ans_d": "2026/04/30", "route": "SWW"}, {"person": "田中莉奈", "status": "アポ", "name": "アルティウスリンク", "rank": "", "price": 0, "shodan_d": "2026/04/17", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "アポ", "name": "汽素火", "rank": "A", "price": 0, "shodan_d": "2026/05/11", "ans_d": "", "route": "CS経由"}, {"person": "南原龍司", "status": "見込み", "name": "株式会社アスクリエイト", "rank": "C", "price": 0, "shodan_d": "2026/04/20", "ans_d": "2026/05/29", "route": "SWW"}, {"person": "南原龍司", "status": "見込み", "name": "学研CAIスクール Study Funユーミー鵠沼校", "rank": "C", "price": 0, "shodan_d": "2026/04/14", "ans_d": "2026/04/22", "route": "SWW"}, {"person": "南原龍司", "status": "アポ", "name": "横浜みなと呼吸器内科・内科クリニック", "rank": "", "price": 0, "shodan_d": "2026/04/30", "ans_d": "", "route": "問い合わせ"}, {"person": "高橋広輝", "status": "見込み", "name": "無料古紙回収ボックス DAIICHI PLAZA霞ヶ関店", "rank": "B", "price": 0, "shodan_d": "2026/03/16", "ans_d": "2026/04/24", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "名古屋観光ホテル", "rank": "D", "price": 0, "shodan_d": "2026/03/23", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "心斎橋セントグレースヴィラ", "rank": "D", "price": 0, "shodan_d": "2026/03/03", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "アートグレイス ウエディングコースト大阪", "rank": "D", "price": 0, "shodan_d": "2026/03/03", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "青山セントグレース大聖堂", "rank": "D", "price": 0, "shodan_d": "2026/03/03", "ans_d": "", "route": "メディアハウス"}, {"person": "南原龍司", "status": "見込み", "name": "ダイワロイネットホテル京都駅前ＰＲＥＭＩＥＲ", "rank": "B", "price": 0, "shodan_d": "2026/02/12", "ans_d": "2026/07/02", "route": "SWW"}, {"person": "南原龍司", "status": "時期改め", "name": "名鉄イン新大阪駅東口", "rank": "", "price": 35000, "shodan_d": "2026/03/05", "ans_d": "", "route": "SWW"}, {"person": "高橋広輝", "status": "時期改め", "name": "トリム NATURAL WINE IZAKAYA", "rank": "C", "price": 35000, "shodan_d": "2025/10/14", "ans_d": "", "route": "問い合わせ"}, {"person": "田中莉奈", "status": "時期改め", "name": "オークラ東京 ウエディング", "rank": "D", "price": 0, "shodan_d": "2025/10/06", "ans_d": "", "route": "メディアハウス"}, {"person": "高橋広輝", "status": "時期改め", "name": "月のみち", "rank": "C", "price": 35000, "shodan_d": "2025/10/09", "ans_d": "", "route": "FBリード"}, {"person": "南原龍司", "status": "時期改め", "name": "一般社団法人JUN Ambitious沖縄", "rank": "C", "price": 0, "shodan_d": "2025/10/16", "ans_d": "2026/02/20", "route": "営業窓口代行"}, {"person": "中岡世里菜", "status": "時期改め", "name": "オリーブベイホテル", "rank": "C", "price": 0, "shodan_d": "2025/09/17", "ans_d": "", "route": "紹介"}, {"person": "中岡世里菜", "status": "時期改め", "name": "ふくだ内科", "rank": "C", "price": 0, "shodan_d": "2025/08/28", "ans_d": "", "route": "FBリード"}, {"person": "中岡世里菜", "status": "時期改め", "name": "らぁ?めん京 祇園本店", "rank": "B", "price": 0, "shodan_d": "2025/08/07", "ans_d": "", "route": "CS経由"}, {"person": "田中莉奈", "status": "仮アポ", "name": "株式会社八城", "rank": "", "price": 0, "shodan_d": "2025/08/05", "ans_d": "", "route": "FBリード"}, {"person": "中岡世里菜", "status": "見込み", "name": "株式会社BrainForest", "rank": "", "price": 35000, "shodan_d": "2026/02/24", "ans_d": "", "route": "CS経由"}, {"person": "田中莉奈", "status": "時期改め", "name": "名古屋観光ホテル ウェディング", "rank": "", "price": 0, "shodan_d": "2025/05/30", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "株式会社ハウジングスタッフ", "rank": "C", "price": 0, "shodan_d": "2025/05/19", "ans_d": "", "route": "FBリード"}, {"person": "田中莉奈", "status": "仮アポ", "name": "覚王山ル・アンジェ教会", "rank": "", "price": 0, "shodan_d": "2025/04/24", "ans_d": "", "route": "メディアハウス"}, {"person": "中岡世里菜", "status": "時期改め", "name": "アースルーフ", "rank": "", "price": 0, "shodan_d": "2025/04/21", "ans_d": "", "route": "FBリード"}, {"person": "田中莉奈", "status": "仮アポ", "name": "ic26", "rank": "", "price": 0, "shodan_d": "2025/04/17", "ans_d": "", "route": "FBリード"}, {"person": "田中莉奈", "status": "時期改め", "name": "ラヴィマーナ神戸", "rank": "D", "price": 0, "shodan_d": "2025/03/31", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "IWAI OMOTESANDO", "rank": "D", "price": 0, "shodan_d": "2025/03/26", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "LITTLE RETREAT（リトル・リトリート）", "rank": "D", "price": 0, "shodan_d": "2025/03/25", "ans_d": "", "route": "メディアハウス"}, {"person": "中岡世里菜", "status": "時期改め", "name": "腸活cafe jicca", "rank": "", "price": 0, "shodan_d": "2025/03/31", "ans_d": "", "route": "フリープラン"}, {"person": "田中莉奈", "status": "時期改め", "name": "マリエールガーデン　バーベナ", "rank": "D", "price": 0, "shodan_d": "2025/03/13", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "マリエール山手", "rank": "D", "price": 0, "shodan_d": "2025/03/13", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "kizuki", "rank": "", "price": 0, "shodan_d": "2025/03/18", "ans_d": "", "route": "FBリード"}, {"person": "田中莉奈", "status": "仮アポ", "name": "", "rank": "", "price": 0, "shodan_d": "2025/03/10", "ans_d": "", "route": "問い合わせ"}, {"person": "田中莉奈", "status": "時期改め", "name": "愛グループシャングリラ (宗像)", "rank": "D", "price": 0, "shodan_d": "2025/03/04", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "合掌堂 岩国店", "rank": "D", "price": 0, "shodan_d": "2025/03/04", "ans_d": "", "route": "メディアハウス"}, {"person": "田中莉奈", "status": "時期改め", "name": "北九州典礼会館", "rank": "D", "price": 0, "shodan_d": "2025/03/04", "ans_d": "", "route": "メディアハウス"}, {"person": "中岡世里菜", "status": "時期改め", "name": "歯科室the brush", "rank": "", "price": 0, "shodan_d": "2025/03/19", "ans_d": "", "route": "FBリード"}, {"person": "田中莉奈", "status": "ツール提案", "name": "ハイグレードクラブ新潟", "rank": "", "price": 0, "shodan_d": "2025/02/12", "ans_d": "", "route": "無料診断（Lステップ）"}, {"person": "南原龍司", "status": "時期改め", "name": "はきもの工房うえの", "rank": "", "price": 0, "shodan_d": "2025/02/13", "ans_d": "2025/07/21", "route": "フリープラン"}, {"person": "中岡世里菜", "status": "時期改め", "name": "株式会社クイーン", "rank": "D", "price": 30000, "shodan_d": "2025/01/15", "ans_d": "", "route": "CS経由"}, {"person": "南原龍司", "status": "見込み", "name": "amnt", "rank": "", "price": 0, "shodan_d": "2024/12/24", "ans_d": "2025/01/13", "route": "フリープラン"}, {"person": "南原龍司", "status": "時期改め", "name": "ツナガルデザイン株式会社", "rank": "", "price": 35000, "shodan_d": "2024/12/18", "ans_d": "2025/08/04", "route": "FBリード"}, {"person": "中岡世里菜", "status": "仮アポ", "name": "BASE", "rank": "", "price": 0, "shodan_d": "2024/12/17", "ans_d": "", "route": "FBリード"}, {"person": "田中莉奈", "status": "時期改め", "name": "エビス小竹向原", "rank": "", "price": 0, "shodan_d": "2024/12/02", "ans_d": "", "route": "FBリード"}, {"person": "南原龍司", "status": "時期改め", "name": "複数", "rank": "D", "price": 30000, "shodan_d": "2024/11/20", "ans_d": "2025/04/14", "route": "紹介"}, {"person": "中岡世里菜", "status": "仮アポ", "name": "(株)True", "rank": "", "price": 0, "shodan_d": "2024/10/17", "ans_d": "", "route": "FBリード"}, {"person": "高橋広輝", "status": "時期改め", "name": "株式会社ミニミニ城東", "rank": "D", "price": 0, "shodan_d": "2024/07/29", "ans_d": "2025/03/25", "route": "紹介"}, {"person": "南原龍司", "status": "見込み", "name": "株式会社ZITTO", "rank": "控え", "price": 0, "shodan_d": "2024/06/24", "ans_d": "", "route": "FS"}, {"person": "中岡世里菜", "status": "時期改め", "name": "買取専門店 玉光堂 札幌四丁目店", "rank": "", "price": 30000, "shodan_d": "2024/12/31", "ans_d": "", "route": "CS経由"}, {"person": "中岡世里菜", "status": "時期改め", "name": "買取専門店 玉光堂 ライオン堂店", "rank": "", "price": 30000, "shodan_d": "2024/12/31", "ans_d": "", "route": "CS経由"}, {"person": "田中莉奈", "status": "時期改め", "name": "", "rank": "", "price": 0, "shodan_d": "2024/05/22", "ans_d": "", "route": "CS経由"}, {"person": "南原龍司", "status": "時期改め", "name": "株式会社SEEDS", "rank": "", "price": 0, "shodan_d": "2024/05/30", "ans_d": "2024/08/05", "route": "問い合わせ"}, {"person": "南原龍司", "status": "見込み", "name": "これから始めます", "rank": "", "price": 0, "shodan_d": "2024/05/14", "ans_d": "", "route": "FBリード"}, {"person": "南原龍司", "status": "時期改め", "name": "Cafe Like a trip", "rank": "", "price": 0, "shodan_d": "2024/04/25", "ans_d": "", "route": "FBリード"}, {"person": "南原龍司", "status": "時期改め", "name": "医療法人社団　立靖会", "rank": "", "price": 35000, "shodan_d": "2024/03/18", "ans_d": "2024/11/05", "route": "FBリード"}, {"person": "南原龍司", "status": "時期改め", "name": "宮内整骨院", "rank": "", "price": 0, "shodan_d": "2024/03/11", "ans_d": "2024/09/09", "route": "過去接触案件"}, {"person": "南原龍司", "status": "時期改め", "name": "株式会社エメット", "rank": "", "price": 30000, "shodan_d": "2024/03/08", "ans_d": "2024/05/20", "route": "FBリード"}];
+
+const STATIC_JUCHU = [{"person": "中岡世里菜", "name": "秋葉原・胃と大腸肛門の内視鏡クリニック 千代田区院", "keiyaku_d": "2026/04/22", "kakin_d": "2023/04/01", "price": 45000, "term": 12, "route": "紹介"}, {"person": "中岡世里菜", "name": "東京千住・胃と大腸の消化器内視鏡クリニック", "keiyaku_d": "2026/04/22", "kakin_d": "2026/04/01", "price": 45000, "term": 12, "route": "問い合わせ"}, {"person": "中岡世里菜", "name": "東京千住・尚視会クリニック 健診プラザ", "keiyaku_d": "2026/04/22", "kakin_d": "2026/04/01", "price": 45000, "term": 12, "route": "問い合わせ"}, {"person": "南原龍司", "name": "梅田ワーフ", "keiyaku_d": "2026/04/21", "kakin_d": "2026/05/01", "price": 10000, "term": 12, "route": "問い合わせ"}, {"person": "南原龍司", "name": "梅田 カナリス -canaris-", "keiyaku_d": "2026/04/21", "kakin_d": "2026/05/01", "price": 10000, "term": 12, "route": "問い合わせ"}, {"person": "南原龍司", "name": "Whitening salon Prima", "keiyaku_d": "2026/04/20", "kakin_d": "2026/05/01", "price": 10000, "term": 6, "route": "紹介"}, {"person": "南原龍司", "name": "極楽湯横浜芹が谷店", "keiyaku_d": "2026/04/07", "kakin_d": "2026/05/01", "price": 9000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "南原龍司", "name": "しゃぶしゃぶ食べ放題 御前様", "keiyaku_d": "2026/04/06", "kakin_d": "2026/05/01", "price": 40000, "term": 12, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "とねり皮膚科・形成外科", "keiyaku_d": "2026/04/02", "kakin_d": "2026/05/01", "price": 20000, "term": 12, "route": "問い合わせ"}, {"person": "南原龍司", "name": "障がい者グループ　かぜのおとGH船橋日大前（女性棟）", "keiyaku_d": "2026/03/31", "kakin_d": "2026/04/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "南原龍司", "name": "障がい者グループ　かぜのおとGH薬園台（男性棟）", "keiyaku_d": "2026/03/31", "kakin_d": "2026/04/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "南原龍司", "name": "障がい者グループ かぜのおとGH加曽利町（日中支援型）", "keiyaku_d": "2026/03/31", "kakin_d": "2026/04/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "南原龍司", "name": "住宅型有料老人ホーム　クローバーホーム成田", "keiyaku_d": "2026/03/31", "kakin_d": "2026/04/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "南原龍司", "name": "住宅型有料老人ホーム かぜのおと川戸町", "keiyaku_d": "2026/03/31", "kakin_d": "2026/04/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "南原龍司", "name": "住宅型有料老人ホーム かぜのおと本庄", "keiyaku_d": "2026/03/31", "kakin_d": "2026/04/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "中岡世里菜", "name": "株式会社ハヤシ建装", "keiyaku_d": "2026/03/26", "kakin_d": "2026/04/01", "price": 35000, "term": 12, "route": "東弘案件OEM"}, {"person": "中岡世里菜", "name": "ういろう別館 杏林亭", "keiyaku_d": "2026/03/17", "kakin_d": "2026/04/01", "price": 35000, "term": 12, "route": "紹介"}, {"person": "中岡世里菜", "name": "ONE TOP HOUSE アピタ名古屋北店 株式会社MyHomeDo", "keiyaku_d": "2026/03/13", "kakin_d": "2026/04/01", "price": 27273, "term": 12, "route": "紹介"}, {"person": "南原龍司", "name": "イオンスポーツ事業部 新体操(34)", "keiyaku_d": "2026/02/24", "kakin_d": "2026/03/01", "price": 170000, "term": 12, "route": "FBリード"}, {"person": "南原龍司", "name": "イオンスポーツ事業部（45）", "keiyaku_d": "2026/02/24", "kakin_d": "2026/03/01", "price": 225000, "term": 12, "route": "FBリード"}, {"person": "南原龍司", "name": "分子栄養学×エステで根本から美肌へ｜浜松のエステサロン【シエル】", "keiyaku_d": "2026/02/20", "kakin_d": "2026/03/01", "price": 35000, "term": 12, "route": "紹介"}, {"person": "南原龍司", "name": "SPSエンタープライズ株式会社", "keiyaku_d": "2026/02/18", "kakin_d": "2026/03/01", "price": 35000, "term": 12, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "Glanz セミパーソナルジム", "keiyaku_d": "2026/02/10", "kakin_d": "2026/02/01", "price": 35000, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "鉄板焼＆月島もんじゃ梵天丸", "keiyaku_d": "2026/01/23", "kakin_d": "2026/02/01", "price": 35000, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "韓亭", "keiyaku_d": "2026/01/23", "kakin_d": "2026/02/01", "price": 35000, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "親玉", "keiyaku_d": "2026/01/23", "kakin_d": "2026/02/01", "price": 35000, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "藤屋 ブライダルサロン", "keiyaku_d": "2026/01/16", "kakin_d": "", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "南原龍司", "name": "mana.OKINAWA本店", "keiyaku_d": "2026/01/07", "kakin_d": "2026/02/01", "price": 27000, "term": 6, "route": "問い合わせ"}, {"person": "中岡世里菜", "name": "元祖函館流 ザンギラーメンまごころ", "keiyaku_d": "2026/01/06", "kakin_d": "2026/01/01", "price": 20000, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "Krutt クルット", "keiyaku_d": "2025/12/18", "kakin_d": "2026/01/01", "price": 27300, "term": 12, "route": "CS経由"}, {"person": "南原龍司", "name": "医療法人近江今津駅前メンタルクリニック", "keiyaku_d": "2025/12/16", "kakin_d": "2026/01/01", "price": 35000, "term": 12, "route": "FS"}, {"person": "南原龍司", "name": "ノストス", "keiyaku_d": "2025/12/12", "kakin_d": "2026/01/01", "price": 24000, "term": 3, "route": "問い合わせ"}, {"person": "南原龍司", "name": "チェルシー表参道", "keiyaku_d": "2025/12/09", "kakin_d": "2026/01/01", "price": 35000, "term": 3, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "POPCORN KOBE", "keiyaku_d": "2025/12/01", "kakin_d": "", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "南原龍司", "name": "レッツ！インドアテニススクール　堀之内", "keiyaku_d": "2025/11/27", "kakin_d": "2025/12/01", "price": 27000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "田中莉奈", "name": "エイチスリー 整骨院武蔵小杉", "keiyaku_d": "2025/11/27", "kakin_d": "2025/12/01", "price": 24000, "term": 6, "route": "CS経由"}, {"person": "南原龍司", "name": "株式会社Nico動物病院", "keiyaku_d": "2025/10/31", "kakin_d": "2025/11/01", "price": 50000, "term": 1, "route": "営業窓口代行"}, {"person": "田中莉奈", "name": "買取大吉 長田神社前商店街店", "keiyaku_d": "2025/10/10", "kakin_d": "2025/10/01", "price": 30000, "term": 12, "route": "CS経由"}, {"person": "高橋広輝", "name": "nicole cifeito(ニコルアフェット)", "keiyaku_d": "2025/09/30", "kakin_d": "", "price": 35000, "term": 6, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "LATTE GRAPHIC 自由が丘店", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 5000, "term": 3, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "LATTE GRAPHIC 町田店", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 5000, "term": 3, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "ラテグラフィック海老名店", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 5000, "term": 3, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "LATTE GRAPHIC たまプラーザ店", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 5000, "term": 3, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "LATTEGRAPHIC 武蔵小杉店", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 5000, "term": 3, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "LATTE GRAPHIC 聖蹟桜ヶ丘", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 5000, "term": 3, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "LATTE GRAPHIC麻布台", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 30000, "term": 12, "route": "問い合わせ"}, {"person": "高橋広輝", "name": "光通信の案件？", "keiyaku_d": "2025/09/22", "kakin_d": "2025/10/01", "price": 30000, "term": 12, "route": "紹介"}, {"person": "中岡世里菜", "name": "ＬＩＸＩＬリフォームショップ　ライファ高砂", "keiyaku_d": "2025/09/17", "kakin_d": "2025/08/01", "price": 35000, "term": 12, "route": "過去接触案件"}, {"person": "中岡世里菜", "name": "焼肉 千久左", "keiyaku_d": "2025/08/26", "kakin_d": "2025/09/01", "price": 30000, "term": 12, "route": "問い合わせ"}, {"person": "南原龍司", "name": "イオン新体操スクール 八千代緑が丘", "keiyaku_d": "2025/08/18", "kakin_d": "2025/09/01", "price": 15000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "南原龍司", "name": "補聴器本舗 町田", "keiyaku_d": "2025/08/18", "kakin_d": "2025/09/01", "price": 35000, "term": 12, "route": "紹介"}, {"person": "南原龍司", "name": "補聴器本舗 保谷", "keiyaku_d": "2025/08/18", "kakin_d": "2025/09/01", "price": 35000, "term": 12, "route": "紹介"}, {"person": "南原龍司", "name": "補聴器本舗 新松戸", "keiyaku_d": "2025/08/18", "kakin_d": "2025/09/01", "price": 35000, "term": 12, "route": "紹介"}, {"person": "田中莉奈", "name": "麻布十番 鮨 すずめ", "keiyaku_d": "2025/08/07", "kakin_d": "2025/09/01", "price": 27000, "term": 6, "route": "CS経由"}, {"person": "田中莉奈", "name": "shisha cafe kuma", "keiyaku_d": "2025/07/29", "kakin_d": "2025/08/01", "price": 27000, "term": 12, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "癒しサロン唯", "keiyaku_d": "2025/07/23", "kakin_d": "", "price": 27273, "term": 12, "route": "CS経由"}, {"person": "中岡世里菜", "name": "しながわ水族館", "keiyaku_d": "2025/07/18", "kakin_d": "2025/07/01", "price": 37500, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "田中莉奈", "name": "手もみ職人 錦・栄 本店", "keiyaku_d": "2025/07/10", "kakin_d": "2025/08/01", "price": 27273, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "タイ古式マッサージ 手もみ職人 名古屋 錦・栄 本店", "keiyaku_d": "2025/07/10", "kakin_d": "2025/08/01", "price": 27273, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "ワンランク上の整体院 名古屋栄店", "keiyaku_d": "2025/07/10", "kakin_d": "2025/08/01", "price": 27273, "term": 12, "route": "CS経由"}, {"person": "田中莉奈", "name": "【インスタ】カラー専門店なないろ", "keiyaku_d": "2025/07/03", "kakin_d": "2025/07/01", "price": 9000, "term": 3, "route": "CS経由"}, {"person": "田中莉奈", "name": "【インスタ】韓国料理ちゃん豚", "keiyaku_d": "2025/07/03", "kakin_d": "2025/07/01", "price": 9000, "term": 3, "route": "CS経由"}, {"person": "南原龍司", "name": "佐々木まさふみ　事務所", "keiyaku_d": "2025/06/27", "kakin_d": "2025/07/01", "price": 50000, "term": 1, "route": "東弘案件OEM"}, {"person": "南原龍司", "name": "原田大二郎　事務所", "keiyaku_d": "2025/06/27", "kakin_d": "2025/07/01", "price": 50000, "term": 1, "route": "東弘案件OEM"}, {"person": "田中莉奈", "name": "BEACH⇔PARK LIVING/ビーチパークリビング", "keiyaku_d": "2025/06/24", "kakin_d": "2025/07/01", "price": 30000, "term": 6, "route": "CS経由"}, {"person": "田中莉奈", "name": "ディアファミリー", "keiyaku_d": "2025/06/09", "kakin_d": "2025/07/01", "price": 35000, "term": 12, "route": "FBリード"}, {"person": "南原龍司", "name": "しもの六太事務所", "keiyaku_d": "2025/06/06", "kakin_d": "2025/06/06", "price": 8500, "term": 6, "route": "東弘案件OEM"}, {"person": "田中莉奈", "name": "植村美容外科", "keiyaku_d": "2025/05/30", "kakin_d": "", "price": 27000, "term": 12, "route": "紹介"}, {"person": "南原龍司", "name": "イオンスポーツクラブ3FIT西台店", "keiyaku_d": "2025/05/30", "kakin_d": "2025/06/01", "price": 15000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "南原龍司", "name": "平木大作事務所", "keiyaku_d": "2025/05/30", "kakin_d": "2025/06/01", "price": 8500, "term": 12, "route": "東弘案件OEM"}, {"person": "中岡世里菜", "name": "ヘアカット専門店Story本八幡店", "keiyaku_d": "2025/05/23", "kakin_d": "2025/06/01", "price": 28000, "term": 12, "route": "CS経由"}, {"person": "南原龍司", "name": "元祖ニュータンタンメン本舗白楽店", "keiyaku_d": "2025/05/21", "kakin_d": "2025/06/01", "price": 24000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "田中莉奈", "name": "GARDEN BISTRO&WINE", "keiyaku_d": "2025/05/16", "kakin_d": "", "price": 30000, "term": 12, "route": "CS経由"}, {"person": "南原龍司", "name": "LAHAGOLF24浦和店", "keiyaku_d": "2025/05/14", "kakin_d": "2025/06/01", "price": 15000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "南原龍司", "name": "サポートハウスkaze市原", "keiyaku_d": "2025/04/30", "kakin_d": "2024/10/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "南原龍司", "name": "ジャンティエス松戸", "keiyaku_d": "2025/04/30", "kakin_d": "2024/10/01", "price": 5000, "term": 12, "route": "FS"}, {"person": "田中莉奈", "name": "MOGU", "keiyaku_d": "2025/04/21", "kakin_d": "2025/05/01", "price": 30000, "term": 12, "route": "CS経由"}, {"person": "中岡世里菜", "name": "MELCO Hair Design", "keiyaku_d": "2025/04/17", "kakin_d": "2025/05/01", "price": 35000, "term": 12, "route": "紹介"}, {"person": "田中莉奈", "name": "居酒屋リンカーン 町田店", "keiyaku_d": "2025/04/15", "kakin_d": "", "price": 25000, "term": 12, "route": "CS経由"}, {"person": "南原龍司", "name": "KX Pilates 東新宿店", "keiyaku_d": "2025/04/09", "kakin_d": "2025/04/01", "price": 30000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "中岡世里菜", "name": "パーソナルトレーニングジムWAKE", "keiyaku_d": "2025/03/27", "kakin_d": "", "price": 27000, "term": 12, "route": "FBリード"}, {"person": "田中莉奈", "name": "クラウドナイン", "keiyaku_d": "2025/03/27", "kakin_d": "", "price": 35000, "term": 12, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "横浜家系ラーメン　京いち家　防府店", "keiyaku_d": "2025/03/21", "kakin_d": "", "price": 27000, "term": 12, "route": "CS経由"}, {"person": "南原龍司", "name": "麺処ぐり虎　広島ミナモア店", "keiyaku_d": "2025/03/13", "kakin_d": "2025/04/01", "price": 30000, "term": 12, "route": "CS経由"}, {"person": "中岡世里菜", "name": "ヤマダ不動産西宮甲子園店　株式会社MyHomeDo", "keiyaku_d": "2025/03/12", "kakin_d": "2025/04/01", "price": 27273, "term": 12, "route": "紹介"}, {"person": "田中莉奈", "name": "ラヴィスヴィラスイート", "keiyaku_d": "2025/02/27", "kakin_d": "", "price": 13500, "term": 6, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "西谷眼科", "keiyaku_d": "2025/02/13", "kakin_d": "", "price": 25000, "term": 12, "route": "紹介"}, {"person": "田中莉奈", "name": "ラソールシーリゾート", "keiyaku_d": "2025/02/12", "kakin_d": "2025/03/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ラソールガーデンアリビラ", "keiyaku_d": "2025/02/12", "kakin_d": "2025/03/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム神戸", "keiyaku_d": "2025/01/31", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム大阪ＯＮＥ", "keiyaku_d": "2025/01/30", "kakin_d": "", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "防府グランドホテル ブライダル", "keiyaku_d": "2025/01/30", "kakin_d": "", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム秋田 Notre Dame AKITA ★★★★★FIVESTAR WEDDING", "keiyaku_d": "2025/01/30", "kakin_d": "", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム下関", "keiyaku_d": "2025/01/27", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム マリノア", "keiyaku_d": "2025/01/27", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム宇部", "keiyaku_d": "2025/01/27", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム北九州", "keiyaku_d": "2025/01/27", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "定禅寺ガーデンヒルズ迎賓館", "keiyaku_d": "2025/01/24", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "GRAN SUITEグラン・スイート", "keiyaku_d": "2025/01/24", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム広島", "keiyaku_d": "2025/01/23", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "中岡世里菜", "name": "アスピカ邸宅葬ゆら音 西開発", "keiyaku_d": "2025/01/21", "kakin_d": "2025/02/01", "price": 35000, "term": 12, "route": "問い合わせ"}, {"person": "田中莉奈", "name": "ノートルダム八戸", "keiyaku_d": "2025/01/20", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "南原龍司", "name": "株式会社エジュテックジャパン", "keiyaku_d": "2025/01/20", "kakin_d": "2025/02/01", "price": 56000, "term": 12, "route": "ゲンダイエージェンシー"}, {"person": "南原龍司", "name": "ユアースポーツクラブ 船堀", "keiyaku_d": "2025/01/14", "kakin_d": "2025/02/01", "price": 30000, "term": 12, "route": "FS"}, {"person": "田中莉奈", "name": "St.ヴァレンタイン福山", "keiyaku_d": "2025/01/10", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}, {"person": "田中莉奈", "name": "ノートルダム周南", "keiyaku_d": "2025/01/07", "kakin_d": "2025/02/01", "price": 13500, "term": 12, "route": "メディアハウス"}];
+
+const MAIN=['南原龍司','田中莉奈','中岡世里菜','高橋広輝'];
+const MFULL=['南原\u3000龍司','田中\u3000莉奈','中岡\u3000世里菜','高橋\u3000広輝'];
+const MCOLORS=['#2563eb','#db2777','#16a34a','#d97706'];
+const DCLS=['d1','d2','d3','d4'];
+const ACT_ST=['見込み','アポ','仮アポ','時期改め','ツール提案','3ヵ月トライアル受注'];
+let kpiData=STATIC_KPI,pipeData=STATIC_PIPE,juchuData=STATIC_JUCHU,billingData=[];
+let months=[],currentMonth=null,mFilter='all',jFilter='all',pFilter='all';
+
+function splitL(l){const r=[];let c='',q=false;for(const ch of l){if(ch==='"'){ q=!q;}else if(ch===','&&!q){r.push(c);c='';}else{c+=ch;}}r.push(c);return r;}
+function parseCSV(txt){const rows=[];let hdr=null;for(let ln of txt.split('\n')){ln=ln.trim();if(!ln)continue;const cols=splitL(ln);if(!hdr){hdr=cols.map(h=>h.replace(/^"|"$/g,''));continue;}const row={};hdr.forEach((h,i)=>row[h]=(cols[i]||'').replace(/^"|"$/g,''));rows.push(row);}return rows;}
+function readF(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.onerror=rej;r.readAsText(f,'shift-jis');});}
+function showSt(msg,t){const e=document.getElementById('cst');e.textContent=msg;e.className='cst '+t;e.style.display='inline-block';if(t==='ok')setTimeout(()=>e.style.display='none',4000);}
+async function loadSalesCSV(inp){try{const txt=await readF(inp.files[0]);const rows=parseCSV(txt);processSales(rows);document.getElementById('z1').classList.add('loaded');document.getElementById('z1l').textContent='✓ '+inp.files[0].name;document.getElementById('updAt').textContent='最終更新: '+new Date().toLocaleDateString('ja-JP');showSt('✓ 営業データ '+rows.length+'件 読み込み完了','ok');}catch(e){showSt('❌ '+e.message,'err');}}
+async function loadBillingCSV(inp){try{const txt=await readF(inp.files[0]);billingData=parseCSV(txt);document.getElementById('z2').classList.add('loaded');document.getElementById('z2l').textContent='✓ '+inp.files[0].name;showSt('✓ 請求データ '+billingData.length+'件 読み込み完了','ok');processBilling();}catch(e){showSt('❌ '+e.message,'err');}}
+
+function pD(s){if(!s)return null;try{return new Date(s.slice(0,10).replace(/\//g,'-'));}catch(e){return null;}}
+function ym(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
+function norm(n){return n.replace(/\u3000/g,' ').trim();}
+function isMain(n){return MFULL.some(m=>norm(m)===norm(n));}
+function sname(n){const i=MFULL.findIndex(m=>norm(m)===norm(n));return i>=0?MAIN[i]:norm(n);}
+
+function processSales(rows){
+  const kpi={},pipe=[],juchu=[];
+  rows.forEach(r=>{
+    const p=r['アポ獲得者_プルダウン']||'';
+    if(!isMain(p))return;
+    const sn=sname(p);
+    const ens=m=>{if(!kpi[m])kpi[m]={};if(!kpi[m][sn])kpi[m][sn]={apo:0,keiyaku:0,kakin:0,uriage:0,mikomi:0,shodan:0};};
+    const ad=pD(r['アポ獲得日時']);if(ad){ens(ym(ad));kpi[ym(ad)][sn].apo++;}
+    const sd=pD(r['商談日時']);if(sd){ens(ym(sd));kpi[ym(sd)][sn].shodan++;}
+    const kd=pD(r['締結譲渡完了日']);if(kd){ens(ym(kd));kpi[ym(kd)][sn].keiyaku++;kpi[ym(kd)][sn].uriage+=(parseInt(r['月額単価'])||0)*(parseInt(r['契約期間'])||12);}
+    const kkd=pD(r['課金開始日']);if(kkd){ens(ym(kkd));kpi[ym(kkd)][sn].kakin++;}
+    if(['見込み','ツール提案','3ヵ月トライアル受注'].includes(r['案件ステータス'])&&ad){ens(ym(ad));kpi[ym(ad)][sn].mikomi++;}
+    if(ACT_ST.includes(r['案件ステータス'])){pipe.push({person:sn,status:r['案件ステータス'],name:(r['屋号']||r['法人名']||'').trim(),rank:(r['見込みランク']||'').split('（')[0].trim(),price:parseInt(r['月額単価'])||0,shodan_d:r['商談予定日時']?r['商談予定日時'].slice(0,10):'',ans_d:r['回答予定日時']?r['回答予定日時'].slice(0,10):'',route:r['アポ経路']||''});}
+    const kd2=pD(r['締結譲渡完了日']);if(r['案件ステータス']==='契約完了'&&kd2&&kd2.getFullYear()>=2025){juchu.push({person:sn,name:(r['屋号']||r['法人名']||'').trim(),keiyaku_d:r['締結譲渡完了日']?r['締結譲渡完了日'].slice(0,10):'',kakin_d:r['課金開始日']?r['課金開始日'].slice(0,10):'',price:parseInt(r['月額単価'])||0,term:parseInt(r['契約期間'])||12,route:r['アポ経路']||''});}
+  });
+  kpiData=kpi;pipeData=pipe;juchuData=juchu.sort((a,b)=>b.keiyaku_d.localeCompare(a.keiyaku_d));
+  months=Object.keys(kpiData).sort();currentMonth=months[months.length-1];boot();
+}
+
+function gd(m,p){return(kpiData[m]&&kpiData[m][p])||{apo:0,keiyaku:0,kakin:0,uriage:0,mikomi:0,shodan:0,price_sum:0};}
+
+function buildYearSel(){
+  const now=new Date();
+  const curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  // 当月より未来の月は表示しない
+  const validMonths=months.filter(m=>m<=curYM);
+  const years=[...new Set(validMonths.map(m=>m.split('-')[0]))].sort((a,b)=>b-a);
+  const sel=document.getElementById('yearSel');
+  const curY=curYM.split('-')[0];
+  sel.innerHTML=years.map(y=>'<option value="'+y+'"'+(y===curY?' selected':'')+'>'+y+'年</option>').join('');
+  // currentMonthを当月（またはデータの最新月）に設定
+  const latestValid=validMonths[validMonths.length-1]||curYM;
+  if(!currentMonth||currentMonth>curYM) currentMonth=latestValid;
+  buildMonthBtns(curY);
+}
+function onYearChange(){
+  const now=new Date();
+  const curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const y=document.getElementById('yearSel').value;
+  const ms=months.filter(m=>m.startsWith(y)&&m<=curYM);
+  if(ms.length){currentMonth=ms[ms.length-1];}
+  buildMonthBtns(y);
+  renderKPI(currentMonth);
+}
+function buildMonthBtns(year){
+  const now=new Date();
+  const curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const ms=months.filter(m=>m.startsWith(year)&&m<=curYM);
+  const c=document.getElementById('mbtns');c.innerHTML='';
+  ms.forEach(m=>{
+    const mo=parseInt(m.split('-')[1]);
+    const btn=document.createElement('button');
+    btn.className='mbtn'+(m===currentMonth?' active':'');
+    btn.textContent=mo+'月';
+    btn.onclick=()=>{currentMonth=m;document.querySelectorAll('#mbtns .mbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderKPI(m);};
+    c.appendChild(btn);
+  });
+}
+
+// 月次目標値
+const TGT_SHODAN = 25;
+const TGT_KEIYAKU = 6;
+const TGT_UNIT = 35000;
+
+// 予算目標（2026年4月〜2027年3月）
+const BUDGET = {
+  '2026-04': {new_mrr:175000, churn:147697},
+  '2026-05': {new_mrr:175000, churn:144005},
+  '2026-06': {new_mrr:405000, churn:140405},
+  '2026-07': {new_mrr:510000, churn:136895},
+  '2026-08': {new_mrr:610000, churn:133472},
+  '2026-09': {new_mrr:610000, churn:130135},
+  '2026-10': {new_mrr:610000, churn:126882},
+  '2026-11': {new_mrr:610000, churn:123710},
+  '2026-12': {new_mrr:610000, churn:120617},
+  '2027-01': {new_mrr:610000, churn:117602},
+  '2027-02': {new_mrr:610000, churn:114662},
+  '2027-03': {new_mrr:610000, churn:111795},
+};
+
+function pct(actual, target){ return target > 0 ? Math.min(Math.round(actual / target * 100), 100) : 0; }
+function rateColor(p){ return p >= 100 ? 'over' : p >= 60 ? 'mid' : 'low'; }
+function setBar(id, p){
+  const el = document.getElementById(id);
+  if(el){ el.style.width = p + '%'; }
+}
+function setRate(id, actual, target, unit){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const p = target > 0 ? Math.round(actual / target * 100) : 0;
+  el.textContent = p + '% 達成' + (actual >= target ? ' ✓' : ' (' + (target - actual) + (unit||'') + ' 未達)');
+  el.className = 'tgt-rate ' + rateColor(p);
+}
+
+function renderKPI(m){
+  const arr=m.split('-');const y=arr[0];const mo=parseInt(arr[1]);
+  document.getElementById('kpiTtl').textContent=y+'年'+mo+'月 KPIサマリー';
+  let tA=0,tK=0,tKK=0,tU=0,tMik=0,tS=0;
+  let tPS=0;MAIN.forEach(p=>{const d=gd(m,p);tA+=d.apo;tK+=d.keiyaku;tKK+=d.kakin;tU+=d.uriage;tMik+=d.mikomi;tS+=d.shodan;tPS+=(d.price_sum||0);});
+
+  // サマリーカード
+  document.getElementById('sa').textContent=tA||'—';
+  document.getElementById('sk').textContent=tK||'—';
+  document.getElementById('skk').textContent=tKK||'—';
+  document.getElementById('su').textContent=tU>0?fmtN(tU):'—';
+  document.getElementById('suu').textContent=tU>0?'円':'';
+  document.getElementById('sr').textContent=tA>0?Math.round(tK/tA*100)+'%':'—';
+  document.getElementById('sm').textContent=tMik||'—';
+
+  // 目標進捗カード
+  // 商談
+  document.getElementById('tgt-act-s').textContent = tS || '0';
+  const ps = pct(tS, TGT_SHODAN);
+  setBar('pbar-s', ps);
+  setRate('rate-s', tS, TGT_SHODAN, '件');
+
+  // 契約
+  document.getElementById('tgt-act-k').textContent = tK || '0';
+  const pk = pct(tK, TGT_KEIYAKU);
+  setBar('pbar-k', pk);
+  setRate('rate-k', tK, TGT_KEIYAKU, '件');
+
+  // 売上（目標はBUDGETがあればbudget.new_mrr、なければTGT_KEIYAKU×TGT_UNIT）
+  const budget = BUDGET[m];
+  const tgtU = budget ? budget.new_mrr : TGT_KEIYAKU * TGT_UNIT;
+  const actU = tPS;
+  document.getElementById('tgt-act-u').textContent = '¥' + actU.toLocaleString();
+  document.getElementById('tgt-goal-u').textContent = '予算 ¥' + tgtU.toLocaleString();
+  const pu = pct(actU, tgtU);
+  setBar('pbar-u', pu);
+  setRate('rate-u', actU, tgtU, '円');
+
+  // 解約予算カード（BUDGETデータがある月のみ表示）
+  const cardChurn = document.getElementById('tgt-budget-churn');
+  if(budget){
+    cardChurn.style.display='';
+    const mrrD = MRR_DATA[m];
+    const actChurnMrr = mrrD ? Object.values(mrrD).reduce((s,d)=>s+(d.churn_mrr||0),0) : 0;
+    const tgtChurnMrr = budget.churn;
+    document.getElementById('tgt-act-bchurn').textContent = '¥'+actChurnMrr.toLocaleString();
+    document.getElementById('tgt-goal-bchurn').textContent = '予算上限 ¥'+tgtChurnMrr.toLocaleString();
+    const pchurn = Math.min(Math.round(actChurnMrr/tgtChurnMrr*100),150);
+    const barChurn = document.getElementById('pbar-bchurn');
+    if(barChurn){ barChurn.style.width=Math.min(pchurn,100)+'%'; barChurn.style.background=actChurnMrr<=tgtChurnMrr?'var(--success)':'var(--danger)'; }
+    const elBchurn = document.getElementById('rate-bchurn');
+    if(elBchurn){
+      if(actChurnMrr<=tgtChurnMrr){
+        elBchurn.textContent='予算内 ✓ (▼¥'+(tgtChurnMrr-actChurnMrr).toLocaleString()+')';
+        elBchurn.className='tgt-rate over';
+      } else {
+        elBchurn.textContent='予算超過 ✗ (+¥'+(actChurnMrr-tgtChurnMrr).toLocaleString()+')';
+        elBchurn.className='tgt-rate low';
+      }
+    }
+  } else {
+    cardChurn.style.display='none';
+  }
+
+  // 担当者別KPI表（個人目標なし・契約があれば表示）
+  const tb=document.getElementById('kpiTb');tb.innerHTML='';
+  MAIN.forEach((p,i)=>{
+    const d=gd(m,p);
+    const rt=d.apo>0?Math.round(d.keiyaku/d.apo*100):0;
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td><span class="md"><span class="dot '+DCLS[i]+'"></span>'+p+'</span></td>'
+      +'<td class="r" style="color:#2563eb">'+(d.apo||'—')+'</td>'
+      +'<td class="r">'+(d.shodan||'—')+'</td>'
+      +'<td class="r"><strong style="color:'+(d.keiyaku>0?'var(--success)':'var(--muted)')+'">'+(d.keiyaku||'—')+'</strong></td>'
+      +'<td class="r">'+(d.uriage>0?'<strong>¥'+d.uriage.toLocaleString()+'</strong>':'—')+'</td>'
+      +'<td class="r" style="color:var(--c5)">'+(d.kakin||'—')+'</td>'
+      +'<td class="r">'+(d.apo>0?rt+'%':'—')+'</td>'
+      +'<td class="r" style="color:var(--warn)">'+(d.mikomi||'—')+'</td>';
+    tb.appendChild(tr);
+  });
+  // 合計行（目標比較はここだけ）
+  const tot=document.createElement('tr');tot.className='tot';
+  const totR=tA>0?Math.round(tK/tA*100):0;
+  const totKPct=Math.round(tK/TGT_KEIYAKU*100);
+  const tgtU2=TGT_KEIYAKU*TGT_UNIT;
+  const kColor=totKPct>=100?'var(--success)':totKPct>=60?'var(--warn)':'var(--danger)';
+  tot.innerHTML='<td><strong>4名 合計</strong></td>'
+    +'<td class="r"><strong>'+(tA||'—')+'</strong></td>'
+    +'<td class="r"><strong>'+(tS||'—')+'</strong></td>'
+    +'<td class="r"><strong style="color:var(--success)">'+(tK||'—')+'</strong>'
+      +'<span style="font-size:10px;color:var(--muted);margin-left:4px;">/ 目標'+TGT_KEIYAKU+'件</span></td>'
+    +'<td class="r"><strong>'+(tU>0?'¥'+tU.toLocaleString():'—')+'</strong></td>'
+    +'<td class="r"><strong>'+(tKK||'—')+'</strong></td>'
+    +'<td class="r"><strong>'+(tA>0?totR+'%':'—')+'</strong></td>'
+    +'<td class="r"><strong>'+(tMik||'—')+'</strong></td>';
+  tb.appendChild(tot);
+}
+
+function renderFinder(){
+  const q=(document.getElementById('fSearch').value||'').toLowerCase();
+  const tb=document.getElementById('finderTb');tb.innerHTML='';
+  const recent=months.slice(-12).slice().reverse();
+  let hasAny=false;
+  recent.forEach(m=>{
+    const arr=m.split('-');const y=arr[0];const mo=parseInt(arr[1]);
+    const mRows=[];
+    MAIN.forEach((p,i)=>{
+      if(mFilter!=='all'&&p!==mFilter)return;
+      const d=gd(m,p);
+      if(!Object.values(d).some(v=>v>0))return;
+      if(q&&!(y+mo+p+d.apo+d.keiyaku+d.kakin+d.uriage).toString().toLowerCase().includes(q))return;
+      mRows.push({p,i,d});
+    });
+    if(!mRows.length)return;
+    hasAny=true;
+    const tA=mRows.reduce((s,r)=>s+r.d.apo,0);
+    const tK=mRows.reduce((s,r)=>s+r.d.keiyaku,0);
+    const tKK=mRows.reduce((s,r)=>s+r.d.kakin,0);
+    const tU=mRows.reduce((s,r)=>s+r.d.uriage,0);
+    // 月ヘッダー行
+    const htr=document.createElement('tr');
+    htr.style.cssText='background:#eef3ff;border-top:2px solid #c7d7ff;';
+    htr.innerHTML=
+      '<td colspan="2" style="font-weight:700;color:var(--primary);font-size:12px;padding:7px 12px;">'+y+'年'+mo+'月'
+      +'<span style="font-weight:400;color:var(--muted);margin-left:8px;font-size:11px;">'+mRows.length+'名</span></td>'
+      +'<td class="r" style="font-size:11px;padding:7px 12px;">アポ <strong style="color:#2563eb;">'+tA+'</strong></td>'
+      +'<td class="r" style="font-size:11px;padding:7px 12px;color:var(--muted);"></td>'
+      +'<td class="r" style="font-size:11px;padding:7px 12px;">契約 <strong style="color:var(--success);">'+tK+'</strong></td>'
+      +'<td class="r" style="font-size:11px;padding:7px 12px;">課金 <strong style="color:var(--c5);">'+tKK+'</strong></td>'
+      +'<td class="r" style="font-size:11px;padding:7px 12px;">売上 <strong>'+(tU>0?'¥'+tU.toLocaleString():'—')+'</strong></td>'
+      +'<td></td>';
+    tb.appendChild(htr);
+    // 担当者行
+    mRows.forEach(({p,i,d})=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML=
+        '<td style="width:16px;padding:0;background:#eef3ff;border-right:none;"></td>'
+        +'<td><span class="md"><span class="dot '+DCLS[i]+'"></span>'+p+'</span></td>'
+        +'<td class="r" style="color:#2563eb;">'+(d.apo||'—')+'</td>'
+        +'<td class="r">'+(d.shodan||'—')+'</td>'
+        +'<td class="r" style="color:var(--success);font-weight:700;">'+(d.keiyaku||'—')+'</td>'
+        +'<td class="r" style="color:var(--c5);">'+(d.kakin||'—')+'</td>'
+        +'<td class="r">'+(d.uriage>0?'¥'+d.uriage.toLocaleString():'—')+'</td>'
+        +'<td class="r" style="color:var(--warn);">'+(d.mikomi||'—')+'</td>';
+      tb.appendChild(tr);
+    });
+    // 月末スペーサー
+    const sp=document.createElement('tr');
+    sp.innerHTML='<td colspan="8" style="padding:4px;background:var(--bg);border:none;"></td>';
+    tb.appendChild(sp);
+  });
+  if(!hasAny)tb.innerHTML='<tr><td colspan="8" class="nodata">該当データなし</td></tr>';
+}
+function setMF(v,btn){mFilter=v;document.querySelectorAll('#accFinder .fbl').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderFinder();}
+function toggleAcc(id){
+  const body=document.getElementById('body'+id.replace('acc',''));
+  const arrow=document.getElementById('arw'+id.replace('acc',''));
+  if(!body||!arrow)return;
+  const open=body.classList.toggle('open');
+  arrow.style.transform=open?'rotate(180deg)':'';
+}
+
+function buildPipeYearSel(){
+  const now=new Date();
+  const curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const mset=new Set();
+  pipeData.forEach(r=>{if(!r.shodan_d)return;const d=new Date(r.shodan_d.replace(/\//g,'-'));mset.add(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'));});
+  months.slice(-12).forEach(m=>mset.add(m));
+  const pYears=[...new Set([...mset].map(m=>m.split('-')[0]))].sort((a,b)=>b-a);
+  const ys=document.getElementById('pyear');
+  const curY=now.getFullYear().toString();
+  ys.innerHTML=pYears.map(y=>'<option value="'+y+'"'+(y===curY?' selected':'')+'>'+y+'年</option>').join('');
+  onPipeYear(curYM);
+}
+function onPipeYear(defaultYM){
+  const y=document.getElementById('pyear').value;
+  const now=new Date();
+  const curYM=defaultYM||(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
+  const mset=new Set();
+  pipeData.forEach(r=>{if(!r.shodan_d)return;const d=new Date(r.shodan_d.replace(/\//g,'-'));const m=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');if(m.startsWith(y))mset.add(m);});
+  months.filter(m=>m.startsWith(y)).forEach(m=>mset.add(m));
+  const ms=[...mset].filter(m=>m.startsWith(y)).sort().reverse();
+  const ms2=document.getElementById('pmonth');
+  ms2.innerHTML='<option value="all">全月</option>'+ms.map(m=>{const mo=parseInt(m.split('-')[1]);return isNaN(mo)?'':'<option value="'+m+'"'+(m===curYM?' selected':'')+'>'+mo+'月</option>';}).join('');
+  renderPipe();
+}
+
+// ============================================================
+// 当月クロージング管理
+// ============================================================
+let clFilter='all';
+
+function buildClosingSel(){
+  const now=new Date();
+  const curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const mset=new Set();
+  pipeData.forEach(r=>{
+    if(r.ans_d) mset.add(r.ans_d.replace(/\//g,'-').slice(0,7));
+    if(r.shodan_d) mset.add(r.shodan_d.replace(/\//g,'-').slice(0,7));
+  });
+  juchuData.forEach(r=>{if(r.keiyaku_d) mset.add(r.keiyaku_d.replace(/\//g,'-').slice(0,7));});
+  const allM=[...mset].filter(m=>/^\d{4}-\d{2}$/.test(m)).sort().reverse();
+  const years=[...new Set(allM.map(m=>m.slice(0,4)))].sort((a,b)=>b-a);
+  const curY=now.getFullYear().toString();
+  const ys=document.getElementById('clYear');
+  ys.innerHTML=years.map(y=>'<option value="'+y+'"'+(y===curY?' selected':'')+'>'+y+'年</option>').join('');
+  buildClosingMonthSel(curY, allM, curYM);
+}
+function buildClosingMonthSel(y, allM, defaultYM){
+  const ms=(allM||[]).filter(m=>m.startsWith(y));
+  const ms2=document.getElementById('clMonth');
+  const now=new Date();
+  const curYM=defaultYM||(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
+  ms2.innerHTML=ms.map(m=>{const mo=parseInt(m.split('-')[1]);return isNaN(mo)?'':'<option value="'+m+'"'+(m===curYM?' selected':'')+'>'+mo+'月</option>';}).join('');
+  renderClosing();
+}
+function onClYear(){
+  const y=document.getElementById('clYear').value;
+  const mset=new Set();
+  pipeData.forEach(r=>{
+    if(r.ans_d) mset.add(r.ans_d.replace(/\//g,'-').slice(0,7));
+    if(r.shodan_d) mset.add(r.shodan_d.replace(/\//g,'-').slice(0,7));
+  });
+  juchuData.forEach(r=>{if(r.keiyaku_d) mset.add(r.keiyaku_d.replace(/\//g,'-').slice(0,7));});
+  const allM=[...mset].filter(m=>/^\d{4}-\d{2}$/.test(m)).sort().reverse();
+  buildClosingMonthSel(y, allM, null);
+}
+function setClF(v,btn){clFilter=v;document.querySelectorAll('#closing .fbl').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderClosing();}
+
+function mOf(d){if(!d)return'';return d.replace(/\//g,'-').slice(0,7);}
+
+function renderClosing(){
+  const selYM=document.getElementById('clMonth').value;
+  if(!selYM)return;
+
+  // 見込み：回答予定日 or 商談予定日が当月
+  const mikRows=pipeData.filter(r=>{
+    if(r.status!=='見込み')return false;
+    if(clFilter!=='all'&&r.person!==clFilter)return false;
+    return mOf(r.ans_d)===selYM||mOf(r.shodan_d)===selYM;
+  });
+
+  // 契約完了：締結日が当月
+  const jucRows=juchuData.filter(r=>{
+    if(clFilter!=='all'&&r.person!==clFilter)return false;
+    return mOf(r.keiyaku_d)===selYM;
+  });
+
+  const jucU=jucRows.reduce((s,r)=>s+(r.price*r.term),0);
+  const jucMRR=jucRows.reduce((s,r)=>s+r.price,0);
+
+  // サマリー更新
+  document.getElementById('cl-juc').textContent=jucRows.length||'0';
+  document.getElementById('cl-juc-u').textContent=jucMRR>0?'月額合計 ¥'+jucMRR.toLocaleString():'';
+  document.getElementById('cl-mik').textContent=mikRows.length||'0';
+  const mikMRR=mikRows.reduce((s,r)=>s+(r.price||0),0);
+  document.getElementById('cl-mik-u').textContent=mikMRR>0?'月額合計 ¥'+mikMRR.toLocaleString():'未確定';
+  document.getElementById('cl-all').textContent=(jucRows.length+mikRows.length)||'0';
+  document.getElementById('cl-uriage').textContent=jucU>0?'¥'+jucU.toLocaleString():'—';
+
+  // 見込みテーブル
+  document.getElementById('cl-mik-cnt').textContent=mikRows.length?mikRows.length+'件':'';
+  const mikTb=document.getElementById('clMikTb');mikTb.innerHTML='';
+  if(!mikRows.length){
+    mikTb.innerHTML='<tr><td colspan="7" class="nodata">当月内に回答予定・商談予定の見込み案件はありません</td></tr>';
+  } else {
+    mikRows.forEach(r=>{
+      const i=MAIN.indexOf(r.person);const dc=i>=0?DCLS[i]:'d5';
+      const rc={'S':'rs','A':'ra','B':'rb','C':'rc','D':'rd'}[r.rank]||'';
+      const anHit=mOf(r.ans_d)===selYM;
+      const shHit=mOf(r.shodan_d)===selYM;
+      const tr=document.createElement('tr');
+      tr.innerHTML='<td><span class="md"><span class="dot '+dc+'"></span>'+r.person+'</span></td>'
+        +'<td><strong>'+(r.name||'—')+'</strong></td>'
+        +'<td><span class="'+rc+'">'+(r.rank||'—')+'</span></td>'
+        +'<td class="r">'+(r.price>0?'¥'+r.price.toLocaleString():'—')+'</td>'
+        +'<td><span class="rtag">'+(r.route||'—')+'</span></td>'
+        +'<td style="'+(shHit?'color:var(--danger);font-weight:700;':'color:var(--muted);')+'">'+(r.shodan_d||'—')+'</td>'
+        +'<td style="'+(anHit?'color:var(--danger);font-weight:700;':'color:var(--muted);')+'">'+(r.ans_d||'—')+'</td>';
+      mikTb.appendChild(tr);
+    });
+  }
+
+  // 契約完了テーブル
+  document.getElementById('cl-juc-cnt').textContent=jucRows.length?jucRows.length+'件':'';
+  const jucTb=document.getElementById('clJucTb');jucTb.innerHTML='';
+  if(!jucRows.length){
+    jucTb.innerHTML='<tr><td colspan="8" class="nodata">当月の契約完了案件はありません</td></tr>';
+  } else {
+    jucRows.forEach(r=>{
+      const i=MAIN.indexOf(r.person);const dc=i>=0?DCLS[i]:'d5';
+      const tr=document.createElement('tr');
+      tr.innerHTML='<td><span class="md"><span class="dot '+dc+'"></span>'+r.person+'</span></td>'
+        +'<td><strong>'+(r.name||'—')+'</strong></td>'
+        +'<td><span class="rtag">'+(r.route||'—')+'</span></td>'
+        +'<td style="color:var(--danger);font-weight:700;">'+(r.keiyaku_d||'—')+'</td>'
+        +'<td>'+(r.kakin_d||'—')+'</td>'
+        +'<td class="r">'+(r.price>0?'¥'+r.price.toLocaleString():'—')+'</td>'
+        +'<td class="r">'+r.term+'ヶ月</td>'
+        +'<td class="r"><strong style="color:var(--danger)">'+(r.price>0?'¥'+(r.price*r.term).toLocaleString():'—')+'</strong></td>';
+      jucTb.appendChild(tr);
+    });
+  }
+}
+function renderPipe(){
+  const selM=document.getElementById('pmonth').value;
+  const tb=document.getElementById('pipeTb');tb.innerHTML='';
+  let rows=[...pipeData];
+  if(pFilter!=='all')rows=rows.filter(r=>r.status===pFilter);
+  if(selM!=='all')rows=rows.filter(r=>{if(!r.shodan_d)return false;const d=new Date(r.shodan_d.replace(/\//g,'-'));return(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'))===selM;});
+  rows.sort((a,b)=>(b.shodan_d||'').localeCompare(a.shodan_d||''));
+  if(!rows.length){tb.innerHTML='<tr><td colspan="8" class="nodata">該当なし</td></tr>';return;}
+  rows.forEach(r=>{
+    const i=MAIN.indexOf(r.person);const dc=i>=0?DCLS[i]:'d5';
+    const bc=r.status==='見込み'?'bm':r.status==='アポ'||r.status==='仮アポ'?'ba':r.status==='時期改め'?'bj':'bt';
+    const rc={'S':'rs','A':'ra','B':'rb','C':'rc','D':'rd'}[r.rank]||'';
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td><span class="md"><span class="dot '+dc+'"></span>'+r.person+'</span></td>'
+      +'<td><span class="bd '+bc+'">'+r.status+'</span></td>'
+      +'<td>'+(r.name||'—')+'</td>'
+      +'<td><span class="'+rc+'">'+(r.rank||'—')+'</span></td>'
+      +'<td class="r">'+(r.price>0?'¥'+r.price.toLocaleString():'—')+'</td>'
+      +'<td><span class="rtag">'+(r.route||'—')+'</span></td>'
+      +'<td>'+(r.shodan_d||'—')+'</td>'
+      +'<td>'+(r.ans_d||'—')+'</td>';
+    tb.appendChild(tr);
+  });
+}
+function setPF(f,btn){pFilter=f;document.querySelectorAll('#tActive .fbl').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderPipe();}
+
+function buildJuchuYearSel(){
+  const now=new Date();
+  const curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const curY=now.getFullYear().toString();
+  const mset=new Set();
+  juchuData.forEach(r=>{
+    if(!r.keiyaku_d)return;
+    const m=r.keiyaku_d.replace(/\//g,'-').slice(0,7);
+    mset.add(m);
+  });
+  const pYears=[...new Set([...mset].map(m=>m.slice(0,4)))].sort((a,b)=>b-a);
+  const ys=document.getElementById('jyear');
+  if(!ys)return;
+  ys.innerHTML=pYears.map(y=>'<option value="'+y+'"'+(y===curY?' selected':'')+'>'+y+'年</option>').join('');
+  onJuchuYear(curYM);
+}
+function onJuchuYear(defaultYM){
+  const now=new Date();
+  const curYM=defaultYM||(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
+  const y=document.getElementById('jyear').value;
+  const mset=new Set();
+  juchuData.forEach(r=>{
+    if(!r.keiyaku_d)return;
+    const m=r.keiyaku_d.replace(/\//g,'-').slice(0,7);
+    if(m.startsWith(y))mset.add(m);
+  });
+  const ms=[...mset].filter(m=>m.startsWith(y)).sort().reverse();
+  const ms2=document.getElementById('jmonth');
+  ms2.innerHTML='<option value="all">全月</option>'+ms.map(m=>{
+    const mo=parseInt(m.split('-')[1]);
+    if(isNaN(mo))return'';
+    const cnt=juchuData.filter(r=>r.keiyaku_d&&r.keiyaku_d.replace(/\//g,'-').startsWith(m)).length;
+    return '<option value="'+m+'"'+(m===curYM?' selected':'')+'>'+mo+'月 ('+cnt+'件)</option>';
+  }).join('');
+  renderJuchu();
+}
+function renderJuchu(){
+  const q=(document.getElementById('jSearch').value||'').toLowerCase();
+  const selM=document.getElementById('jmonth')?document.getElementById('jmonth').value:'all';
+  const tb=document.getElementById('juchuTb');tb.innerHTML='';
+  const rows=juchuData.filter(r=>{
+    if(jFilter!=='all'&&r.person!==jFilter)return false;
+    const km=r.keiyaku_d?r.keiyaku_d.replace(/\//g,'-').slice(0,7):'';
+    if(selM!=='all'&&km!==selM)return false;
+    if(q&&!(r.person+r.name+r.route).toLowerCase().includes(q))return false;
+    return true;
+  });
+  if(!rows.length){tb.innerHTML='<tr><td colspan="8" class="nodata">該当なし</td></tr>';return;}
+  const byMonth={};
+  rows.forEach(r=>{const m=r.keiyaku_d?r.keiyaku_d.replace(/\//g,'-').slice(0,7):'';if(!byMonth[m])byMonth[m]=[];byMonth[m].push(r);});
+  Object.keys(byMonth).sort().reverse().forEach(m=>{
+    const mRows=byMonth[m];
+    const mTotalU=mRows.reduce((s,r)=>s+(r.price*r.term),0);
+    const htr=document.createElement('tr');
+    htr.style.cssText='background:#f1f5ff;';
+    htr.innerHTML='<td colspan="5" style="font-weight:700;color:var(--primary);font-size:12px;padding:6px 12px;">'
+      +(m?m.slice(0,4)+'年'+parseInt(m.split('-')[1])+'月':'日付不明')
+      +' <span style="font-weight:400;color:var(--muted);">'+mRows.length+'件</span></td>'
+      +'<td colspan="3" class="r" style="font-weight:700;color:var(--primary);font-size:12px;padding:6px 12px;">合計: ¥'+mTotalU.toLocaleString()+'</td>';
+    tb.appendChild(htr);
+    mRows.forEach(r=>{
+      const i=MAIN.indexOf(r.person);const dc=i>=0?DCLS[i]:'d5';
+      const tr=document.createElement('tr');
+      tr.innerHTML='<td><span class="md"><span class="dot '+dc+'"></span>'+r.person+'</span></td>'
+        +'<td>'+(r.name||'—')+'</td>'
+        +'<td><span class="rtag">'+(r.route||'—')+'</span></td>'
+        +'<td>'+(r.keiyaku_d||'—')+'</td>'
+        +'<td>'+(r.kakin_d||'—')+'</td>'
+        +'<td class="r">'+(r.price>0?'¥'+r.price.toLocaleString():'—')+'</td>'
+        +'<td class="r">'+r.term+'ヶ月</td>'
+        +'<td class="r"><strong>'+(r.price>0?'¥'+(r.price*r.term).toLocaleString():'—')+'</strong></td>';
+      tb.appendChild(tr);
+    });
+  });
+}
+function setJF(v,btn){jFilter=v;document.querySelectorAll('#tJuchu .fbl').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderJuchu();}
+
+function processBilling(){
+  if(!billingData.length)return;
+  const hds=Object.keys(billingData[0]);
+  const fc=cs=>cs.reduce((f,c)=>f||(hds.find(h=>h.includes(c))||null),null);
+  const mCol=fc(['担当者','アポ獲得者','担当']),pCol=fc(['月額単価','単価','月額','MRR']),stCol=fc(['ステータス','状態','status']);
+  const CHURNS=['解約','チャーン','解約済','退会'];
+  let tMRR=0,tCh=0,tChC=0;const mM={},cM={};
+  billingData.forEach(r=>{
+    const p=mCol?r[mCol]:'';const price=pCol?(parseInt(r[pCol])||0):0;const st=stCol?r[stCol]:'';
+    const isC=CHURNS.some(s=>st.includes(s));const sn=isMain(p)?sname(p):'その他';
+    if(!mM[sn])mM[sn]={mrr:0,cnt:0};if(!cM[sn])cM[sn]={mrr:0,cnt:0};
+    if(isC){cM[sn].mrr+=price;cM[sn].cnt++;tCh+=price;tChC++;}else{mM[sn].mrr+=price;mM[sn].cnt++;tMRR+=price;}
+  });
+  const base=tMRR+tCh;const totR=base>0?(tCh/base*100).toFixed(1):'0.0';
+  document.getElementById('mrrNo').style.display='none';document.getElementById('mrrArea').style.display='block';
+  const mc=document.getElementById('mrrCards');
+  mc.innerHTML='<div class="mrr-c"><div class="mrr-lbl">総保有MRR（月額）</div><div class="mrr-val">¥'+tMRR.toLocaleString()+'</div><div class="mrr-sub">'+(billingData.length-tChC)+'件 保有中</div></div>'
+    +'<div class="mrr-c"><div class="mrr-lbl">今月解約MRR</div><div class="mrr-val" style="color:var(--danger)">¥'+tCh.toLocaleString()+'</div><div class="mrr-sub">'+tChC+'件 解約</div></div>'
+    +'<div class="mrr-c"><div class="mrr-lbl">全体チャーンレート</div><div class="mrr-val" style="color:'+(parseFloat(totR)>5?'var(--danger)':parseFloat(totR)>2?'var(--warn)':'var(--success)')+'">'+totR+'%</div><div class="mrr-sub">解約MRR÷(保有+解約)MRR</div></div>';
+  const cb=document.getElementById('churnTb');cb.innerHTML='';
+  [...MAIN,'その他'].forEach((k,i)=>{
+    const m2=mM[k]||{mrr:0,cnt:0};const c2=cM[k]||{mrr:0,cnt:0};const b2=m2.mrr+c2.mrr;const r2=b2>0?(c2.mrr/b2*100).toFixed(1):'0.0';
+    const dc=i<4?DCLS[i]:'d5';const tr=document.createElement('tr');
+    tr.innerHTML='<td><span class="md"><span class="dot '+dc+'"></span>'+k+'</span></td>'
+      +'<td class="r">¥'+m2.mrr.toLocaleString()+'</td><td class="r">'+m2.cnt+'</td>'
+      +'<td class="r">'+(c2.cnt||'—')+'</td>'
+      +'<td class="r" style="color:var(--danger)">'+(c2.mrr>0?'¥'+c2.mrr.toLocaleString():'—')+'</td>'
+      +'<td class="r"><strong style="color:'+(parseFloat(r2)>5?'var(--danger)':parseFloat(r2)>2?'var(--warn)':'var(--success)')+'">'+r2+'%</strong></td>';
+    cb.appendChild(tr);
+  });
+}
+
+
+
+// ============================================================
+// MRR 概算/確定ロジック
+// ============================================================
+const MRR_RECORD_CNT = {"2026-04": 144, "2026-03": 443, "2026-02": 411, "2026-01": 432, "2025-12": 468, "2025-11": 504, "2025-10": 543, "2025-09": 637, "2025-08": 529, "2025-07": 635, "2025-06": 669, "2025-05": 658, "2025-04": 635};
+
+function isMrrConfirmed(m) {
+  var a=m.split('-'),y=parseInt(a[0]),mo=parseInt(a[1]);
+  var pm=(mo>1?y+'-'+String(mo-1).padStart(2,'0'):(y-1)+'-12');
+  var cur=MRR_RECORD_CNT[m]||0,prev=MRR_RECORD_CNT[pm]||0;
+  if(prev===0)return{confirmed:true,rate:100};
+  return{confirmed:(cur/prev>=0.90),rate:Math.round(cur/prev*100)};
+}
+
+const MRR_ESTIMATE_APR = {
+  total:{mrr:9502598,cnt:457,churn_mrr:100000,churn_cnt:3},
+  persons:{
+    '南原龍司':{mrr:2166310,cnt:189,churn_mrr:0,churn_cnt:0},
+    '田中莉奈':{mrr:2753658,cnt:122,churn_mrr:65000,churn_cnt:2},
+    '中岡世里菜':{mrr:2608630,cnt:87,churn_mrr:35000,churn_cnt:1},
+    '高橋広輝':{mrr:1974000,cnt:59,churn_mrr:0,churn_cnt:0},
+  }
+};
+const MRR_CONFIRMED_APR = {
+  total:{mrr:7590661,cnt:463,churn_mrr:100000,churn_cnt:3},
+  persons:{
+    '南原龍司':{mrr:1183600,cnt:195,churn_mrr:0,churn_cnt:0},
+    '田中莉奈':{mrr:2682158,cnt:130,churn_mrr:65000,churn_cnt:2},
+    '中岡世里菜':{mrr:2824403,cnt:89,churn_mrr:35000,churn_cnt:1},
+    '高橋広輝':{mrr:831500,cnt:46,churn_mrr:0,churn_cnt:0}
+  }
+};
+const CHURN_DETAIL_ALL = {"2025-04": {"田中莉奈": ["ESPACIO 梅田店|¥27,000"], "南原龍司": ["HANAHOU|¥3,000", "オステリア・イル・ぴあっと・ヌォーボ|¥3,000", "Street Kitchen Taco Shop|¥3,000", "大阪焼肉･ホルモン ふたご 赤羽店|¥25,000", "大阪焼肉・ホルモン ふたご本川越店|¥25,000"], "中岡世里菜": ["ひなたCafe|¥30,000"]}, "2025-05": {"高橋広輝": ["KAITOLOGY 広島本通店|¥30,000"], "南原龍司": ["焼肉じゅらく|¥3,000", "沖縄ヨット体験セーリング|¥6,000", "日本酒居酒屋拉麺|¥3,000", "Cirque du HAT|¥3,000", "アジアの小さな食卓 祐祐|¥3,000", "小さなタルトのお店S|¥3,000", "焼肉食堂こやま|¥3,000", "FROG GYM|¥35,000"], "田中莉奈": ["GRAND|¥35,000", "&STORIES原宿|¥27,500"]}, "2025-06": {"南原龍司": ["HappierLife＋α　（ハピアライフプラスアルファ）|¥3,000", "IN VIAGGIO|¥3,000", "MOTOSUKO DIVE RESORT|¥3,000", "よなが|¥3,000", "VOUL|¥3,000", "名山VOUL|¥3,000", "スポラックス大和|¥3,000", "やきとりこころ 栗東西店|¥3,000", "やきとりこころ 本店|¥3,000", "minimam|¥3,000", "チキンプレイス ロティサリーズ 合羽橋店|¥3,000", "整体院もみのき　つちうら横丁店|¥3,000", "sakura 愛|¥3,000", "カフェルクスゆめタウン佐賀店|¥3,000", "カフェルクス熊本浜線店|¥3,000", "カフェルクス諫早店|¥3,000", "bar Jiro|¥3,000", "Total Beauty Salon Cherir|¥3,000", "ウェルネスきしもと整骨院|¥3,000", "Enjoy relaxation|¥3,000", "センダイ和バル WAO|¥3,000", "Hair by PROVE|¥3,000", "串坊主|¥3,000", "GolFair|¥3,000", "ワイン食堂ビオワルン|¥3,000", "パン・ド・パルテール|¥3,000"], "田中莉奈": ["伊勢原デポ(デリバリーセンター)|¥18,500", "キッチンファクトリー湘南|¥18,500", "キッチンファクトリー大和|¥18,500", "キッチンファクトリー相模原|¥18,500"]}, "2025-07": {"中岡世里菜": ["北新地はらみ別邸|¥25,000", "ヘアカット専門店Story下総中山店|¥12,000"], "高橋広輝": ["占いの館ウィル名古屋栄店|¥30,000"], "田中莉奈": ["BARとなり|¥27,000"]}, "2025-08": {"中岡世里菜": ["青木歯科医院|¥35,000"], "南原龍司": ["ゼン・デザインワークス株式会社 一級建築士事務所|¥35,000", "岩沢住設|¥5,000"]}, "2025-09": {"高橋広輝": ["ビストロチック六本木|¥35,000", "占いの館ウィル東京渋谷店|¥30,000", "Pullulant Esthe Himeji|¥30,000", "ホワイトニング専門店 Petite Salon elMo.|¥30,000", "Pullulant Esthe Kobe|¥30,000"], "南原龍司": ["株式会社くるまや中山|¥12,000", "Food Bar JAM|¥3,000", "N portal hair salon|¥3,000", "オアシス南房総|¥3,000", "オアシス南雪谷|¥3,000", "オアシス和田浦|¥3,000", "フセヤ エステティック アロマアンドヨガ|¥3,000", "大衆音楽酒場WAKASU|¥3,000", "六花園|¥3,000", "くるみ写真|¥3,000", "Morethan Paradise|¥3,000", "北海道ソウルフード|¥3,000", "F|¥3,000", "ミセスステーキ|¥3,000", "マツヤニ＆ヒーリングこころとお肌の専門家SalonYaco|¥3,000", "野菜ダイニングほんのちょっとパレスビル店|¥3,000", "焼きたて食パン専門店　一本堂|¥3,000", "鳥笑|¥3,000", "アートスタジオ チェリーブロッサム|¥3,000", "南千住駅前整骨院・鍼灸院|¥3,000", "nanacolors|¥3,000", "らぁめんぐうたら|¥3,000", "濃厚タンメン無双家加古川店|¥3,000", "トリコミート名古屋店|¥3,000", "C gam|¥3,000", "BRIMFULnail|¥3,000", "ギリシャキッチン&ベーカリー バクロ|¥3,000", "Light-fit|¥3,000", "seule et coco|¥3,000", "ANALOG CRAFT CHOCOLATE|¥3,000", "ＤＡＨＬＩＡ　|¥3,000", "G-tle（ジートル）|¥3,000", "串カツもんじゃひまわり　江坂店|¥3,000", "鮨しん IN THE MUSEUM|¥3,000", "本格炭焼とりいち|¥3,000", "三依渓流つり場|¥3,000", "boutique muguet|¥3,000", "メンズ脱毛サロンBOSS　名古屋店|¥3,000", "こい希|¥3,000", "黒田越中餃子研究所|¥3,000", "Your,GURT&GRANOLA|¥3,000", "お好み焼き ふくちゃん|¥3,000", "居酒屋漁火|¥3,000", "髪きり処もくれん|¥3,000", "カプリティオ|¥3,000", "東洋経絡整体院|¥3,000", "BAR LUXE|¥3,000", "リラクゼーションスペース　my time|¥3,000", "Mexican foods Amigo|¥3,000", "女性専用リラクゼーション整体ルームな〜る|¥3,000", "だるまや新宿三丁目店|¥3,000", "だるまや新宿西口店|¥3,000", "炭火焼生ラムジンギスカン味楽来|¥3,000", "鮨　むろ橋|¥3,000", "WARUNG KAKI LIMA|¥3,000", "クレープ&カフェ くるくる|¥3,000", "ジョンシェ|¥3,000", "kaiko hair&art studio|¥3,000", "sika|¥3,000", "meza|¥3,000", "バード 賢島ベイマリーナ|¥3,000", "ラ・カミオ|¥3,000", "居酒屋 るいじんえん|¥3,000", "心の憩場美容室ひかり|¥3,000", "海辺のかくれ家　雪中花|¥3,000", "JUDE（ジュード）|¥3,000", "HaLe Resort 京都河原町店|¥3,000", "PlanetariumCafe&BarMisora|¥3,000", "「珀」デニッシュ食パン専門店HAKU 京都|¥3,000", "おばん菜民宿 みそら|¥3,000", "FourCornersCutShop favey’s|¥3,000", "grin 栄|¥3,000", "NICOLI|¥3,000", "MINORI CAFE|¥3,000", "Le Bois |¥3,000", "セリア美容室|¥3,000", "CROWN hair lounge|¥3,000", "プリン堂|¥3,000", "あ ないすでい|¥3,000", "THE HARUMAKI CLUB KOBE|¥3,000", "株式会社ノビアス|¥3,000", "Lacl'e博多店|¥3,000", "Lacl'e香椎店|¥3,000", "酒と釜飯ひろき|¥3,000", "Dive Star|¥3,000", "NailsalonSOROR|¥3,000", "Manaリンパ|¥3,000", "Barbier Adi【バルビエーレ アーディ】|¥3,000", "IRIS|¥3,000", "マカロニキッチン|¥3,000", "ヘアメイク＆フォトスタジオ パトリック大阪|¥3,000", "鹿峰(かほう)ゆらり|¥3,000", "いやし工房　もみ丸|¥3,000", "te-te melty|¥3,000", "門前仲町イエティ鍼灸整骨院|¥3,000", "福寿司|¥3,000", "和伊和伊酒場きくぞう|¥6,000", "海鮮網焼き 海ほたる|¥3,000", "アラモード洋菓子店|¥3,000", "Sushi on La Cienega|¥3,000", "矢落|¥3,000", "Eclat.|¥3,000", "大正焼肉ホルモン　K2+|¥3,000", "Rin5Life 〜りんごらいふ〜　|¥3,000", "ダイヤモンドボディ|¥3,000", "Beauty salon Lovina 長野駅前店|¥3,000", "BOOMER|¥3,000", "プライベートサロンｋｕｓａｋａ|¥3,000", "Concept 淡路|¥3,000", "髪質改善専門店 艶美|¥3,000", "やきとり居酒屋どぼーず|¥3,000", "M fleur nail&beauty|¥3,000", "黒毛和牛ホルモン 大衆焼肉しんすけ 鍛冶屋町店|¥3,000", "Matilda【マチルダ】|¥3,000", "YOSHIDA KITCHEN'S|¥3,000", "理容チョッキンズPLUS|¥3,000", "commercial office TOMATO|¥3,000", "Private salon Belle|¥3,000", "PGcafe|¥3,000", "nail&eyelash ROI|¥3,000", "喫茶久遠|¥3,000", "Glam up Sapporo|¥3,000", "bi.send|¥3,000", "REVISHOP伊勢店|¥3,000", "笑食居酒屋つむぎ家|¥3,000", "骨盤矯正ネコの手|¥3,000", "T-SHIPS|¥3,000", "ちぢみ屋|¥3,000", "たかつきレバー|¥3,000", "Karaoke&Darts Bar TIA|¥3,000", "玉島プレイランド|¥3,000", "ひよこちゃん 中島店|¥3,000", "ぽちたま 水玉店|¥3,000", "ぐり虎　HOME MADE NOODLE|¥30,000", "ホテルドルフィン|¥27,000"]}, "2025-10": {"高橋広輝": ["e'clat【エクラ】|¥30,000"], "南原龍司": ["岡本整骨院|¥3,000", "ガル　エデン|¥3,000", "LE-BA SURF|¥3,000", "GUESTHOUSE|¥3,000", "iki-粋- Retreat Villa|¥3,000", "万屋Stand|¥3,000", "あやのはりきゅう整骨院|¥3,000", "GoodJob!センター香芝|¥3,000", "Mrs.saison Bakery|¥3,000", "手打ち蕎麦きさく|¥3,000", "居酒屋 ゆえん-結縁-|¥3,000", "yuimo　yoga|¥3,000", "食酒場ハッチ|¥3,000", "private salon Re'Anela|¥3,000", "Bar WHITE NUTS|¥3,000", "日々と、珈琲|¥3,000", "Ｈ２|¥3,000", "SlowRushCoffee|¥3,000", "フォトコザカ|¥3,000", "有限会社熊野蒲鉾店|¥3,000", "鰻の成瀬 札幌店|¥3,000", "焼肉好牛|¥3,000", "美月|¥3,000", "vend|¥3,000", "髪ふうせん|¥3,000", "ハイボールバージャンボリー|¥3,000", "パラム韓|¥3,000", "焼鳥酒場 鳥◯|¥3,000", "鳥勝|¥3,000", "はんばぁぐそう|¥3,000", "ポジティブスキンサロン一MIYu一【美癒】|¥3,000", "にじのわ|¥3,000", "Saku 二十世紀が丘店|¥3,000", "リストランテ デュラム|¥6,000", "王記厨房|¥3,000", "セレモニーホール掬水苑 太白|¥30,000", "和麺ぐり虎 名古屋店|¥5,000"], "中岡世里菜": ["田中モータース|¥10,000", "金乃竹 茶寮|¥35,000"]}, "2025-11": {"南原龍司": ["元祖ニュータンタンメン本舗白楽店|¥24,000", "OLD SKOOL 4 U|¥3,000", "もつ鍋居酒屋ばか正直|¥3,000", "八百屋＆Cafe はっぴ〜べじたぶる|¥3,000", "Echarity Naha|¥3,000", "ヒカリヤ　ニシ|¥3,000", "焼肉TAKATOEN　貴闘炎|¥3,000", "酒処ぷるーたん。|¥3,000", "尾山屋|¥3,000", "食道 いし川|¥3,000", "SABAR 徳山銀座店|¥3,000", "佐藤写真館|¥3,000", "ザ・パイホール・ロサンゼルス  小金井公園店|¥3,000", "gaプログラミング徳島|¥3,000", "シェリールスクール|¥3,000", "2539kitchen|¥3,000", "Cerbea|¥3,000", "MALo|¥3,000", "大海庵|¥3,000", "SeeK|¥3,000", "モーダ・ガレリア|¥3,000", "yourself|¥3,000", "Cork|¥3,000", "cocoregene|¥3,000", "ちゅら肌|¥3,000", "Rei kjavik spa&kea|¥3,000", "神楽坂鮨こんこん|¥3,000", "ローゲンマイヤーJR芦屋店|¥3,000", "大衆ビストロJIN|¥3,000", "ぐり虎 Ocean Club|¥30,000", "麺処ぐり虎 名古屋栄|¥5,000"], "中岡世里菜": ["人類みな辛さが全て　練馬店|¥30,000", "Tamaya池袋東武店|¥30,000", "Ritz 　幸せの選択【リッツ】|¥30,000", "スマホファクトリー ドン・キホーテ柏駅前店|¥30,000", "焼き鳥と名古屋めし 宅飲み居酒屋ぐっさん家|¥5,000"], "田中莉奈": ["Shisha cafe & bar 赤坂煙研究所|¥10,000", "健康堂整骨院 大岡山院|¥24,000", "CrossFit Nishi Azabu|¥35,000"]}, "2025-12": {"田中莉奈": ["LATTE GRAPHIC 自由が丘店|¥5,000", "LATTE GRAPHIC 町田店|¥5,000", "ラテグラフィック海老名店|¥5,000", "LATTE GRAPHIC たまプラーザ店|¥5,000", "LATTEGRAPHIC 武蔵小杉店|¥5,000", "LATTE GRAPHIC 聖蹟桜ヶ丘|¥5,000", "鉄板焼き&月島もんじゃ 梵天丸|¥25,000"], "南原龍司": ["おおうら眼科|¥40,000", "千住ジンギスカン海月|¥3,000", "studio mirth【スタジオ マース】|¥3,000", "HARILANCE|¥3,000", "cafe restaurant moto 1（紅さんざし店）|¥3,000", "千葉蜂駆除センター船橋店|¥6,000", "四天王寺茶屋|¥3,000", "en ROSE|¥3,000", "中華そば 流川|¥3,000", "瑞江steak&barハックルベリー|¥3,000", "鮨・おか林|¥3,000", "WASAKE Sake Experience|¥3,000", "BARBERSHOP ONFLEEK|¥3,000", "aLLパーソナルジム|¥3,000", "ZAB鍼灸整骨院|¥3,000", "AGLAIA personal gym 表参道本店|¥3,000", "牛清　五ヶ所店|¥3,000", "牛清　鵜方店|¥3,000", "牛清　伊勢店|¥3,000", "台湾タンパオ三宮生田ロード店|¥3,000", "hei coffee|¥3,000", "焼肉牛炭|¥3,000", "和酒立呑　明後日|¥3,000", "ステーキ屋King|¥3,000", "五稜農園|¥3,000", "79LINA SPA　|¥3,000", "からだ屋　博多店|¥3,000", "DLIGHT|¥3,000", "ユアースポーツクラブ 船堀|¥20,000", "スパ＆スポーツ ユアー南流山|¥20,000", "はた歯科クリニック|¥30,000"], "中岡世里菜": ["整体院 福|¥15,500", "買取専門店 玉光堂 長野駅前店|¥30,000"], "高橋広輝": ["鉄板焼Bar 7|¥35,000", "personal studio Route|¥5,000"]}, "2026-01": {"南原龍司": ["salon Flower|¥3,000", "プライベートサウナKIZAMI|¥3,000", "フェイシャルワックス専門店 WHITE WAX つくば店|¥3,000", "毛穴・ニキビケア・ハーブピーリング【韓国肌管理専門店】WHITE AQUA つくば店|¥3,000", "CASA tres 3 カーサトレス|¥3,000", "CASA grande|¥3,000", "おいもい|¥3,000", "伊豆稲取MINAMO|¥3,000", "ケールの王様 JIYUGAOKA|¥3,000", "tsumugi|¥3,000", "NATURAL BEAUTY & ESTHETIC ZIN|¥3,000", "Nails 4U|¥3,000", "いづつ屋　先斗町店|¥3,000", "LIFE TIME|¥3,000", "HIMAWARI|¥3,000", "grill&Italian Falo'会津若松店|¥3,000"], "中岡世里菜": ["富士交通株式会社|¥35,000", "買取専門店 玉光堂 ドン・キホーテ柏駅前店|¥30,000", "買取大吉 上石神井駅前店|¥35,000", "Nishiazabu RTD|¥35,000"]}, "2026-02": {"南原龍司": ["Hair salon Chelsea Omotesando|¥35,000", "locca|¥3,000", "五感　仙川店|¥3,000", "株式会社高松商事|¥3,000", "株式会社ホロニック　セトレ ハイランドヴィラ姫路|¥3,000", "ヘアーサロン ひらかわ|¥3,000", "D-light|¥3,000", "ハロー！パソコン教室 トナリエクレオ つくば校|¥3,000", "試食BARアサクサ|¥3,000", "pico ricci|¥3,000", "寿司居酒屋 純|¥3,000", "峠の釜飯食堂鶏と卵|¥3,000", "BRACERIA CACTUS|¥3,000", "iki|¥3,000"], "田中莉奈": ["ラヴィスヴィラスイート|¥13,500", "太陽学院 西神奈川校|¥18,000"], "高橋広輝": ["SHIROホワイトニング|¥20,000"], "中岡世里菜": ["おたからや鶴ヶ丘店|¥35,000"]}, "2026-03": {"南原龍司": ["KX Pilates 東新宿店|¥24,000"], "高橋広輝": ["旭川味噌ラーメン ばんから上野店|¥12,400", "旭川味噌ばんからラーメン 池袋西口店|¥8,800", "東京豚骨拉麺ばんから 新宿歌舞伎町店|¥12,400", "nicole affetto|¥35,000", "One’s Remake|¥30,000"], "田中莉奈": ["いちかわ皮フ科|¥10,000"]}, "2026-04": {"中岡世里菜": ["メルコヘアデザイン|¥35,000"], "田中莉奈": ["CLOUDNINE 烏丸御池 パーソナルトレーニングジム|¥35,000", "健康堂整骨院 蒲田院|¥30,000"]}, "2026-05": {"田中莉奈": ["植村美容外科|¥27,000"]}, "2026-06": {"中岡世里菜": ["パーソナルトレーニングジムWAKE|¥27,000", "メンズカット専門店 GRAND 本八幡店|¥24,000"]}};
+
+function renderMrrSummary() {
+  var curM='2026-04';
+  var chk=isMrrConfirmed(curM);
+  var isEst=!chk.confirmed;
+  var D=isEst?MRR_ESTIMATE_APR:MRR_CONFIRMED_APR;
+  var totalMrr=D.total.mrr,totalCnt=D.total.cnt,churnMrr=D.total.churn_mrr,churnCnt=D.total.churn_cnt;
+  var chRate=(churnMrr/(totalMrr+churnMrr)*100).toFixed(1);
+  var badge=isEst
+    ?'<span class="est-badge est">⚡概算 '+chk.rate+'%</span>'
+    :'<span class="est-badge confirmed">✅ 確定</span>';
+  var note=isEst
+    ?'<div class="mrr-status-note">概算 = 前月稼働―当月解約<br>入力率 '+chk.rate+'%（90%以上で確定に切替）</div>'
+    :'<div class="mrr-status-note">入力率 '+chk.rate+'% ― 確定値として表示中</div>';
+
+  var wrap=document.getElementById('mrrSummaryWrap');
+  if(!wrap)return;
+  wrap.innerHTML='<div class="mrr-grid" style="margin-bottom:16px;">'
+    +'<div class="mrr-c"><div class="mrr-lbl">4月 保有MRR'+badge+'</div>'
+    +'<div class="mrr-val">¥'+totalMrr.toLocaleString()+'</div>'
+    +'<div class="mrr-sub">'+totalCnt+'店舗</div>'+note+'</div>'
+    +'<div class="mrr-c"><div class="mrr-lbl">4月 解約MRR</div>'
+    +'<div class="mrr-val" style="color:var(--danger);">¥'+churnMrr.toLocaleString()+'</div>'
+    +'<div class="mrr-sub">'+churnCnt+'件（田中4件・中岡１件）</div></div>'
+    +'<div class="mrr-c"><div class="mrr-lbl">当月チャーンレート（4月）</div>'
+    +'<div class="mrr-val" style="color:var(--success);">'+chRate+'%</div>'
+    +'<div class="mrr-sub">解約MRR ÷ 保有MRR</div></div>'
+    +'</div>';
+
+  var tb=document.getElementById('mrrPersonTb');
+  if(!tb)return;
+  tb.innerHTML='';
+  var PNAMES=['南原龍司','田中莉奈','中岡世里菜','高橋広輝'];
+  var PDCLS=['d1','d2','d3','d4'];
+  PNAMES.forEach(function(sn,i){
+    var pd=D.persons[sn]||{mrr:0,cnt:0,churn_mrr:0,churn_cnt:0};
+    var base=pd.mrr+pd.churn_mrr;
+    var rate=base>0?(pd.churn_mrr/base*100).toFixed(1):'0.0';
+    var rc=parseFloat(rate)<=3?'var(--success)':parseFloat(rate)<=6?'var(--warn)':'var(--danger)';
+    var churnCell='';
+    if(pd.churn_cnt>0){
+      var did='chid-'+i,aid='arid-'+i;
+      var items=((CHURN_DETAIL_ALL&&CHURN_DETAIL_ALL['2026-04']&&CHURN_DETAIL_ALL['2026-04'][sn])||[]).map(function(s){var p=s.lastIndexOf('|');return'<div class="churn-item">'+s.slice(0,p)+'<span>'+s.slice(p+1)+'</span></div>';}).join('');
+      churnCell='<span onclick="toggleChurnIdx(\u0022'+did+'\u0022,\u0022'+aid+'\u0022)" style="color:var(--danger);cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:4px;">'+pd.churn_cnt+'\u4ef6 <span id="'+aid+'" style="font-size:9px;transition:transform .2s;display:inline-block;">\u25bc</span></span><div id="'+did+'" class="churn-drop" style="display:none;">'+items+'</div>';
+    }else{churnCell='—';}
+    var mrrTxt=isEst?'¥'+pd.mrr.toLocaleString()+'<span style="font-size:10px;color:var(--warn);margin-left:4px;">概算</span>':'¥'+pd.mrr.toLocaleString();
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><span class="md"><span class="dot '+PDCLS[i]+'"></span>'+sn+'</span></td>'
+      +'<td class="r"><strong>'+mrrTxt+'</strong></td><td class="r">'+pd.cnt+'件</td>'
+      +'<td class="r">'+churnCell+'</td>'
+      +'<td class="r" style="color:'+(pd.churn_mrr>0?'var(--danger)':'var(--muted)')+'">'+(pd.churn_mrr>0?'¥'+pd.churn_mrr.toLocaleString():'—')+'</td>'
+      +'<td class="r"><strong style="color:'+rc+';">'+rate+'%</strong></td>';
+    tb.appendChild(tr);
+  });
+  var otherMrr=isEst?0:99000;
+  var tr2=document.createElement('tr');
+  tr2.innerHTML='<td><span class="md"><span class="dot d5"></span>その他</span></td>'
+    +'<td class="r">¥'+otherMrr.toLocaleString()+'</td><td class="r">'+(isEst?'—':'5件')+'</td><td class="r">—</td><td class="r">—</td><td class="r">0.0%</td>';
+  tb.appendChild(tr2);
+  var totMrr2=isEst?totalMrr:MRR_CONFIRMED_APR.total.mrr;
+  var totCnt2=isEst?totalCnt:MRR_CONFIRMED_APR.total.cnt;
+  var totR=(churnMrr/(totMrr2+churnMrr)*100).toFixed(1);
+  var trc=parseFloat(totR)<=3?'var(--success)':parseFloat(totR)<=6?'var(--warn)':'var(--danger)';
+  var tot=document.createElement('tr');tot.className='tot';
+  tot.innerHTML='<td><strong>合計 '+badge+'</strong></td>'
+    +'<td class="r"><strong>¥'+totMrr2.toLocaleString()+'</strong></td>'
+    +'<td class="r"><strong>'+totCnt2+'件</strong></td>'
+    +'<td class="r" style="color:var(--danger);"><strong>'+churnCnt+'件</strong></td>'
+    +'<td class="r" style="color:var(--danger);"><strong>¥'+churnMrr.toLocaleString()+'</strong></td>'
+    +'<td class="r"><strong style="color:'+trc+';">'+totR+'%</strong></td>';
+  tb.appendChild(tot);
+}
+
+function toggleChurnIdx(id,aid){
+  var el=document.getElementById(id),ar=document.getElementById(aid);
+  if(!el)return;
+  var open=el.style.display==='none';
+  el.style.display=open?'block':'none';
+  if(ar)ar.style.transform=open?'rotate(180deg)':'';
+}
+
+const STATIC_SWW_DATA = {"2026-02": {"total": 13, "seika": 9, "taishogai": 4, "mikomi": 0, "cases": [{"name": "ダイワロイネットホテル四ツ橋", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "D", "price": 0, "shodan_d": "2026/03/09", "shodan_yotei": "2026/02/26", "ans_d": "2026/04/14", "industry": ""}, {"name": "ベストウェスタン 大阪塚本", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "", "price": 0, "shodan_d": "2026/02/26", "shodan_yotei": "2026/02/26", "ans_d": "", "industry": ""}, {"name": "東横ＩＮＮ新大阪駅東口", "person": "南原龍司", "status": "前確NG", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/02/26", "ans_d": "", "industry": ""}, {"name": "ホテル 法華クラブ大阪", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "B", "price": 3000, "shodan_d": "2026/02/18", "shodan_yotei": "2026/02/18", "ans_d": "2026/03/16", "industry": ""}, {"name": "大阪鶴橋亭ホテル　Ａｓａｈｉ　ｇｒｏｕｐ", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "B+", "price": 35000, "shodan_d": "2026/02/18", "shodan_yotei": "2026/02/18", "ans_d": "2026/03/03", "industry": ""}, {"name": "ホテルトレンド高槻", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "", "price": 0, "shodan_d": "2026/02/17", "shodan_yotei": "2026/02/17", "ans_d": "", "industry": ""}, {"name": "ダイワロイネットホテル京都テラス八条ＰＲＥＭＩＥＲ", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "B", "price": 35000, "shodan_d": "2026/02/17", "shodan_yotei": "2026/02/17", "ans_d": "2026/04/14", "industry": ""}, {"name": "ホテル マイステイズ 新大阪コンファレンスセンター", "person": "南原龍司", "status": "前確NG", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "2026/02/17", "shodan_yotei": "2026/02/16", "ans_d": "", "industry": ""}, {"name": "ホテル マイステイズ 堺筋本町", "person": "南原龍司", "status": "商談NG", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "2026/02/16", "shodan_yotei": "2026/02/16", "ans_d": "", "industry": ""}, {"name": "ダイワロイネットホテル京都駅前ＰＲＥＭＩＥＲ", "person": "南原龍司", "status": "見込み", "sww_result": "30000", "rank": "B", "price": 0, "shodan_d": "2026/02/12", "shodan_yotei": "2026/02/12", "ans_d": "2026/07/02", "industry": ""}, {"name": "新大阪 サニー ストン ホテル", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "", "price": 0, "shodan_d": "2026/02/12", "shodan_yotei": "2026/02/12", "ans_d": "", "industry": ""}, {"name": "アスティルホテル新大阪プレシャス", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "D", "price": 0, "shodan_d": "2026/02/09", "shodan_yotei": "2026/02/09", "ans_d": "2026/03/16", "industry": ""}, {"name": "サニーストンホテル", "person": "南原龍司", "status": "前確NG", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/02/09", "ans_d": "", "industry": ""}]}, "2026-03": {"total": 12, "seika": 8, "taishogai": 4, "mikomi": 0, "cases": [{"name": "東横ＩＮＮ京橋桜ノ宮", "person": "南原龍司", "status": "前確NG", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "2026/03/23", "shodan_yotei": "2026/03/30", "ans_d": "", "industry": ""}, {"name": "MISEREL大村", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "", "price": 0, "shodan_d": "2026/03/27", "shodan_yotei": "2026/03/27", "ans_d": "", "industry": "脱毛"}, {"name": "だるまや有限会社(炭火焼き生ラムジンギスカンだるまや新宿三丁目店)", "person": "南原龍司", "status": "アポ戻し", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/03/26", "ans_d": "", "industry": "焼肉店"}, {"name": "うなじ矯正専門店ミース　新宿店", "person": "高橋広輝", "status": "見込み", "sww_result": "30000", "rank": "C", "price": 0, "shodan_d": "2026/03/24", "shodan_yotei": "2026/03/24", "ans_d": "2026/04/03", "industry": ""}, {"name": "wagyu yakiniku shogun-将軍-", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "C", "price": 0, "shodan_d": "2026/03/19", "shodan_yotei": "2026/03/19", "ans_d": "2026/04/14", "industry": "焼肉店"}, {"name": "東横ＩＮＮ大阪天神橋筋六丁目", "person": "南原龍司", "status": "商談NG", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "2026/03/17", "shodan_yotei": "2026/03/17", "ans_d": "", "industry": ""}, {"name": "焼肉 99BBQ", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "C", "price": 0, "shodan_d": "2026/03/16", "shodan_yotei": "2026/03/16", "ans_d": "2026/03/23", "industry": "焼肉店"}, {"name": "根岸町接骨院", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "B", "price": 0, "shodan_d": "2026/03/12", "shodan_yotei": "2026/03/12", "ans_d": "2026/03/30", "industry": ""}, {"name": "ホテル日本橋サイボー", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "C", "price": 15000, "shodan_d": "2026/03/11", "shodan_yotei": "2026/03/11", "ans_d": "2026/03/19", "industry": ""}, {"name": "ホテルサンライフ", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "C", "price": 35000, "shodan_d": "2026/03/09", "shodan_yotei": "2026/03/09", "ans_d": "2026/04/23", "industry": ""}, {"name": "名鉄イン新大阪駅東口", "person": "南原龍司", "status": "時期改め", "sww_result": "30000", "rank": "", "price": 35000, "shodan_d": "2026/03/05", "shodan_yotei": "2026/03/05", "ans_d": "", "industry": ""}, {"name": "アーバンホテル京都四条プレミアム", "person": "南原龍司", "status": "前確NG", "sww_result": "対象外", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/03/03", "ans_d": "", "industry": ""}]}, "2026-04": {"total": 11, "seika": 2, "taishogai": 1, "mikomi": 8, "cases": [{"name": "株式会社OZPLAN", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/27", "ans_d": "", "industry": "建築リフォーム工事業"}, {"name": "beautysalon　CREER（クレエ）", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/23", "ans_d": "", "industry": "学習塾"}, {"name": "ホグレルスペース横浜阪東橋店", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/23", "ans_d": "", "industry": "ヨガ教室・ヨガスタジオ"}, {"name": "株式会社シーエスケイ放課後等デイサービスあじさい浜町", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/21", "ans_d": "", "industry": "カルチャースクール"}, {"name": "株式会社プロスパーサンダ", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/20", "ans_d": "", "industry": "水泳教室"}, {"name": "株式会社アスクリエイト", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/20", "ans_d": "", "industry": "学習塾"}, {"name": "櫻井釣漁具株式会社", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/17", "ans_d": "", "industry": "学習塾"}, {"name": "有限会社阪本進学教室", "person": "南原龍司", "status": "アポ", "sww_result": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/16", "ans_d": "", "industry": "学習塾"}, {"name": "学研CAIスクール Study Funユーミー鵠沼校", "person": "南原龍司", "status": "見込み", "sww_result": "30000", "rank": "C", "price": 0, "shodan_d": "2026/04/14", "shodan_yotei": "2026/04/14", "ans_d": "2026/04/17", "industry": "学習塾"}, {"name": "酒場845新宿3丁目店", "person": "南原龍司", "status": "見込み", "sww_result": "対象外", "rank": "D", "price": 0, "shodan_d": "2026/04/08", "shodan_yotei": "2026/04/08", "ans_d": "2026/04/21", "industry": "大衆居酒屋"}, {"name": "丸の内　相馬庵", "person": "南原龍司", "status": "商談NG", "sww_result": "30000", "rank": "C", "price": 0, "shodan_d": "2026/04/06", "shodan_yotei": "2026/04/06", "ans_d": "2026/04/14", "industry": "焼肉店"}]}};
+const STATIC_ROUTE_DATA = [{"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "株式会社コモンズ不動産", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/27", "ans_d": ""}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "契約完了", "name": "東京千住・胃と大腸の消化器内視鏡クリニック", "rank": "S", "price": 45000, "shodan_d": "2026/04/22", "shodan_yotei": "2026/04/22", "ans_d": ""}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "契約完了", "name": "東京千住・尚視会クリニック 健診プラザ", "rank": "S", "price": 45000, "shodan_d": "2026/04/22", "shodan_yotei": "2026/04/22", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "リラクゼーションサロンHANABI熊本", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/05/01", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "MONAL nail&eyebrow", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/05/01", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "トライプラス仙台落合校", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/05/11", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "見込み", "name": "CHILL kagurazaka", "rank": "B+", "price": 40000, "shodan_d": "2026/04/20", "shodan_yotei": "2026/04/20", "ans_d": "2026/04/24"}, {"person": "南原龍司", "route": "SWW", "status": "前確NG", "name": "有限会社ミケーネ", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/21", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "株式会社シーエスケイ放課後等デイサービスあじさい浜町", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/21", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "ホグレルスペース横浜阪東橋店", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/23", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "株式会社OZPLAN", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/27", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "見込み", "name": "株式会社プロスパーサンダ", "rank": "C", "price": 0, "shodan_d": "2026/04/20", "shodan_yotei": "2026/04/20", "ans_d": "2026/04/27"}, {"person": "南原龍司", "route": "SWW", "status": "アポ", "name": "beautysalon　CREER（クレエ）", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/23", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "有限会社阪本進学教室", "rank": "", "price": 0, "shodan_d": "2026/04/16", "shodan_yotei": "2026/04/16", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "見込み", "name": "櫻井釣漁具株式会社", "rank": "B", "price": 20000, "shodan_d": "2026/04/17", "shodan_yotei": "2026/04/17", "ans_d": "2026/04/30"}, {"person": "南原龍司", "route": "SWW", "status": "見込み", "name": "株式会社アスクリエイト", "rank": "C", "price": 0, "shodan_d": "2026/04/20", "shodan_yotei": "2026/04/20", "ans_d": "2026/05/29"}, {"person": "南原龍司", "route": "SWW", "status": "見込み", "name": "学研CAIスクール Study Funユーミー鵠沼校", "rank": "C", "price": 0, "shodan_d": "2026/04/14", "shodan_yotei": "2026/04/14", "ans_d": "2026/04/22"}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "梅田ワーフ", "rank": "S", "price": 10000, "shodan_d": "2026/04/06", "shodan_yotei": "2026/04/06", "ans_d": "2026/04/23"}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "梅田 カナリス -canaris-", "rank": "S", "price": 10000, "shodan_d": "2026/04/06", "shodan_yotei": "2026/04/06", "ans_d": "2026/04/23"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "酒場845新宿3丁目店", "rank": "D", "price": 0, "shodan_d": "2026/04/08", "shodan_yotei": "2026/04/08", "ans_d": "2026/04/21"}, {"person": "南原龍司", "route": "問い合わせ", "status": "アポ", "name": "横浜みなと呼吸器内科・内科クリニック", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/04/30", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "株式会社エムアンドアール", "rank": "D", "price": 100000, "shodan_d": "2026/03/31", "shodan_yotei": "2026/03/31", "ans_d": "2026/04/29"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "丸の内　相馬庵", "rank": "C", "price": 0, "shodan_d": "2026/04/06", "shodan_yotei": "2026/04/06", "ans_d": "2026/04/14"}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "しゃぶしゃぶ食べ放題 御前様", "rank": "S", "price": 40000, "shodan_d": "2026/03/23", "shodan_yotei": "2026/03/23", "ans_d": "2026/04/03"}, {"person": "南原龍司", "route": "SWW", "status": "アポ戻し", "name": "だるまや有限会社(炭火焼き生ラムジンギスカンだるまや新宿三丁目店)", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/03/26", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "MISEREL大村", "rank": "", "price": 0, "shodan_d": "2026/03/27", "shodan_yotei": "2026/03/27", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "おおうえこどもクリニック", "rank": "C", "price": 0, "shodan_d": "2026/03/12", "shodan_yotei": "2026/03/12", "ans_d": "2026/03/23"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "うなじ矯正専門店ミース　新宿店", "rank": "C", "price": 0, "shodan_d": "2026/03/24", "shodan_yotei": "2026/03/24", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "wagyu yakiniku shogun-将軍-", "rank": "C", "price": 0, "shodan_d": "2026/03/19", "shodan_yotei": "2026/03/19", "ans_d": "2026/04/14"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "焼肉 99BBQ", "rank": "C", "price": 0, "shodan_d": "2026/03/16", "shodan_yotei": "2026/03/16", "ans_d": "2026/03/23"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ホテル日本橋サイボー", "rank": "C", "price": 15000, "shodan_d": "2026/03/11", "shodan_yotei": "2026/03/11", "ans_d": "2026/03/19"}, {"person": "南原龍司", "route": "SWW", "status": "前確NG", "name": "東横ＩＮＮ京橋桜ノ宮", "rank": "", "price": 0, "shodan_d": "2026/03/23", "shodan_yotei": "2026/03/30", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "東横ＩＮＮ大阪天神橋筋六丁目", "rank": "", "price": 0, "shodan_d": "2026/03/17", "shodan_yotei": "2026/03/17", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "根岸町接骨院", "rank": "B", "price": 0, "shodan_d": "2026/03/12", "shodan_yotei": "2026/03/12", "ans_d": "2026/03/30"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ホテルサンライフ", "rank": "C", "price": 35000, "shodan_d": "2026/03/09", "shodan_yotei": "2026/03/09", "ans_d": "2026/04/23"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ダイワロイネットホテル四ツ橋", "rank": "D", "price": 0, "shodan_d": "2026/03/09", "shodan_yotei": "2026/02/26", "ans_d": "2026/04/14"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "大阪鶴橋亭ホテル　Ａｓａｈｉ　ｇｒｏｕｐ", "rank": "B+", "price": 35000, "shodan_d": "2026/02/18", "shodan_yotei": "2026/02/18", "ans_d": "2026/03/03"}, {"person": "南原龍司", "route": "SWW", "status": "前確NG", "name": "ホテル マイステイズ 新大阪コンファレンスセンター", "rank": "", "price": 0, "shodan_d": "2026/02/17", "shodan_yotei": "2026/02/16", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ホテル マイステイズ 堺筋本町", "rank": "", "price": 0, "shodan_d": "2026/02/16", "shodan_yotei": "2026/02/16", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ベストウェスタン 大阪塚本", "rank": "", "price": 0, "shodan_d": "2026/02/26", "shodan_yotei": "2026/02/26", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ホテル 法華クラブ大阪", "rank": "B", "price": 3000, "shodan_d": "2026/02/18", "shodan_yotei": "2026/02/18", "ans_d": "2026/03/16"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "新大阪 サニー ストン ホテル", "rank": "", "price": 0, "shodan_d": "2026/02/12", "shodan_yotei": "2026/02/12", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ダイワロイネットホテル京都テラス八条ＰＲＥＭＩＥＲ", "rank": "B", "price": 35000, "shodan_d": "2026/02/17", "shodan_yotei": "2026/02/17", "ans_d": "2026/04/14"}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "アスティルホテル新大阪プレシャス", "rank": "D", "price": 0, "shodan_d": "2026/02/09", "shodan_yotei": "2026/02/09", "ans_d": "2026/03/16"}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "SPSエンタープライズ株式会社", "rank": "S", "price": 35000, "shodan_d": "2026/02/09", "shodan_yotei": "2026/02/09", "ans_d": "2026/02/26"}, {"person": "南原龍司", "route": "SWW", "status": "見込み", "name": "ダイワロイネットホテル京都駅前ＰＲＥＭＩＥＲ", "rank": "B", "price": 0, "shodan_d": "2026/02/12", "shodan_yotei": "2026/02/12", "ans_d": "2026/07/02"}, {"person": "南原龍司", "route": "SWW", "status": "前確NG", "name": "東横ＩＮＮ新大阪駅東口", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/02/26", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "前確NG", "name": "アーバンホテル京都四条プレミアム", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/03/03", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "商談NG", "name": "ホテルトレンド高槻", "rank": "", "price": 0, "shodan_d": "2026/02/17", "shodan_yotei": "2026/02/17", "ans_d": ""}, {"person": "南原龍司", "route": "SWW", "status": "時期改め", "name": "名鉄イン新大阪駅東口", "rank": "", "price": 35000, "shodan_d": "2026/03/05", "shodan_yotei": "2026/03/05", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "ミライフ東日本株式会社", "rank": "C", "price": 150000, "shodan_d": "2026/02/10", "shodan_yotei": "2026/02/10", "ans_d": "2026/03/13"}, {"person": "南原龍司", "route": "SWW", "status": "前確NG", "name": "サニーストンホテル", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2026/02/09", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "とねり皮膚科・形成外科", "rank": "S", "price": 20000, "shodan_d": "2026/04/02", "shodan_yotei": "2025/12/22", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "mana.OKINAWA本店", "rank": "S", "price": 27000, "shodan_d": "2025/12/24", "shodan_yotei": "2025/12/24", "ans_d": "2026/01/09"}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "プザ アジアンダイニング＆バー", "rank": "C", "price": 0, "shodan_d": "2025/12/16", "shodan_yotei": "2025/12/16", "ans_d": "2025/12/25"}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "ノストス", "rank": "A", "price": 24000, "shodan_d": "2025/12/12", "shodan_yotei": "2025/12/12", "ans_d": "2025/12/16"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "商談NG", "name": "米澤紀伊國屋", "rank": "", "price": 0, "shodan_d": "2025/12/04", "shodan_yotei": "2025/12/04", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "チェルシー表参道", "rank": "A", "price": 35000, "shodan_d": "2025/11/25", "shodan_yotei": "2025/11/27", "ans_d": "2025/12/19"}, {"person": "高橋広輝", "route": "問い合わせ", "status": "商談NG", "name": "ワールドウィング東戸塚", "rank": "C", "price": 0, "shodan_d": "2025/11/11", "shodan_yotei": "2025/11/11", "ans_d": "2025/11/28"}, {"person": "高橋広輝", "route": "問い合わせ", "status": "時期改め", "name": "トリム NATURAL WINE IZAKAYA", "rank": "C", "price": 35000, "shodan_d": "2025/10/14", "shodan_yotei": "2025/10/14", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "商談NG", "name": "同愛会病院", "rank": "B", "price": 30000, "shodan_d": "2025/09/29", "shodan_yotei": "2025/09/29", "ans_d": "2026/01/09"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "LATTE GRAPHIC 自由が丘店", "rank": "", "price": 5000, "shodan_d": "2025/09/22", "shodan_yotei": "2025/09/22", "ans_d": "2025/09/22"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "LATTE GRAPHIC 町田店", "rank": "", "price": 5000, "shodan_d": "2025/09/22", "shodan_yotei": "2025/09/22", "ans_d": "2025/09/22"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "ラテグラフィック海老名店", "rank": "", "price": 5000, "shodan_d": "2025/09/22", "shodan_yotei": "2025/09/22", "ans_d": "2025/09/22"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "LATTE GRAPHIC たまプラーザ店", "rank": "", "price": 5000, "shodan_d": "2025/09/22", "shodan_yotei": "2025/09/22", "ans_d": "2025/09/22"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "LATTEGRAPHIC 武蔵小杉店", "rank": "", "price": 5000, "shodan_d": "2025/09/22", "shodan_yotei": "2025/09/22", "ans_d": "2025/09/22"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "LATTE GRAPHIC 聖蹟桜ヶ丘", "rank": "", "price": 5000, "shodan_d": "2025/09/22", "shodan_yotei": "2025/09/22", "ans_d": "2025/09/22"}, {"person": "高橋広輝", "route": "問い合わせ", "status": "アポ戻し", "name": "にじいろ整体整骨院", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2025/10/03", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "LATTE GRAPHIC麻布台", "rank": "B+", "price": 30000, "shodan_d": "2025/09/11", "shodan_yotei": "2025/09/11", "ans_d": "2025/09/19"}, {"person": "高橋広輝", "route": "問い合わせ", "status": "契約完了", "name": "nicole cifeito(ニコルアフェット)", "rank": "S", "price": 35000, "shodan_d": "2025/09/05", "shodan_yotei": "2025/09/05", "ans_d": "2025/09/29"}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "契約完了", "name": "焼肉 千久左", "rank": "S", "price": 30000, "shodan_d": "2025/08/22", "shodan_yotei": "2025/08/22", "ans_d": "2025/08/22"}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "商談NG", "name": "多摩メディカルクリニック", "rank": "C", "price": 0, "shodan_d": "2025/08/28", "shodan_yotei": "2025/08/28", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "商談NG", "name": "株式会社linkwin", "rank": "C", "price": 0, "shodan_d": "2025/08/18", "shodan_yotei": "2025/08/18", "ans_d": "2025/11/28"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "shisha cafe kuma", "rank": "S", "price": 27000, "shodan_d": "2025/07/28", "shodan_yotei": "2025/07/28", "ans_d": ""}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "商談NG", "name": "株式会社サンネット", "rank": "C", "price": 0, "shodan_d": "2025/07/01", "shodan_yotei": "2025/07/01", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "商談NG", "name": "（有）伊藤瓦店", "rank": "B", "price": 0, "shodan_d": "2025/05/23", "shodan_yotei": "2025/05/23", "ans_d": "2025/05/30"}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "商談NG", "name": "beauty salon arce", "rank": "C", "price": 0, "shodan_d": "2025/05/21", "shodan_yotei": "2025/05/21", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "", "rank": "", "price": 0, "shodan_d": "2025/05/15", "shodan_yotei": "2025/05/15", "ans_d": ""}, {"person": "高橋広輝", "route": "問い合わせ", "status": "商談NG", "name": "IRODORI TABLE", "rank": "C", "price": 0, "shodan_d": "2025/03/31", "shodan_yotei": "2025/04/02", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "契約完了", "name": "クラウドナイン", "rank": "B+", "price": 35000, "shodan_d": "2025/03/26", "shodan_yotei": "2025/03/26", "ans_d": "2025/03/31"}, {"person": "田中莉奈", "route": "問い合わせ", "status": "仮アポ", "name": "", "rank": "", "price": 0, "shodan_d": "", "shodan_yotei": "2025/03/10", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "商談NG", "name": "エヌエス・テック株式会社", "rank": "", "price": 0, "shodan_d": "2025/03/05", "shodan_yotei": "2025/03/05", "ans_d": ""}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "商談NG", "name": "株式会社ブレインスリープ", "rank": "C", "price": 0, "shodan_d": "2025/02/20", "shodan_yotei": "2025/02/20", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "横山和樹", "rank": "", "price": 0, "shodan_d": "2025/02/20", "shodan_yotei": "2025/02/20", "ans_d": ""}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "商談NG", "name": "銀座屋高槻センター街店", "rank": "B", "price": 0, "shodan_d": "2024/12/23", "shodan_yotei": "2024/12/23", "ans_d": ""}, {"person": "田中莉奈", "route": "問い合わせ", "status": "商談NG", "name": "パーソナルマシンピラティスSAKURA高田馬場・西早稲田店", "rank": "C", "price": 0, "shodan_d": "2024/12/05", "shodan_yotei": "2024/12/05", "ans_d": "2024/12/13"}, {"person": "中岡世里菜", "route": "問い合わせ", "status": "契約完了", "name": "アスピカ邸宅葬ゆら音 西開発", "rank": "S", "price": 35000, "shodan_d": "2024/11/21", "shodan_yotei": "2024/11/28", "ans_d": ""}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "ハルフウェイ", "rank": "D", "price": 27000, "shodan_d": "2024/07/11", "shodan_yotei": "2024/07/11", "ans_d": "2024/07/31"}, {"person": "南原龍司", "route": "問い合わせ", "status": "契約完了", "name": "セレモニーホール掬水苑 太白", "rank": "A", "price": 30000, "shodan_d": "2024/07/03", "shodan_yotei": "2024/07/03", "ans_d": "2024/07/31"}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "アットビジネスセンター", "rank": "C", "price": 0, "shodan_d": "2024/06/05", "shodan_yotei": "2024/06/05", "ans_d": "2024/08/20"}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "センチュリー21三巧商事", "rank": "D", "price": 0, "shodan_d": "2024/06/10", "shodan_yotei": "2024/06/10", "ans_d": "2024/07/29"}, {"person": "南原龍司", "route": "問い合わせ", "status": "商談NG", "name": "株式会社アール", "rank": "C", "price": 0, "shodan_d": "2024/06/03", "shodan_yotei": "2024/06/03", "ans_d": "2024/08/02"}, {"person": "南原龍司", "route": "問い合わせ", "status": "時期改め", "name": "株式会社SEEDS", "rank": "", "price": 0, "shodan_d": "2024/05/30", "shodan_yotei": "2024/05/30", "ans_d": "2024/08/05"}];
+const MRR_DATA = {"2025-04": {"南原龍司": {"mrr": 2630480, "cnt": 414, "churn_mrr": 59000, "churn_cnt": 5, "new_mrr": 75000, "new_cnt": 18, "rate": 2.2}, "田中莉奈": {"mrr": 2249966, "cnt": 105, "churn_mrr": 27000, "churn_cnt": 1, "new_mrr": 60000, "new_cnt": 2, "rate": 1.2}, "中岡世里菜": {"mrr": 2383730, "cnt": 86, "churn_mrr": 30000, "churn_cnt": 1, "new_mrr": 54273, "new_cnt": 2, "rate": 1.3}, "高橋広輝": {"mrr": 1919200, "cnt": 42, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 30000, "new_cnt": 1, "rate": 0.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-05": {"南原龍司": {"mrr": 2862480, "cnt": 433, "churn_mrr": 59000, "churn_cnt": 8, "new_mrr": 85000, "new_cnt": 25, "rate": 2.1}, "田中莉奈": {"mrr": 2305566, "cnt": 106, "churn_mrr": 62500, "churn_cnt": 2, "new_mrr": 57000, "new_cnt": 2, "rate": 2.7}, "中岡世里菜": {"mrr": 2491730, "cnt": 89, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 130000, "new_cnt": 4, "rate": 0.0}, "高橋広輝": {"mrr": 1968700, "cnt": 42, "churn_mrr": 30000, "churn_cnt": 1, "new_mrr": 0, "new_cnt": 0, "rate": 1.5}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-06": {"南原龍司": {"mrr": 2801080, "cnt": 439, "churn_mrr": 78000, "churn_cnt": 26, "new_mrr": 93000, "new_cnt": 16, "rate": 2.8}, "田中莉奈": {"mrr": 2275466, "cnt": 111, "churn_mrr": 74000, "churn_cnt": 4, "new_mrr": 84000, "new_cnt": 3, "rate": 3.3}, "中岡世里菜": {"mrr": 2511230, "cnt": 90, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 28000, "new_cnt": 1, "rate": 0.0}, "高橋広輝": {"mrr": 2002700, "cnt": 42, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-07": {"南原龍司": {"mrr": 2758940, "cnt": 412, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0.0}, "田中莉奈": {"mrr": 2296266, "cnt": 104, "churn_mrr": 27000, "churn_cnt": 1, "new_mrr": 92000, "new_cnt": 3, "rate": 1.2}, "中岡世里菜": {"mrr": 2592230, "cnt": 94, "churn_mrr": 37000, "churn_cnt": 2, "new_mrr": 77000, "new_cnt": 3, "rate": 1.4}, "高橋広輝": {"mrr": 1992200, "cnt": 42, "churn_mrr": 30000, "churn_cnt": 1, "new_mrr": 0, "new_cnt": 0, "rate": 1.5}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-08": {"南原龍司": {"mrr": 2457270, "cnt": 304, "churn_mrr": 40000, "churn_cnt": 2, "new_mrr": 0, "new_cnt": 0, "rate": 1.6}, "田中莉奈": {"mrr": 2397158, "cnt": 109, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 136092, "new_cnt": 5, "rate": 0.0}, "中岡世里菜": {"mrr": 2627864, "cnt": 91, "churn_mrr": 35000, "churn_cnt": 1, "new_mrr": 0, "new_cnt": 0, "rate": 1.3}, "高橋広輝": {"mrr": 1963700, "cnt": 41, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 30000, "new_cnt": 1, "rate": 0.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-09": {"南原龍司": {"mrr": 2659870, "cnt": 410, "churn_mrr": 468000, "churn_cnt": 135, "new_mrr": 15000, "new_cnt": 1, "rate": 17.6}, "田中莉奈": {"mrr": 2443258, "cnt": 110, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 27000, "new_cnt": 1, "rate": 0.0}, "中岡世里菜": {"mrr": 2813230, "cnt": 92, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 65000, "new_cnt": 2, "rate": 0.0}, "高橋広輝": {"mrr": 1923200, "cnt": 41, "churn_mrr": 155000, "churn_cnt": 5, "new_mrr": 0, "new_cnt": 0, "rate": 8.1}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-10": {"南原龍司": {"mrr": 2323980, "cnt": 277, "churn_mrr": 143000, "churn_cnt": 37, "new_mrr": 3000, "new_cnt": 1, "rate": 6.2}, "田中莉奈": {"mrr": 2677058, "cnt": 125, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 125000, "new_cnt": 9, "rate": 0.0}, "中岡世里菜": {"mrr": 2757730, "cnt": 99, "churn_mrr": 45000, "churn_cnt": 2, "new_mrr": 0, "new_cnt": 0, "rate": 1.6}, "高橋広輝": {"mrr": 2103400, "cnt": 58, "churn_mrr": 30000, "churn_cnt": 1, "new_mrr": 35000, "new_cnt": 1, "rate": 1.4}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-11": {"南原龍司": {"mrr": 2507980, "cnt": 240, "churn_mrr": 143000, "churn_cnt": 31, "new_mrr": 0, "new_cnt": 0, "rate": 5.7}, "田中莉奈": {"mrr": 2672858, "cnt": 125, "churn_mrr": 69000, "churn_cnt": 3, "new_mrr": 27000, "new_cnt": 1, "rate": 2.6}, "中岡世里菜": {"mrr": 3035630, "cnt": 99, "churn_mrr": 125000, "churn_cnt": 5, "new_mrr": 342400, "new_cnt": 3, "rate": 4.1}, "高橋広輝": {"mrr": 2114700, "cnt": 57, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2025-12": {"南原龍司": {"mrr": 2363180, "cnt": 211, "churn_mrr": 194000, "churn_cnt": 31, "new_mrr": 21600, "new_cnt": 1, "rate": 8.2}, "田中莉奈": {"mrr": 2698158, "cnt": 125, "churn_mrr": 55000, "churn_cnt": 7, "new_mrr": 67500, "new_cnt": 3, "rate": 2.0}, "中岡世里菜": {"mrr": 3003630, "cnt": 94, "churn_mrr": 45500, "churn_cnt": 2, "new_mrr": 0, "new_cnt": 0, "rate": 1.5}, "高橋広輝": {"mrr": 2034000, "cnt": 52, "churn_mrr": 40000, "churn_cnt": 2, "new_mrr": 0, "new_cnt": 0, "rate": 2.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2026-01": {"南原龍司": {"mrr": 2224810, "cnt": 181, "churn_mrr": 48000, "churn_cnt": 16, "new_mrr": 70000, "new_cnt": 2, "rate": 2.2}, "田中莉奈": {"mrr": 2673158, "cnt": 124, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 27300, "new_cnt": 1, "rate": 0.0}, "中岡世里菜": {"mrr": 2808630, "cnt": 92, "churn_mrr": 135000, "churn_cnt": 4, "new_mrr": 20000, "new_cnt": 1, "rate": 4.8}, "高橋広輝": {"mrr": 1983900, "cnt": 49, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2026-02": {"南原龍司": {"mrr": 2011310, "cnt": 163, "churn_mrr": 74000, "churn_cnt": 14, "new_mrr": 27000, "new_cnt": 1, "rate": 3.7}, "田中莉奈": {"mrr": 2740758, "cnt": 123, "churn_mrr": 31500, "churn_cnt": 2, "new_mrr": 153500, "new_cnt": 5, "rate": 1.1}, "中岡世里菜": {"mrr": 2683630, "cnt": 88, "churn_mrr": 35000, "churn_cnt": 1, "new_mrr": 0, "new_cnt": 0, "rate": 1.3}, "高橋広輝": {"mrr": 1933600, "cnt": 51, "churn_mrr": 20000, "churn_cnt": 1, "new_mrr": 1200, "new_cnt": 1, "rate": 1.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2026-03": {"南原龍司": {"mrr": 2166310, "cnt": 189, "churn_mrr": 24000, "churn_cnt": 1, "new_mrr": 170000, "new_cnt": 24, "rate": 1.1}, "田中莉奈": {"mrr": 2753658, "cnt": 122, "churn_mrr": 10000, "churn_cnt": 1, "new_mrr": 13500, "new_cnt": 1, "rate": 0.4}, "中岡世里菜": {"mrr": 2608630, "cnt": 87, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0.0}, "高橋広輝": {"mrr": 1974000, "cnt": 59, "churn_mrr": 98600, "churn_cnt": 5, "new_mrr": 45000, "new_cnt": 9, "rate": 5.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}, "2026-04": {"南原龍司": {"mrr": 426000, "cnt": 30, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0.0}, "田中莉奈": {"mrr": 1199592, "cnt": 45, "churn_mrr": 65000, "churn_cnt": 2, "new_mrr": 0, "new_cnt": 0, "rate": 5.4}, "中岡世里菜": {"mrr": 1609503, "cnt": 56, "churn_mrr": 35000, "churn_cnt": 1, "new_mrr": 62273, "new_cnt": 2, "rate": 2.2}, "高橋広輝": {"mrr": 365200, "cnt": 13, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0.0}, "その他": {"mrr": 0, "cnt": 0, "churn_mrr": 0, "churn_cnt": 0, "new_mrr": 0, "new_cnt": 0, "rate": 0}}};
+const MRR_MAIN=['南原龍司','田中莉奈','中岡世里菜','高橋広輝'];
+const MRR_DCLS=['d1','d2','d3','d4'];
+function mrrSwMode(id){['mrrByMonth','mrrByPerson'].forEach(x=>document.getElementById(x).style.display='none');document.getElementById(id).style.display='block';document.querySelectorAll('#mrrModeRow .tab-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');if(id==='mrrByMonth')renderMrrMonth();}
+function mrrSwPerson(id){['mrrPAll','mrrP0','mrrP1','mrrP2','mrrP3'].forEach(x=>document.getElementById(x).style.display='none');document.getElementById(id).style.display='block';document.querySelectorAll('#mrrPersonRow .tab-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');}
+function mrrSwYear(id,rowId){const row=document.getElementById(rowId);const prefix=id.replace(/Y2[0-9]+$/,'');['25','26'].forEach(y=>{const el=document.getElementById(prefix+'Y'+y);if(el)el.style.display='none';});document.getElementById(id).style.display='block';row.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');}
+function renderMrrMonth(){
+  var m=document.getElementById('mrrMonthSel').value;
+  var tb=document.getElementById('mrrMonthBody');tb.innerHTML='';
+  var tM=0,tC=0,tNM=0,tNC=0,tCM=0,tCC=0;
+  MRR_MAIN.forEach(function(sn,i){
+    var pd=(MRR_DATA[m]&&MRR_DATA[m][sn])||{mrr:0,cnt:0,new_mrr:0,new_cnt:0,churn_mrr:0,churn_cnt:0,rate:0};
+    tM+=pd.mrr;tC+=pd.cnt;tNM+=(pd.new_mrr||0);tNC+=(pd.new_cnt||0);tCM+=pd.churn_mrr;tCC+=pd.churn_cnt;
+    var rv=pd.rate;
+    var rc=rv<=3?'var(--success)':rv<=6?'var(--warn)':'var(--danger)';
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><span class="md"><span class="dot '+MRR_DCLS[i]+'"></span>'+sn+'</span></td>'
+      +'<td class="r"><strong>\u00a5'+pd.mrr.toLocaleString()+'</strong></td>'
+      +'<td class="r">'+pd.cnt+'\u4ef6</td>'
+      +'<td class="r" style="color:var(--primary);font-weight:700;">+\u00a5'+(pd.new_mrr||0).toLocaleString()+'<span style="font-size:10px;color:var(--muted);margin-left:3px;">'+(pd.new_cnt||0)+'\u4ef6</span></td>'
+      +'<td class="r" style="color:'+(pd.churn_mrr>0?rc:'var(--muted)')+'">\u00a5'+pd.churn_mrr.toLocaleString()+'</td>'
+      +'<td class="r">'+pd.churn_cnt+'\u4ef6</td>'
+      +'<td class="r"><strong style="color:'+rc+';">'+rv+'%</strong></td>';
+    tb.appendChild(tr);
+  });
+  var tot=document.createElement('tr');tot.className='tot';
+  var tv=tM>0?((tCM/(tM+tCM))*100).toFixed(1):0;
+  var rct=tv<=3?'var(--success)':tv<=6?'var(--warn)':'var(--danger)';
+  tot.innerHTML='<td><strong>\u5408\u8a08</strong></td><td class="r"><strong>\u00a5'+tM.toLocaleString()+'</strong></td><td class="r"><strong>'+tC+'\u4ef6</strong></td>'
+    +'<td class="r" style="color:var(--primary);font-weight:700;">+\u00a5'+tNM.toLocaleString()+'<span style="font-size:10px;color:var(--muted);margin-left:3px;">'+tNC+'\u4ef6</span></td>'
+    +'<td class="r" style="color:var(--danger)"><strong>\u00a5'+tCM.toLocaleString()+'</strong></td><td class="r"><strong>'+tCC+'\u4ef6</strong></td>'
+    +'<td class="r"><strong style="color:'+rct+';">'+tv+'%</strong></td>';
+  tb.appendChild(tot);
+}
+
+function swTab(id,btn){document.querySelectorAll('.tab-pane').forEach(e=>e.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+
+// ============================================================
+// アポ経路別
+// ============================================================
+var routeFilter = {SWW:{person:'all',status:'all'}, INQ:{person:'all',status:'all'}};
+var routeKeyword = {SWW:'SWW', INQ:'問い合わせ'};
+var routeYearSel = {SWW:'swwYear', INQ:'inqYear'};
+var routeMonthSel = {SWW:'swwMonth', INQ:'inqMonth'};
+
+function buildRouteYearSel(key) {
+  var kw=routeKeyword[key];
+  var src=typeof STATIC_ROUTE_DATA!=='undefined'?STATIC_ROUTE_DATA:pipeData;
+  var mset=new Set();
+  src.forEach(function(r){
+    if(r.route!==kw)return;
+    var d=(r.shodan_d||r.shodan_yotei||'').replace(/\//g,'-');
+    if(d.length>=7)mset.add(d.slice(0,7));
+  });
+  var years=[...new Set([...mset].map(function(m){return m.slice(0,4);}))].sort(function(a,b){return b-a;});
+  var now=new Date();
+  var curY=now.getFullYear().toString();
+  var ys=document.getElementById(routeYearSel[key]);
+  if(!ys)return;
+  ys.innerHTML=years.map(function(y){
+    return '<option value="'+y+'"'+(y===curY?' selected':'')+'>'+y+'年</option>';
+  }).join('');
+  onRouteYear(key);
+}
+
+function onRouteYear(key) {
+  var now=new Date();
+  var curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  var y=document.getElementById(routeYearSel[key]).value;
+  var kw=routeKeyword[key];
+  var src=typeof STATIC_ROUTE_DATA!=='undefined'?STATIC_ROUTE_DATA:pipeData;
+  var mset=new Set();
+  src.forEach(function(r){
+    if(r.route!==kw)return;
+    var d=(r.shodan_d||r.shodan_yotei||'').replace(/\//g,'-');
+    if(!d||d.length<7)return;
+    var m=d.slice(0,7);
+    if(m.startsWith(y))mset.add(m);
+  });
+  var ms=[...mset].sort().reverse();
+  var ms2=document.getElementById(routeMonthSel[key]);
+  ms2.innerHTML='<option value="all">全月</option>'+ms.map(function(m){
+    var mo=parseInt(m.split('-')[1]);
+    if(isNaN(mo))return'';
+    var cnt=src.filter(function(r){
+      if(r.route!==kw)return false;
+      var d=(r.shodan_d||r.shodan_yotei||'').replace(/\//g,'-');
+      return d.startsWith(m);
+    }).length;
+    return '<option value="'+m+'"'+(m===curYM?' selected':'')+'>'+mo+'月（'+cnt+'件）</option>';
+  }).join('');
+  renderRoute(key);
+}
+
+function swRouteTab(id,btn){
+  ['routeSWW','routeInquiry'].forEach(x=>document.getElementById(x).style.display='none');
+  document.getElementById(id).style.display='block';
+  document.querySelectorAll('#routeTabRow .tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function setRouteF(key,val,btn){
+  routeFilter[key].person=val;
+  var row=btn.closest('.fbar');
+  row.querySelectorAll('.fbl').forEach(function(b){
+    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes('setRouteF'))b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  renderRoute(key);
+}
+function setRouteSF(key,val,btn){
+  routeFilter[key].status=val;
+  var row=btn.closest('.fbar');
+  row.querySelectorAll('.fbl').forEach(function(b){
+    if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes('setRouteSF'))b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  renderRoute(key);
+}
+function toggleRouteTable(tableId, arrId){
+  var el=document.getElementById(tableId);
+  var ar=document.getElementById(arrId);
+  var open=el.style.display==='none';
+  el.style.display=open?'block':'none';
+  if(ar)ar.style.transform=open?'':'rotate(-90deg)';
+}
+
+function renderSWWSummary(selM){
+  var wrap=document.getElementById('swwSummaryWrap');
+  if(!wrap||typeof STATIC_SWW_DATA==='undefined')return;
+  var months=selM&&selM!=='all'?[selM]:Object.keys(STATIC_SWW_DATA).sort();
+  var total=0,seika=0,taishogai=0,mikomi=0;
+  months.forEach(function(m){
+    var d=STATIC_SWW_DATA[m];
+    if(!d)return;
+    total+=d.total;seika+=d.seika;taishogai+=d.taishogai;mikomi+=d.mikomi;
+  });
+  var label=selM&&selM!=='all'?selM.split('-')[0]+'年'+parseInt(selM.split('-')[1])+'月':'全期間';
+  var seikaPct=total>0?Math.round(seika/total*100):0;
+  wrap.innerHTML=
+    '<div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px;">📊 SWW成果サマリー（'+label+'）</div>'
+    +'<div style="display:flex;gap:16px;flex-wrap:wrap;">'
+    +'<div style="text-align:center;"><div style="font-size:10px;color:var(--muted);">合計商談数</div><div style="font-size:20px;font-weight:700;">'+total+'件</div></div>'
+    +'<div style="text-align:center;"><div style="font-size:10px;color:var(--success);font-weight:700;">✅ SWW成果</div><div style="font-size:20px;font-weight:700;color:var(--success);">'+seika+'件</div><div style="font-size:10px;color:var(--muted);">'+seikaPct+'%</div></div>'
+    +'<div style="text-align:center;"><div style="font-size:10px;color:var(--muted);">対象外</div><div style="font-size:20px;font-weight:700;color:var(--muted);">'+taishogai+'件</div></div>'
+    +'<div style="text-align:center;"><div style="font-size:10px;color:var(--warn);font-weight:700;">🎯 見込み残</div><div style="font-size:20px;font-weight:700;color:var(--warn);">'+mikomi+'件</div></div>'
+    +'</div>';
+}
+
+function renderRoute(key){
+  var tbId=key==='SWW'?'swwTb':'inqTb';
+  var kw=routeKeyword[key];
+  var selM=document.getElementById(routeMonthSel[key])?document.getElementById(routeMonthSel[key]).value:'all';
+  var tb=document.getElementById(tbId);if(!tb)return;tb.innerHTML='';
+  // SWWサマリー更新
+  if(key==='SWW')renderSWWSummary(selM);
+  var src=typeof STATIC_ROUTE_DATA!=='undefined'?STATIC_ROUTE_DATA:pipeData;
+  var rows=src.filter(function(r){
+    if(r.route!==kw)return false;
+    if(routeFilter[key].person!=='all'&&r.person!==routeFilter[key].person)return false;
+    if(routeFilter[key].status!=='all'&&r.status!==routeFilter[key].status)return false;
+    // 商談日時（実施日）で月フィルター、なければ予定日
+    var dateKey=(r.shodan_d||r.shodan_yotei||'').replace(/\//g,'-');
+    if(selM!=='all'&&(!dateKey||!dateKey.startsWith(selM)))return false;
+    return true;
+  });
+  rows.sort(function(a,b){
+    var da=a.shodan_d||a.shodan_yotei||'';
+    var db=b.shodan_d||b.shodan_yotei||'';
+    return db.localeCompare(da);
+  });
+  if(!rows.length){tb.innerHTML='<tr><td colspan="7" class="nodata">該当なし</td></tr>';return;}
+  rows.forEach(function(r){
+    var i=MAIN.indexOf(r.person);var dc=i>=0?DCLS[i]:'d5';
+    var bc='bt';
+    if(r.status==='見込み')bc='bm';
+    else if(r.status==='アポ'||r.status==='仮アポ')bc='ba';
+    else if(r.status==='時期改め'||r.status==='アポ戻し')bc='bj';
+    else if(r.status==='商談NG'||r.status==='前確NG')bc='bng';
+    else if(r.status==='契約完了')bc='bkc';
+    var rc2={'S':'rs','A':'ra','B':'rb','C':'rc','D':'rd'}[r.rank]||'';
+    // 商談日時（実施日を優先、なければ予定日）
+    var jitsuD=(r.shodan_d||'').replace(/\//g,'-');
+    var yoteiD=(r.shodan_yotei||'').replace(/\//g,'-');
+    var dateDisp='—';
+    if(jitsuD){
+      var arr=jitsuD.split('-');var mo=parseInt(arr[1]);
+      if(!isNaN(mo)) dateDisp='<span style="font-weight:700;color:var(--primary);">'+arr[0]+'年'+mo+'月</span><span style="font-size:11px;color:var(--muted);margin-left:4px;">('+jitsuD+')</span>';
+    } else if(yoteiD){
+      var arr2=yoteiD.split('-');var mo2=parseInt(arr2[1]);
+      if(!isNaN(mo2)) dateDisp='<span style="color:var(--muted);">'+arr2[0]+'年'+mo2+'月</span><span style="font-size:10px;color:var(--subtle);margin-left:4px;">(予定 '+yoteiD+')</span>';
+    }
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><span class="md"><span class="dot '+dc+'"></span>'+r.person+'</span></td>'
+      +'<td><strong>'+(r.name||'—')+'</strong></td>'
+      +'<td><span class="bd '+bc+'">'+r.status+'</span></td>'
+      +'<td><span class="'+rc2+'">'+(r.rank||'—')+'</span></td>'
+      +'<td class="r">'+(r.price>0?'¥'+r.price.toLocaleString():'—')+'</td>'
+      +'<td>'+dateDisp+'</td>'
+      +'<td style="color:var(--muted);">'+(r.ans_d||'—')+'</td>';
+    tb.appendChild(tr);
+  });
+}
+
+function boot(){buildYearSel();renderKPI(currentMonth);renderFinder();buildPipeYearSel();buildJuchuYearSel();buildClosingSel();renderJuchu();renderMrrSummary();buildMrrPersonSel();buildMrrMonthSel();buildRouteYearSel('SWW');buildRouteYearSel('INQ');}
+
+function buildMrrMonthSel(){
+  var sel=document.getElementById('mrrMonthSel');
+  if(!sel)return;
+  var months=Object.keys(MRR_DATA).sort();
+  var latest=months[months.length-1];
+  sel.innerHTML=months.map(function(m){
+    var parts=m.split('-');
+    var label=parts[0]+'年'+parseInt(parts[1])+'月';
+    return '<option value="'+m+'"'+(m===latest?' selected':'')+'>'+label+'</option>';
+  }).join('');
+  renderMrrMonth();
+}
+
+// MRR担当者別 月選択
+function buildMrrPersonSel(){
+  var now=new Date();
+  var curYM=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  var curY=now.getFullYear().toString();
+  var months=Object.keys(MRR_DATA).sort();
+  var years=[...new Set(months.map(m=>m.slice(0,4)))].sort(function(a,b){return b-a;});
+  var ys=document.getElementById('mrrPersonYear');
+  if(!ys)return;
+  ys.innerHTML=years.map(function(y){return '<option value="'+y+'"'+(y===curY?' selected':'')+'>'+y+'年</option>';}).join('');
+  onMrrPersonYear(curYM);
+}
+function onMrrPersonYear(defaultYM){
+  var now=new Date();
+  var curYM=defaultYM||(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));
+  var y=document.getElementById('mrrPersonYear').value;
+  var months=Object.keys(MRR_DATA).filter(function(m){return m.startsWith(y);}).sort().reverse();
+  var ms2=document.getElementById('mrrPersonMonth');
+  ms2.innerHTML=months.map(function(m){
+    var mo=parseInt(m.split('-')[1]);
+    return isNaN(mo)?'':'<option value="'+m+'"'+(m===curYM?' selected':'')+'>'+mo+'月</option>';
+  }).join('');
+  renderMrrPerson();
+}
+function renderMrrPerson(){
+  var m=document.getElementById('mrrPersonMonth').value;
+  if(!m)return;
+  var isCurrent=(m==='2026-04');
+  var chk=isMrrConfirmed(m);
+  var isEst=!chk.confirmed&&isCurrent;
+  // バッジ表示
+  var badgeWrap=document.getElementById('mrrPersonBadgeWrap');
+  if(badgeWrap){
+    if(isEst) badgeWrap.innerHTML='<span class="est-badge est">⚡概算 '+chk.rate+'%</span>';
+    else if(isCurrent&&chk.confirmed) badgeWrap.innerHTML='<span class="est-badge confirmed">✅ 確定</span>';
+    else badgeWrap.innerHTML='';
+  }
+  var tb=document.getElementById('mrrPersonTb');
+  if(!tb)return;
+  tb.innerHTML='';
+  var PNAMES=['南原龍司','田中莉奈','中岡世里菜','高橋広輝'];
+  var PDCLS=['d1','d2','d3','d4'];
+  var tMrr=0,tCnt=0,tNew=0,tNewC=0,tCh=0,tChC=0;
+  // データソース：概算or実データ
+  PNAMES.forEach(function(sn,i){
+    var pd;
+    if(isEst){
+      // 概算：MRR_ESTIMATE_APRの値を使用
+      pd=MRR_ESTIMATE_APR.persons[sn]||{mrr:0,cnt:0,new_mrr:0,new_cnt:0,churn_mrr:0,churn_cnt:0};
+      pd.new_mrr=(MRR_DATA[m]&&MRR_DATA[m][sn])?MRR_DATA[m][sn].new_mrr||0:0;
+      pd.new_cnt=(MRR_DATA[m]&&MRR_DATA[m][sn])?MRR_DATA[m][sn].new_cnt||0:0;
+    } else {
+      pd=(MRR_DATA[m]&&MRR_DATA[m][sn])||{mrr:0,cnt:0,new_mrr:0,new_cnt:0,churn_mrr:0,churn_cnt:0,rate:0};
+    }
+    var base=pd.mrr+pd.churn_mrr;
+    var rate=isEst?(pd.churn_mrr>0?((pd.churn_mrr/(pd.mrr+pd.churn_mrr))*100).toFixed(1):'0.0'):(pd.rate||0).toFixed(1);
+    var rc=parseFloat(rate)<=3?'var(--success)':parseFloat(rate)<=6?'var(--warn)':'var(--danger)';
+    tMrr+=pd.mrr;tCnt+=pd.cnt;tNew+=pd.new_mrr||0;tNewC+=pd.new_cnt||0;tCh+=pd.churn_mrr;tChC+=pd.churn_cnt;
+    // 解約詳細（当月4月のみ）
+    var churnCell='';
+    if(pd.churn_cnt>0){
+      var did='mcp-'+i,aid='mca-'+i;
+      var itemArr=((CHURN_DETAIL_ALL&&CHURN_DETAIL_ALL[m]&&CHURN_DETAIL_ALL[m][sn])||[]);
+      var items=itemArr.map(function(s){var p=s.lastIndexOf('|');return'<div class="churn-item">'+s.slice(0,p)+'<span>'+s.slice(p+1)+'</span></div>';}).join('');
+      if(!items)items='<div style="padding:6px 8px;font-size:11px;color:var(--muted);">詳細データなし</div>';
+      churnCell='<span data-did="'+did+'" data-aid="'+aid+'" onclick="toggleChurnIdx(this.dataset.did,this.dataset.aid)" style="color:var(--danger);cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:4px;">'+pd.churn_cnt+'件 <span id="'+aid+'" style="font-size:9px;transition:transform .2s;display:inline-block;">▼</span></span><div id="'+did+'" class="churn-drop" style="display:none;">'+items+'</div>';
+    } else { churnCell='—'; }
+    var mrrTxt=isEst?'¥'+pd.mrr.toLocaleString()+'<span style="font-size:10px;color:var(--warn);margin-left:4px;">概算</span>':'¥'+pd.mrr.toLocaleString();
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><span class="md"><span class="dot '+PDCLS[i]+'"></span>'+sn+'</span></td>'
+      +'<td class="r"><strong>'+mrrTxt+'</strong></td>'
+      +'<td class="r">'+pd.cnt+'件</td>'
+      +'<td class="r" style="color:var(--primary);font-weight:700;">+¥'+(pd.new_mrr||0).toLocaleString()+'<span style="font-size:10px;color:var(--muted);margin-left:3px;">'+(pd.new_cnt||0)+'件</span></td>'
+      +'<td class="r">'+churnCell+'</td>'
+      +'<td class="r" style="color:'+(pd.churn_mrr>0?'var(--danger)':'var(--muted)')+'">'+(pd.churn_mrr>0?'¥'+pd.churn_mrr.toLocaleString():'—')+'</td>'
+      +'<td class="r"><strong style="color:'+rc+';">'+rate+'%</strong></td>';
+    tb.appendChild(tr);
+  });
+  // 合計行
+  var totRate=tMrr>0?((tCh/tMrr)*100).toFixed(1):'0.0';
+  var trc=parseFloat(totRate)<=3?'var(--success)':parseFloat(totRate)<=6?'var(--warn)':'var(--danger)';
+  var tot=document.createElement('tr');tot.className='tot';
+  tot.innerHTML='<td><strong>合計</strong></td>'
+    +'<td class="r"><strong>¥'+tMrr.toLocaleString()+'</strong></td>'
+    +'<td class="r"><strong>'+tCnt+'件</strong></td>'
+    +'<td class="r" style="color:var(--primary);font-weight:700;">+¥'+tNew.toLocaleString()+'<span style="font-size:10px;color:var(--muted);margin-left:3px;">'+tNewC+'件</span></td>'
+    +'<td class="r" style="color:var(--danger);"><strong>'+tChC+'件</strong></td>'
+    +'<td class="r" style="color:var(--danger);"><strong>¥'+tCh.toLocaleString()+'</strong></td>'
+    +'<td class="r"><strong style="color:'+trc+';">'+totRate+'%</strong></td>';
+  tb.appendChild(tot);
+}
+function setWeek(){const now=new Date();const mon=new Date(now);mon.setDate(now.getDate()-((now.getDay()||7)-1));const sun=new Date(mon);sun.setDate(mon.getDate()+6);const f=d=>(d.getMonth()+1)+'/'+d.getDate();document.getElementById('wkLbl').textContent='（'+f(mon)+'〜'+f(sun)+'の週）';}
+function fmtN(n){if(n>=10000)return(n/10000).toFixed(1)+'万';return n.toLocaleString();}
+months=Object.keys(kpiData).sort();currentMonth=months[months.length-1];
+setWeek();boot();
+document.getElementById('updAt').textContent='最終更新: 2026年4月22日（実データ更新）';
+</script>
+</body>
+</html>
