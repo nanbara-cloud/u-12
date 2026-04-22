@@ -642,7 +642,7 @@ footer {
       <tr class="row-sat"><td class="td-date">6月20日（土）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>きぼう招待　Bチームメイン大会<button class="detail-btn" onclick="openDetail('2026-06-20')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B予備日　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">6月21日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドF・J　🏠ホーム　<span style="font-size:11px;color:var(--text-sub);">11:00 vs NSP CLUB　／　13:00 vs ルキナス印西SC白</span><button class="detail-btn" onclick="openDetail('2026-06-21')">詳細</button></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">6月27日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label ko">古</span>土曜参観・引き渡し訓練</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年東葛　グランド使用不可</div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">6月28日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B　グランド使用不可</div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">6月28日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>第43回三郷市スポ少大会　1日目<button class="detail-btn" onclick="openDetail('2026-06-28')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B　グランド使用不可</div></div></td></tr>
     </tbody>
   </table>
 </div>
@@ -654,7 +654,7 @@ footer {
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
       <tr class="row-sat"><td class="td-date">7月 4日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">7月 5日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">7月 5日（日）</td><td><span class="tag tag-camp">大会</span>第43回三郷市スポ少大会　2日目<button class="detail-btn" onclick="openDetail('2026-07-05')">詳細</button></td></tr>
       <tr class="row-sat"><td class="td-date">7月11日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">7月12日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">7月18日（土）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 前期 予備日</td></tr>
@@ -1112,6 +1112,38 @@ var details = {
       ※ 観戦はベンチと逆サイド<br>
       ※ 校内外禁煙<br>
       ※ 当日案内人がいますので指示に従ってください
+    </div>`
+  },
+
+  /* ── 6/28 三郷市スポ少大会 1日目 ── */
+  '2026-06-28': {
+    title: '6月28日（日）第43回三郷市スポ少大会 1日目',
+    html: `<table>
+      <tr><td>主催</td><td>三郷市スポーツ少年団</td></tr>
+      <tr><td>会場</td><td>三郷スカイパーク 多目的広場サッカー場（A/B/C/D面）</td></tr>
+      <tr><td>開会式</td><td>10:25 前後</td></tr>
+      <tr><td>対象</td><td>小学6年生以下</td></tr>
+      <tr><td>参加費</td><td>5,000円（初日受付時に納入）</td></tr>
+      <tr><td>試合形式</td><td>8人制・3チーム×8ブロック予選リーグ</td></tr>
+      <tr><td>試合時間</td><td>30分（15分－5分インターバル－15分）</td></tr>
+      <tr><td>登録</td><td>16名以内・交代制限なし・再出場OK</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ 集合時間・コーチ等詳細は後日追加予定
+    </div>`
+  },
+
+  /* ── 7/5 三郷市スポ少大会 2日目 ── */
+  '2026-07-05': {
+    title: '7月5日（日）第43回三郷市スポ少大会 2日目',
+    html: `<table>
+      <tr><td>会場</td><td>三郷スカイパーク 多目的広場サッカー場（A/B/C/D面）</td></tr>
+      <tr><td>内容</td><td>各トーナメント戦（決勝・敢闘賞・ファイト賞）</td></tr>
+      <tr><td>閉会式</td><td>16:00 予定</td></tr>
+      <tr><td>予備日</td><td>7月12日（日）</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ 集合時間・コーチ等詳細は後日追加予定
     </div>`
   },
 
