@@ -618,11 +618,11 @@ footer {
       <tr><td class="td-date">5月 5日（火・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　6:00〜9:00<button class="detail-btn" onclick="openDetail('2026-05-05')">詳細</button></div><div><span class="tag tag-holiday">祝</span>こどもの日</div></div></td></tr>
       <tr><td class="td-date">5月 6日（水・祝）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>カラクテル招待大会<button class="detail-btn" onclick="openDetail('2026-05-06')">詳細</button></div><div><span class="tag tag-holiday">祝</span>振替休日</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月 9日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第3節</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B　グランド使用不可</div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">5月10日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B予備日　グランド使用不可</div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">5月10日（日）</td><td><span class="tag tag-camp">TM</span>柏ラッセルFC　14:00〜（H）<button class="detail-btn" onclick="openDetail('2026-05-10')">詳細</button></td></tr>
       <tr class="row-sat" style="outline: 2px solid #dc2626; outline-offset:-1px;"><td class="td-date">5月16日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label asa">旭</span>春季大運動会</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会　グランド不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月17日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会予備日　グランド不可</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月23日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第4節</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B　グランド使用不可</div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">5月24日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト大会　グランド使用不可</div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">5月24日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>守谷JFC<button class="detail-btn" onclick="openDetail('2026-05-24')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト大会　グランド使用不可</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月30日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第5節</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月31日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドC　🏠ホーム　<span style="font-size:11px;color:var(--text-sub);">9:00 vs FC八幡ビーバーズ　／　12:00 vs 鎌ヶ谷少年SC</span><button class="detail-btn" onclick="openDetail('2026-05-31')">詳細</button></div></div></td></tr>
     </tbody>
@@ -1082,6 +1082,36 @@ var details = {
       ※ メンバー表（3部）は試合30分前までに提出<br>
       ※ 帯同審判は該当試合30分前までに打ち合わせ<br>
       ※ 校内禁煙
+    </div>`
+  },
+
+  /* ── 5/10 TM 柏ラッセルFC ── */
+  '2026-05-10': {
+    title: '5月10日（日）TM　柏ラッセルFC（ホーム）',
+    html: `<table>
+      <tr><td>試合開始</td><td>14:00〜</td></tr>
+      <tr><td>会場</td><td>旭町小学校（ホーム）</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ 詳細は後日追加予定
+    </div>`
+  },
+
+  /* ── 5/24 TM 守谷JFC ── */
+  '2026-05-24': {
+    title: '5月24日（日）TM　守谷JFC',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:00</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合開始</td><td>9:00〜</td></tr>
+    </table>
+    <div class="modal-section-title">ユニフォーム</div>
+    <table>
+      <tr><td>フィールド</td><td>白着用　赤持参</td></tr>
+      <tr><td>キーパー</td><td>緑着用　黄色持参</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ 集合場所・会場等詳細は後日追加予定
     </div>`
   },
 
