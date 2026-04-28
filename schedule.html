@@ -617,7 +617,7 @@ footer {
       <tr><td class="td-date">5月 4日（月・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　8:00〜11:00<button class="detail-btn" onclick="openDetail('2026-05-04')">詳細</button></div><div><span class="tag tag-holiday">祝</span>みどりの日</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B　グランド使用不可</div></div></td></tr>
       <tr><td class="td-date">5月 5日（火・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　6:00〜9:00<button class="detail-btn" onclick="openDetail('2026-05-05')">詳細</button></div><div><span class="tag tag-holiday">祝</span>こどもの日</div></div></td></tr>
       <tr><td class="td-date">5月 6日（水・祝）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>カラクテル招待大会<button class="detail-btn" onclick="openDetail('2026-05-06')">詳細</button></div><div><span class="tag tag-holiday">祝</span>振替休日</div></div></td></tr>
-      <tr class="row-sat"><td class="td-date">5月 9日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第3節</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B　グランド使用不可</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">5月 9日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第3節<button class="detail-btn" onclick="openDetail('2026-05-09')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月10日（日）</td><td><span class="tag tag-camp">TM</span>柏ラッセルFC　14:00〜（H）<button class="detail-btn" onclick="openDetail('2026-05-10')">詳細</button></td></tr>
       <tr class="row-sat" style="outline: 2px solid #dc2626; outline-offset:-1px;"><td class="td-date">5月16日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label asa">旭</span>春季大運動会</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会　グランド不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月17日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会予備日　グランド不可</div></div></td></tr>
@@ -716,7 +716,7 @@ footer {
   <table class="event-table">
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
-      <tr class="row-sat"><td class="td-date">10月 3日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">10月 3日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ AM　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">10月 4日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ソフト</span></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">10月10日（土）</td><td><span class="tag tag-sl">江戸川SL</span>後期 第1節</td></tr>
       <tr class="row-sun"><td class="td-date">10月11日（日）</td><td><span class="tag tag-matsudo">松戸L</span>2nd 第3節【6年】</td></tr>
@@ -1355,6 +1355,29 @@ var details = {
     <div class="modal-match-row"><span class="match-time">11:00〜</span><span>⚽ vs 南流山</span></div>
     <div class="modal-match-row"><span class="match-time">11:50〜</span><span>🟡 審判担当</span></div>
     <div class="modal-match-row"><span class="match-time">12:40〜</span><span>⚽ vs つつみ</span></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <table>
+      <tr><td>フィールド</td><td>白着用　赤持参</td></tr>
+      <tr><td>キーパー</td><td>緑着用　黄色持参<br><span style="font-size:11px;color:#94a3b8;">担当：コウガ・ナルキ</span></td></tr>
+    </table>`
+  },
+
+  /* ── 5/9 江戸川SL 前期第3節 ── */
+  '2026-05-09': {
+    title: '5月9日（土）江戸川SL 前期第3節',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:00　<span style="color:#dc2626;font-weight:700;">※設営</span></td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>三郷市番匠免グラウンド<br><a href="https://maps.google.com/maps?q=三郷市番匠免グラウンド" target="_blank" style="font-size:11px;color:#16a34a;font-weight:700;">🗺 Googleマップで開く</a></td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">8:30〜</span><span>⚽ <strong>松戸旭</strong> vs 桜　<span style="font-size:11px;color:#64748b;">Cコート</span></span></div>
+    <div class="modal-match-row"><span class="match-time">11:00〜</span><span>⚽ 北野 vs <strong>松戸旭</strong>　<span style="font-size:11px;color:#64748b;">Aコート</span></span></div>
+    <div class="modal-match-row"><span class="match-time">12:40〜</span><span>⚽ 草加住吉 vs <strong>松戸旭</strong>　<span style="font-size:11px;color:#64748b;">Cコート</span></span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">9:20〜</span><span>🟡 南流山 vs つつみ　<span style="font-size:11px;color:#64748b;">Cコート</span></span></div>
+    <div class="modal-match-row"><span class="match-time">10:10〜</span><span>🟡 千寿常東 vs 三郷　<span style="font-size:11px;color:#64748b;">Aコート</span></span></div>
+    <div class="modal-match-row"><span class="match-time">11:50〜</span><span>🟡 越谷 vs つつみ　<span style="font-size:11px;color:#64748b;">Cコート</span></span></div>
     <div class="modal-section-title">ユニフォーム</div>
     <table>
       <tr><td>フィールド</td><td>白着用　赤持参</td></tr>
