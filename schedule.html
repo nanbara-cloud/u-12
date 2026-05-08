@@ -635,7 +635,7 @@ footer {
       <tr><td class="td-date">5月 6日（水・祝）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>カラクテル招待大会<button class="detail-btn" onclick="openDetail('2026-05-06')">詳細</button></div><div><span class="tag tag-holiday">祝</span>振替休日</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月 9日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第3節<button class="detail-btn" onclick="openDetail('2026-05-09')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年2B　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月10日（日）</td><td><span class="tag tag-camp">TM</span>柏ラッセルFC　14:00〜（H）<button class="detail-btn" onclick="openDetail('2026-05-10')">詳細</button></td></tr>
-      <tr class="row-sat" style="outline: 2px solid #dc2626; outline-offset:-1px;"><td class="td-date">5月16日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label asa">旭</span>春季大運動会</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会　グランド不可</div></div></td></tr>
+      <tr class="row-sat" style="outline: 2px solid #dc2626; outline-offset:-1px;"><td class="td-date">5月16日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label asa">旭</span>春季大運動会</div><div><span class="tag tag-holiday">休み</span>旭町小学校　運動会のためお休み</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月17日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会予備日　グランド不可</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月23日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第4節</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月24日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>守谷JFC<button class="detail-btn" onclick="openDetail('2026-05-24')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト大会　グランド使用不可</div></div></td></tr>
@@ -793,8 +793,8 @@ footer {
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
       <tr><td class="td-date">1月 1日（金・祝）</td><td><span class="tag tag-holiday">祝日</span>元日</td></tr>
-      <tr class="row-sat"><td class="td-date">1月 2日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">1月 3日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">1月 2日（土）</td><td><span class="tag tag-holiday">休み</span>お正月休み</td></tr>
+      <tr class="row-sun"><td class="td-date">1月 3日（日）</td><td><span class="tag tag-holiday">休み</span>お正月休み</td></tr>
       <tr class="row-sat"><td class="td-date">1月 9日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">1月10日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr><td class="td-date">1月11日（月・祝）</td><td><span class="tag tag-holiday">祝日</span>成人の日</td></tr>
@@ -1242,15 +1242,22 @@ var details = {
   '2026-05-10': {
     title: '5月10日（日）TM　柏ラッセルFC（ホーム）',
     html: `<table>
+      <tr><td>集合時間</td><td>12:30　<span style="color:#dc2626;font-weight:700;">※ 選手で設営</span></td></tr>
       <tr><td>試合開始</td><td>14:00〜</td></tr>
       <tr><td>会場</td><td>旭町小学校（ホーム）</td></tr>
     </table>
-    <div class="modal-notes">
-      ※ 詳細は後日追加予定
-    </div>`
+    <div class="modal-section-title">来場案内</div>
+    <div style="font-size:12px;line-height:1.9;padding:4px 0;">
+      <div>🚗 <strong>13:00〜</strong>　誘導あり　<span style="color:#2563eb;font-weight:700;">脳神経外科の方へお願いします</span></div>
+      <div style="margin-top:6px;padding:8px 10px;background:#fff8e1;border-left:3px solid #f59e0b;border-radius:4px;font-size:11px;color:#92400e;">
+        ⚠️ <strong>13時まで3年生2Bのため会場混雑予定</strong><br>先方への伝達済み
+      </div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <table>
+      <tr><td>フィールド</td><td>赤ユニ着用</td></tr>
+      <tr><td>キーパー</td><td>ビブス対応</td></tr>
+    </table>`
   },
-
-  /* ── 5/24 TM 守谷JFC ── */
   '2026-05-24': {
     title: '5月24日（日）TM　守谷JFC',
     html: `<table>
