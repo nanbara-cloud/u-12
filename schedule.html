@@ -702,7 +702,7 @@ footer {
       <tr class="row-sun"><td class="td-date">5月17日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会予備日　グランド不可</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月23日（土）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span><span class="team-white">WHITE</span>　TR　7:00〜10:00<button class="detail-btn" onclick="openDetail('2026-05-23-white')">詳細</button></div><div><span class="tag tag-sl">江戸川SL</span>前期 第4節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-05-23-red')">詳細</button></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月24日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>守谷JFC　<span class="team-white">WHITE</span><button class="detail-btn" onclick="openDetail('2026-05-24-white')">詳細</button></div><div><span class="tag tag-sl">サテライト</span>桜SSS＋TM　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-05-24-red')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト大会　グランド使用不可</div></div></td></tr>
-      <tr class="row-sat"><td class="td-date">5月30日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第5節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-05-30')">詳細</button></div><div><span class="tag tag-practice">練習</span><span class="team-white">WHITE</span>　<span style="font-size:11px;color:#94a3b8;">※未定</span><button class="detail-btn" onclick="openDetail('2026-05-30-white')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B　グランド使用不可</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">5月30日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第5節　<span class="team-white">WHITE</span>＋<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-05-30')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月31日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>第3節 🏠ホーム　<span style="font-size:11px;color:var(--text-sub);">9:00 vs FC八幡ビーバーズY　／　13:00 vs 鎌ヶ谷少年SC</span><button class="detail-btn" onclick="openDetail('2026-05-31')">詳細</button></div></div></td></tr>
     </tbody>
   </table>
@@ -735,7 +735,7 @@ footer {
       <tr class="row-sat"><td class="td-date">7月 4日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">7月 5日（日）</td><td><span class="tag tag-camp">大会</span>第43回三郷市スポ少大会　2日目<button class="detail-btn" onclick="openDetail('2026-07-05')">詳細</button></td></tr>
       <tr class="row-sat"><td class="td-date">7月11日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">7月12日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">7月12日（日）</td><td><span class="tag tag-camp">行事</span>親子サッカー</td></tr>
       <tr class="row-sat"><td class="td-date">7月18日（土）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 前期 予備日</td></tr>
       <tr class="row-sun"><td class="td-date">7月19日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr><td class="td-date">7月20日（月・祝）</td><td><span class="tag tag-holiday">祝日</span>海の日</td></tr>
@@ -1320,9 +1320,10 @@ var details = {
       <tr><td>キーパー</td><td>ビブス対応</td></tr>
     </table>`
   },
+
   /* ── 5/30 江戸川SL 前期第5節 ── */
   '2026-05-30': {
-    title: '5月30日（土）江戸川SL 前期第5節',
+    title: '5月30日（土）江戸川SL 前期第5節【WHITE＋RED】',
     html: `<table>
       <tr><td>集合時間</td><td>7:40</td></tr>
       <tr><td>集合場所</td><td>旭町小学校</td></tr>
@@ -1336,29 +1337,30 @@ var details = {
     <div class="modal-match-row"><span class="match-time">10:10〜</span><span>🟡 千寿常東 vs 戸ヶ崎　<span style="font-size:11px;color:#64748b;">B面</span></span></div>
     <div class="modal-section-title">ユニフォーム</div>
     <table>
-      <tr><td>フィールド</td><td>白着用　赤持参</td></tr>
-      <tr><td>キーパー</td><td>緑着用　黄色持参<br><span style="font-size:11px;color:#94a3b8;">担当：コウガ・ナルキ</span></td></tr>
+      <tr><td>フィールド</td><td>白着用</td></tr>
+      <tr><td>キーパー</td><td>黄色<br><span style="font-size:11px;color:#94a3b8;">担当：コウガ・ナルキ</span></td></tr>
     </table>
     <div class="modal-section-title">参加メンバー</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;padding:6px 0;">
+    <div style="margin-bottom:4px;font-size:11px;font-weight:700;color:#1d4ed8;">WHITE</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;padding:4px 0 8px;">
+      <div>リュウガ</div><div>シュント</div>
+      <div>ソラ</div><div>カツマ</div>
+      <div>リュウ</div><div>ソウスケ</div>
+      <div>ショウタ</div><div>コウサク</div>
+      <div>タイシ</div><div>リョウマ</div>
+      <div>リョウヤ</div>
+    </div>
+    <div style="margin-bottom:4px;font-size:11px;font-weight:700;color:#dc2626;">RED</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;padding:4px 0;">
       <div>ナルキ</div><div>コウヤ</div>
       <div>トラト</div><div>アイト</div>
       <div>コウガ</div><div>ユウタ</div>
       <div>ナリムネ</div><div>ソウイチロウ</div>
       <div>ユウト</div>
-    </div>    <div class="modal-section-title">スタッフ</div>
-    <div style="font-size:13px;padding:4px 0;line-height:1.8;">
-      菅原　／　石井　／　永戸
-    </div>`
+    </div>
+    <div class="modal-section-title">スタッフ</div>
+    <div style="font-size:13px;padding:4px 0;line-height:1.8;">菅原　／　石井　／　永戸</div>`
   },
-
-  /* ── 5/30 WHITE ── */
-  '2026-05-30-white': {
-    title: '5月30日（土）【WHITE】',
-    html: `<div class="modal-notes">※ 詳細は未定・別途更新予定</div>`
-  },
-
-  /* ── 5/23 TR WHITE ── */
   '2026-05-23-white': {
     title: '5月23日（土）TR【WHITE】',
     html: `<table>
