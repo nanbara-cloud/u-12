@@ -701,8 +701,8 @@ footer {
       <tr class="row-sat" style="outline: 2px solid #dc2626; outline-offset:-1px;"><td class="td-date">5月16日（土）</td><td><div class="multi-row"><div><span class="tag tag-school">学校</span><span class="school-label asa">旭</span>春季大運動会</div><div><span class="tag tag-holiday">休み</span>旭町小学校　運動会のためお休み</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月17日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 学校運動会予備日　グランド不可</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">5月23日（土）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span><span class="team-white">WHITE</span>　TR　7:00〜10:00<button class="detail-btn" onclick="openDetail('2026-05-23-white')">詳細</button></div><div><span class="tag tag-sl">江戸川SL</span>前期 第4節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-05-23-red')">詳細</button></div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">5月24日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>守谷JFC<button class="detail-btn" onclick="openDetail('2026-05-24')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト大会　グランド使用不可</div></div></td></tr>
-      <tr class="row-sat"><td class="td-date">5月30日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第5節<button class="detail-btn" onclick="openDetail('2026-05-30')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B　グランド使用不可</div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">5月24日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>守谷JFC　<span class="team-white">WHITE</span><button class="detail-btn" onclick="openDetail('2026-05-24-white')">詳細</button></div><div><span class="tag tag-sl">サテライト</span>桜SSS＋TM　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-05-24-red')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト大会　グランド使用不可</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">5月30日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第5節　<span class="team-red">RED</span><button class="detail-btn" onclick="openDetail('2026-05-30')">詳細</button></div><div><span class="tag tag-practice">練習</span><span class="team-white">WHITE</span>　<span style="font-size:11px;color:#94a3b8;">※未定</span><button class="detail-btn" onclick="openDetail('2026-05-30-white')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年2B　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">5月31日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>第3節 🏠ホーム　<span style="font-size:11px;color:var(--text-sub);">9:00 vs FC八幡ビーバーズY　／　13:00 vs 鎌ヶ谷少年SC</span><button class="detail-btn" onclick="openDetail('2026-05-31')">詳細</button></div></div></td></tr>
     </tbody>
   </table>
@@ -1346,7 +1346,16 @@ var details = {
       <div>コウガ</div><div>ユウタ</div>
       <div>ナリムネ</div><div>ソウイチロウ</div>
       <div>ユウト</div>
+    </div>    <div class="modal-section-title">スタッフ</div>
+    <div style="font-size:13px;padding:4px 0;line-height:1.8;">
+      菅原　／　石井　／　永戸
     </div>`
+  },
+
+  /* ── 5/30 WHITE ── */
+  '2026-05-30-white': {
+    title: '5月30日（土）【WHITE】',
+    html: `<div class="modal-notes">※ 詳細は未定・別途更新予定</div>`
   },
 
   /* ── 5/23 TR WHITE ── */
@@ -1363,6 +1372,10 @@ var details = {
       <div>リュウ</div><div>ソウスケ</div>
       <div>ショウタ</div><div>コウサク</div>
       <div>タイシ</div><div>リョウマ</div>
+      <div>リョウヤ</div>
+    </div>    <div class="modal-section-title">スタッフ</div>
+    <div style="font-size:13px;padding:4px 0;line-height:1.8;">田邊副監督<br>
+      <span style="font-size:11px;color:#94a3b8;">※ 石井・永戸はサテライト会場へ同行</span>
     </div>`
   },
 
@@ -1394,10 +1407,13 @@ var details = {
       <div>コウガ</div><div>ユウタ</div>
       <div>ナリムネ</div><div>ソウイチロウ</div>
       <div>ユウト</div>
-    </div>`
+    </div>
+    <div class="modal-section-title">スタッフ</div>
+    <div style="font-size:13px;padding:4px 0;line-height:1.8;">菅原　／　石井　／　永戸</div>`
   },
-  '2026-05-24': {
-    title: '5月24日（日）TM　守谷JFC',
+  /* ── 5/24 WHITE TM 守谷JFC ── */
+  '2026-05-24-white': {
+    title: '5月24日（日）TM 守谷JFC【WHITE】',
     html: `<table>
       <tr><td>集合時間</td><td>7:00</td></tr>
       <tr><td>集合場所</td><td>旭町小学校</td></tr>
@@ -1405,12 +1421,49 @@ var details = {
     </table>
     <div class="modal-section-title">ユニフォーム</div>
     <table>
-      <tr><td>フィールド</td><td>白着用　赤持参</td></tr>
-      <tr><td>キーパー</td><td>緑着用　黄色持参</td></tr>
+      <tr><td>フィールド</td><td>白着用</td></tr>
+      <tr><td>キーパー</td><td>黄色<br><span style="font-size:11px;color:#94a3b8;">担当：シュント・リュウ</span></td></tr>
     </table>
-    <div class="modal-notes">
-      ※ 集合場所・会場等詳細は後日追加予定
-    </div>`
+    <div class="modal-section-title">参加メンバー</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;padding:6px 0;">
+      <div>リュウガ</div><div>シュント</div>
+      <div>ソラ</div><div>カツマ</div>
+      <div>リュウ</div><div>ソウスケ</div>
+      <div>ショウタ</div><div>コウサク</div>
+      <div>タイシ</div><div>リョウマ</div>
+      <div>リョウヤ</div>
+    </div>
+    <div class="modal-section-title">スタッフ</div>
+    <div style="font-size:13px;padding:4px 0;line-height:1.8;">田邊副監督　／　石井　／　永戸</div>`
+  },
+
+  /* ── 5/24 RED サテライト消化分＋TM 桜SSS ── */
+  '2026-05-24-red': {
+    title: '5月24日（日）サテライト消化分＋TM 桜SSS【RED】',
+    html: `<table>
+      <tr><td>集合時間</td><td>11:30</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>開門</td><td>12:00〜</td></tr>
+      <tr><td>試合開始</td><td>13:00〜</td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">13:00〜</span><span>⚽ vs 桜SSS　<span style="font-size:11px;color:#f59e0b;font-weight:700;">サテライト消化分</span></span></div>
+    <div class="modal-match-row"><span class="match-time">以降〜</span><span>⚽ TM（残り試合）</span></div>
+    <div class="modal-section-title">ユニフォーム</div>
+    <table>
+      <tr><td>フィールド</td><td>白着用</td></tr>
+      <tr><td>キーパー</td><td>黄色準備<br><span style="font-size:11px;color:#94a3b8;">担当：コウガ・ナルキ</span></td></tr>
+    </table>
+    <div class="modal-section-title">参加メンバー</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;padding:6px 0;">
+      <div>ナルキ</div><div>コウヤ</div>
+      <div>トラト</div><div>アイト</div>
+      <div>コウガ</div><div>ユウタ</div>
+      <div>ナリムネ</div><div>ソウイチロウ</div>
+      <div>ユウト</div>
+    </div>
+    <div class="modal-section-title">スタッフ</div>
+    <div style="font-size:13px;padding:4px 0;line-height:1.8;">南原　／　菅原　／　会田</div>`
   },
 
   /* ── 5/31 U-12L 第3節 ホーム ── */
