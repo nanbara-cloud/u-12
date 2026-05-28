@@ -721,7 +721,7 @@ footer {
       <tr class="row-sat"><td class="td-date">6月20日（土）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>新松戸招待　Bチームメイン大会<button class="detail-btn" onclick="openDetail('2026-06-20')">詳細</button></div><div><span class="tag tag-practice">練習</span>WHITE TR　7:00〜10:00　<span style="font-size:11px;color:#64748b;">AM</span></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B　グランド使用不可（PM）</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">6月21日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>ラウンドF・J　🏠ホーム　<span style="font-size:11px;color:var(--text-sub);">11:00 vs NSP CLUB　／　13:00 vs ルキナス印西SC白</span><button class="detail-btn" onclick="openDetail('2026-06-21')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B予備日　グランド使用不可（14:00〜）</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">6月27日（土）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>旭町中学校　TR/TM</div><div><span class="tag tag-school">学校</span><span class="school-label ko">古</span>土曜参観・引き渡し訓練</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年東葛　グランド使用不可</div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">6月28日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>第43回三郷市スポ少大会　1日目<button class="detail-btn" onclick="openDetail('2026-06-28')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B予備日　グランド使用不可（PM）</div></div></td></tr>
+      <tr class="row-sun"><td class="td-date">6月28日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>第43回 三郷市近隣市町少年サッカー大会　1日目<button class="detail-btn" onclick="openDetail('2026-06-28')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 5年2B予備日　グランド使用不可（PM）</div></div></td></tr>
     </tbody>
   </table>
 </div>
@@ -733,9 +733,9 @@ footer {
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
       <tr class="row-sat"><td class="td-date">7月 4日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">7月 5日（日）</td><td><span class="tag tag-camp">大会</span>第43回三郷市スポ少大会　2日目<button class="detail-btn" onclick="openDetail('2026-07-05')">詳細</button></td></tr>
+      <tr class="row-sun"><td class="td-date">7月 5日（日）</td><td><span class="tag tag-camp">大会</span>第43回 三郷市近隣市町少年サッカー大会　2日目<button class="detail-btn" onclick="openDetail('2026-07-05')">詳細</button></td></tr>
       <tr class="row-sat"><td class="td-date">7月11日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
-      <tr class="row-sun"><td class="td-date">7月12日（日）</td><td><span class="tag tag-camp">行事</span>親子サッカー</td></tr>
+      <tr class="row-sun"><td class="td-date">7月12日（日）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>第43回 三郷市近隣市町少年サッカー大会　予備日</div><div><span class="tag tag-camp">行事</span>親子サッカー</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">7月18日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>前期 第4節　<span style="font-size:11px;color:#f59e0b;font-weight:700;">※5/23よりリスケ</span><button class="detail-btn" onclick="openDetail('2026-05-23-red')">詳細</button></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">7月19日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr><td class="td-date">7月20日（月・祝）</td><td><span class="tag tag-holiday">祝日</span>海の日</td></tr>
@@ -1540,33 +1540,48 @@ var details = {
 
   /* ── 6/28 三郷市スポ少大会 1日目 ── */
   '2026-06-28': {
-    title: '6月28日（日）第43回三郷市スポ少大会 1日目',
+    title: '6月28日（日）第43回 三郷市近隣市町少年サッカー大会 1日目',
     html: `<table>
-      <tr><td>主催</td><td>三郷市スポーツ少年団</td></tr>
-      <tr><td>会場</td><td>三郷スカイパーク 多目的広場サッカー場（A/B/C/D面）</td></tr>
-      <tr><td>開会式</td><td>10:25 前後</td></tr>
-      <tr><td>対象</td><td>小学6年生以下</td></tr>
+      <tr><td>集合時間</td><td>8:30</td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>会場</td><td>三郷スカイパーク 多目的広場サッカー場</td></tr>
+      <tr><td>開会式</td><td>9:40〜（全チーム参加）</td></tr>
+      <tr><td>ブロック</td><td>F ブロック　全試合 C面</td></tr>
+      <tr><td>対戦チーム</td><td>FC北野 ／ 越谷PC</td></tr>
+      <tr><td>試合形式</td><td>8人制・30分（15-5-15）</td></tr>
       <tr><td>参加費</td><td>5,000円（初日受付時に納入）</td></tr>
-      <tr><td>試合形式</td><td>8人制・3チーム×8ブロック予選リーグ</td></tr>
-      <tr><td>試合時間</td><td>30分（15分－5分インターバル－15分）</td></tr>
-      <tr><td>登録</td><td>16名以内・交代制限なし・再出場OK</td></tr>
     </table>
-    <div class="modal-notes">
-      ※ 集合時間・コーチ等詳細は後日追加予定
+    <div class="modal-section-title">当日スケジュール（C面）</div>
+    <div class="modal-match-row"><span class="match-time">10:00〜</span><span>🟡 審判：浦和中尾 vs 南浦和　＋FC北野</span></div>
+    <div class="modal-match-row"><span class="match-time">10:40〜</span><span>⚽ <strong>旭 vs FC北野</strong>　審：浦和中尾・南浦和</span></div>
+    <div class="modal-match-row"><span class="match-time">11:20〜</span><span>🟡 審判：南郷 vs 南浦和　＋越谷PC</span></div>
+    <div class="modal-match-row"><span class="match-time">12:00〜</span><span>⚽ <strong>旭 vs 越谷PC</strong>　審：南郷・南浦和</span></div>
+    <div class="modal-notes" style="margin-top:10px;">
+      ⚠ 第3試合（10:00）の審判は受付直後で忘れがち！要注意<br>
+      ▪ 試合球＝4号縫いボール（0.8気圧・チーム名記入）持ち寄り<br>
+      ▪ メンバー表は初日受付へ提出（16名以内）<br>
+      ▪ ベンチ指導者5名まで／駐車4台（2F）／テントなし・熱中症対策各自<br>
+      ▪ 敷地内 火気厳禁・全面禁煙・ゴミ持ち帰り
     </div>`
   },
 
-  /* ── 7/5 三郷市スポ少大会 2日目 ── */
+  /* ── 7/5 三郷市近隣市町大会 2日目 ── */
   '2026-07-05': {
-    title: '7月5日（日）第43回三郷市スポ少大会 2日目',
+    title: '7月5日（日）第43回 三郷市近隣市町少年サッカー大会 2日目',
     html: `<table>
-      <tr><td>会場</td><td>三郷スカイパーク 多目的広場サッカー場（A/B/C/D面）</td></tr>
-      <tr><td>内容</td><td>各トーナメント戦（決勝・敢闘賞・ファイト賞）</td></tr>
-      <tr><td>閉会式</td><td>16:00 予定</td></tr>
+      <tr><td>会場</td><td>三郷スカイパーク 多目的広場サッカー場</td></tr>
+      <tr><td>第一試合</td><td>8:20〜</td></tr>
+      <tr><td>閉会式</td><td>12:20〜12:40頃</td></tr>
       <tr><td>予備日</td><td>7月12日（日）</td></tr>
     </table>
-    <div class="modal-notes">
-      ※ 集合時間・コーチ等詳細は後日追加予定
+    <div class="modal-section-title">予選順位別 進出先</div>
+    <div class="modal-match-row"><span class="match-time">1位</span><span>🏆 優勝トーナメント　9:40〜 C面　/ 審判：ファ③ 8:20 C面</span></div>
+    <div class="modal-match-row"><span class="match-time">2位</span><span>🥈 敢闘賞トーナメント　9:00〜 C面　/ 審判：優③ 9:40 C面</span></div>
+    <div class="modal-match-row"><span class="match-time">3位</span><span>🤝 ファイト賞トーナメント　8:20〜 C面　/ 審判：敢③ 9:00 C面</span></div>
+    <div class="modal-notes" style="margin-top:10px;">
+      ▪ 自分の試合1つ＋同Fブロック別カテゴリの審判1つ<br>
+      ▪ 優勝・3位決定戦は本部審判、その他は割り当て<br>
+      ▪ 担当・審判終了後→本部立ち寄り→解散可
     </div>`
   },
 
