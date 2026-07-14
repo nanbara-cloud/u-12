@@ -158,7 +158,7 @@ table.dt tbody tr:last-child td{border-bottom:none;} table.dt tbody tr:hover td{
       <div class="tgt-card">
         <div class="tgt-head">
           <div class="tgt-lbl">契約数</div>
-          <div class="tgt-nums"><span class="tgt-act" id="tgt-act-k">—</span><span class="tgt-sep">/</span><span class="tgt-goal">目標 6件</span></div>
+          <div class="tgt-nums"><span class="tgt-act" id="tgt-act-k">—</span><span class="tgt-sep">/</span><span class="tgt-goal" id="tgt-goal-k">目標 6件</span></div>
         </div>
         <div class="pbar-wrap"><div class="pbar" id="pbar-k" style="background:var(--success)"></div></div>
         <div class="tgt-rate" id="rate-k">—</div>
@@ -485,19 +485,17 @@ table.dt tbody tr:last-child td{border-bottom:none;} table.dt tbody tr:hover td{
     <div class="tp-card" style="display:flex;flex-direction:column;gap:16px;">
       <div>
         <div class="tp-lbl">📋 今週のトピック</div>
-        <div class="tp-text" id="tp1">1. ウェビナー結果21社。30社未達のため追加ウェビナーを実施予定（日程調整中）。商談は0件
-2. SWW定例：双方の報酬が合わず、解約ではなく空き時間でアポ継続。月間2〜3件の見込み
-3. LINEリストにキャンペーン実施 → 14名回答、商談2件、1件受注（開封：990件 / 21.6%、回答：14件 / 1.4%）</div>
+        <div class="tp-text" id="tp1">1. ウェビナー2回目（残消化）7/16 実施、現状21人参加予定
+2. ツール展開用の広告 約¥50,000 でテスト運用開始</div>
       </div>
       <div style="border-top:1px solid var(--border);padding-top:14px;">
         <div class="tp-lbl">🎯 次週アクション</div>
-        <div class="tp-text" id="tp2">1. LINEキャンペーンの再アプローチ
-2. イオン銀行案件（川原と）
-3. AIツール展開、過去リストへ実施</div>
+        <div class="tp-text" id="tp2">1. LINEキャンペーンの二次アプローチ
+2. 広告まわり整理</div>
       </div>
       <div style="border-top:1px solid var(--border);padding-top:14px;">
         <div class="tp-lbl">💬 その他相談事項</div>
-        <div class="tp-text" id="tp3">展示会 実施可否の確認</div>
+        <div class="tp-text" id="tp3">2月頃に東京開催展示会への出展予定</div>
       </div>
     </div>
   </section>
@@ -794,7 +792,7 @@ function setGlobalMonth(m){
 
 // 月次目標値
 const TGT_SHODAN = 25;
-const TGT_KEIYAKU = 6;
+const TGT_KEIYAKU = 6;  // 基本目標（月別で上書き）
 const TGT_UNIT = 35000;
 
 // 予算目標（2026年4月〜2027年3月）
@@ -850,12 +848,16 @@ function renderKPI(m){
   setRate('rate-s', tS, TGT_SHODAN, '件');
 
   // 契約
+  // 契約数（月別目標：〜6月=6件、7月=15件、8月〜=17件）
+  const tgtK = m <= '2026-06' ? 6 : m === '2026-07' ? 15 : 17;
   document.getElementById('tgt-act-k').textContent = tK || '0';
-  const pk = pct(tK, TGT_KEIYAKU);
+  var goalEl = document.getElementById('tgt-goal-k');
+  if(goalEl) goalEl.textContent = '目標 ' + tgtK + '件';
+  const pk = pct(tK, tgtK);
   setBar('pbar-k', pk);
-  setRate('rate-k', tK, TGT_KEIYAKU, '件');
+  setRate('rate-k', tK, tgtK, '件');
 
-  // 売上（目標はBUDGETがあればbudget.new_mrr、なければTGT_KEIYAKU×TGT_UNIT）
+  // 売上（BUDGETがあればnew_mrr、なければTGT_KEIYAKU×TGT_UNIT）
   const budget = BUDGET[m];
   const tgtU = budget ? budget.new_mrr : TGT_KEIYAKU * TGT_UNIT;
   const actU = tPS;
@@ -910,14 +912,14 @@ function renderKPI(m){
   // 合計行（目標比較はここだけ）
   const tot=document.createElement('tr');tot.className='tot';
   const totR=tA>0?Math.round(tK/tA*100):0;
-  const totKPct=Math.round(tK/TGT_KEIYAKU*100);
+  const totKPct=Math.round(tK/(m<='2026-06'?6:m==='2026-07'?15:17)*100);
   const tgtU2=TGT_KEIYAKU*TGT_UNIT;
   const kColor=totKPct>=100?'var(--success)':totKPct>=60?'var(--warn)':'var(--danger)';
   tot.innerHTML='<td><strong>4名 合計</strong></td>'
     +'<td class="r"><strong>'+(tA||'—')+'</strong></td>'
     +'<td class="r"><strong>'+(tS||'—')+'</strong></td>'
     +'<td class="r"><strong style="color:var(--success)">'+(tK||'—')+'</strong>'
-      +'<span style="font-size:10px;color:var(--muted);margin-left:4px;">/ 目標'+TGT_KEIYAKU+'件</span></td>'
+      +'<span style="font-size:10px;color:var(--muted);margin-left:4px;">/ 目標'+(m<='2026-06'?6:m==='2026-07'?15:17)+'件</span></td>'
     +'<td class="r"><strong>'+(tU>0?'¥'+tU.toLocaleString():'—')+'</strong></td>'
     +'<td class="r"><strong>'+(tKK||'—')+'</strong></td>'
     +'<td class="r"><strong>'+(tA>0?totR+'%':'—')+'</strong></td>'
