@@ -844,8 +844,8 @@ footer {
 <tr><td class="td-date">8月18日（火）</td><td><span class="tag tag-asaren">朝練</span>朝練（荒木塾） 7:00〜9:00</td></tr>
 <tr><td class="td-date">8月20日（木）</td><td><span class="tag tag-asaren">朝練</span>朝練（荒木塾） 7:00〜9:00</td></tr>
 <tr><td class="td-date">8月21日（金）</td><td><span class="tag tag-asaren">朝練</span>朝練（荒木塾） 7:00〜9:00</td></tr>
-<tr class="row-sat"><td class="td-date">8月22日（土）</td><td ><span class="tag tag-camp">TM</span>船橋若松さん　PM予定<span style="font-size:11px;color:#f59e0b;font-weight:700;">（時間・詳細後日）</span></td></tr>
-<tr class="row-sun"><td class="td-date">8月23日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　6:00〜9:00<button class="detail-btn" onclick="openDetail('practice-am')">詳細</button></div><div><span class="tag tag-camp">TM</span>主水　TM予定<span style="font-size:11px;color:#f59e0b;font-weight:700;">（時間・詳細後日）</span></div></div></td></tr>
+<tr class="row-sat"><td class="td-date">8月22日（土）</td><td><span class="tag tag-camp">TM</span>船橋若松さん TRM　12:45入校<button class="detail-btn" onclick="openDetail('2026-08-22')">詳細</button></td></tr>
+<tr class="row-sun"><td class="td-date">8月23日（日）</td><td><span class="tag tag-camp">TM</span>主水 TM　7:30集合<button class="detail-btn" onclick="openDetail('2026-08-23')">詳細</button><span style="font-size:11px;color:#f59e0b;font-weight:700;">（試合時間は未定）</span></td></tr>
 <tr class="row-sat"><td class="td-date">8月29日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　6:00〜9:00<button class="detail-btn" onclick="openDetail('practice-am')">詳細</button></div></div></td></tr>
 <tr class="row-sun"><td class="td-date">8月30日（日）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　6:00〜9:00<button class="detail-btn" onclick="openDetail('practice-am')">詳細</button></div></div></td></tr>
     </tbody>
@@ -1299,6 +1299,45 @@ var details = {
     <div class="modal-notes">
       <span style="font-weight:700;color:#1a3a6b;">■ 同会場の全試合</span><br>
       ▪ 09:00　高洲SCホッパーズ グリーン vs 松戸旭SC（M39）<br>▪ 11:00　東習志野FC ブルー vs 松戸旭SC（M40）<br>▪ 13:00　東習志野FC ブルー vs 木刈FC（M41）<br>
+    </div>`
+  },
+
+  '2026-08-22': {
+    title: '8月22日（土）船橋若松さん TRM【3チーム】',
+    html: `<table>
+      <tr><td>会場</td><td>船橋市立若松小学校<br><a href="https://maps.google.com/?q=船橋市立若松小学校" target="_blank" style="color:#1d4ed8;">Googleマップで開く</a></td></tr>
+      <tr><td>入校時間</td><td><span style="color:#dc2626;font-weight:700;">12:45 厳守</span></td></tr>
+      <tr><td>試合開始</td><td>13:30〜</td></tr>
+      <tr><td>試合形式</td><td>15分回し</td></tr>
+      <tr><td>参加チーム</td><td>船橋若松さん・松戸旭・千草台ディライト</td></tr>
+      <tr><td>対戦予定</td><td>① 船橋若松さん × 松戸旭<br>② 船橋若松さん × 千草台<br>③ 松戸旭 × 千草台</td></tr>
+      <tr><td>ユニフォーム</td><td>旭＝白（正）<br><span style="font-size:11px;color:#94a3b8;">参考：船橋若松さん＝緑／黒／緑</span></td></tr>
+      <tr><td>駐車台数</td><td>5台／チーム</td></tr>
+    </table>
+    <div class="modal-notes">
+      <span style="color:#dc2626;font-weight:700;">⚠ 学校内での食事は禁止です（近隣公園は可）。昼食は入校前に済ませるようお願いします</span><br>
+      ▪ 遊具の使用はお控えください<br>
+      ▪ 試合スケジュールは当日の状況を見て決定。暑さに配慮しながら進行します<br>
+      ▪ 審判中の指導OK・選手の線審もOK（育成主旨のため）
+    </div>`
+  },
+
+  '2026-08-23': {
+    title: '8月23日（日）主水 TM【6年】',
+    html: `<div style="background:#fef3c7;border-radius:6px;padding:8px 12px;margin-bottom:10px;color:#b45309;font-size:12px;font-weight:700;">⏱ 旭が第何試合になるかは未定です。決まり次第ご連絡します</div>
+    <table>
+      <tr><td>会場</td><td>主水グラウンド</td></tr>
+      <tr><td>対象学年</td><td>6年生</td></tr>
+      <tr><td>集合</td><td><span style="color:#dc2626;font-weight:700;">7:30（グラウンド造り）</span></td></tr>
+      <tr><td>試合数</td><td>2試合</td></tr>
+      <tr><td>試合形式</td><td>8人制／30分（15-5-15）</td></tr>
+      <tr><td>試合枠</td><td>第1試合 8:30〜／第2試合 9:25〜<br>第3試合 10:20〜／第4試合 11:15〜<br>第5試合 12:10〜／第6試合 13:05〜</td></tr>
+      <tr><td>ユニフォーム</td><td>旭＝白（正）／赤・黒・赤（副）<br><span style="font-size:11px;color:#94a3b8;">※念のため両方持参</span></td></tr>
+    </table>
+    <div class="modal-notes">
+      <span style="color:#dc2626;font-weight:700;">⚠ 7:30からグラウンド造りのお手伝いをお願いします。早めの集合にご協力ください</span><br>
+      ▪ 審判員1〜2名（副審または第4の審判）の協力をお願いします<br>
+      ▪ 旭の出番は第1〜第6試合のいずれか2試合。確定次第あらためて連絡します
     </div>`
   },
 
