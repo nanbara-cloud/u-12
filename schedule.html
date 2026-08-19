@@ -858,14 +858,14 @@ footer {
   <table class="event-table">
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
-      <tr class="row-sat"><td class="td-date">9月 5日（土）</td><td ><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年生統括　終日グランド使用不可</div></td></tr>
+      <tr class="row-sat"><td class="td-date">9月 5日（土）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜16:00<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 4年生統括　終日グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">9月 6日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>2nd 第1節【6年】</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年生統括大会　グランド使用不可</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">9月12日（土）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>2nd 第2節【6年】</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 3年生統括大会　グランド使用不可</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">9月13日（日）</td><td><div class="multi-row"><div><span class="tag tag-matsudo">松戸L</span>2nd 第3節【6年】</div><div><span class="tag tag-school">学校</span><span class="school-label ko">古</span>修学旅行</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">9月19日（土）</td><td ><span class="tag tag-sl">TM</span>カナデルさん TM　14:00〜<button class="detail-btn" onclick="openDetail('2026-09-19')">詳細</button></td></tr>
       <tr class="row-sun"><td class="td-date">9月20日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>後期 第1節　11:00 / 13:00<button class="detail-btn" onclick="openDetail('2026-09-20-u12l')">詳細</button></div><div style="font-size:11px;color:var(--text-sub);">会場提供：木刈FC（会場詳細は後日）</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト大会　グランド使用不可</div></div></td></tr>
       <tr><td class="td-date">9月21日（月・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜16:00<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div><span class="tag tag-holiday">祝</span>敬老の日</div></div></td></tr>
-      <tr><td class="td-date">9月22日（火・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜16:00<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div><span class="tag tag-holiday">祝日</span>国民の休日</div></div></td></tr>
+      <tr><td class="td-date">9月22日（火・祝）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　10:00〜13:00<button class="detail-btn" onclick="openDetail('2026-09-22')">詳細</button></div><div><span class="tag tag-holiday">祝日</span>国民の休日</div></div></td></tr>
       <tr><td class="td-date">9月23日（水・祝）</td><td><div class="multi-row"><div><span class="tag tag-camp">TM</span>長作さん TM　13:00〜（H）<button class="detail-btn" onclick="openDetail('2026-09-23')">詳細</button></div><div><span class="tag tag-holiday">祝</span>秋分の日</div></div></td></tr>
       <tr class="row-sat"><td class="td-date">9月26日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">9月27日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>後期 第2節　11:00 / 13:00<button class="detail-btn" onclick="openDetail('2026-09-27-u12l')">詳細</button></div><div style="font-size:11px;color:var(--text-sub);">会場提供：FCトリムジュニア（会場詳細は後日）</div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ソフト大会予備日</span></div></div></td></tr>
@@ -1353,6 +1353,18 @@ var details = {
     </div>`
   },
 
+
+  '2026-09-22': {
+    title: '9月22日（火・祝）通常練習　詳細',
+    html: `<table>
+      <tr><td>時間</td><td><span style="color:#dc2626;font-weight:700;">10:00〜13:00</span><br><span style="font-size:11px;color:#94a3b8;">※通常（13:00〜16:00）と時間が異なります</span></td></tr>
+      <tr><td>場所</td><td>旭町小学校</td></tr>
+    </table>
+    <div class="modal-notes">
+      ※ 終わる時間が遅くなる可能性があります。お迎えの際はご注意ください。<br>
+      ※ 食育のため軽食をお願いします。
+    </div>`
+  },
 
   'practice': {
     title: '通常練習　詳細',
