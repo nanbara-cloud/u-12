@@ -283,6 +283,15 @@ footer {
 /* ── SCHOOL EVENT ── */
 .tag-school { background: #fef9c3; color: #854d0e; }
 .tag-tokatsu{ background: #fce7f3; color: #9d174d; }
+.past-row { display: none !important; }
+.show-past .past-row { display: table-row !important; opacity: 0.45; }
+.past-bar td { background:#f8fafc; padding:6px 10px !important; border-bottom:1px solid #e2e8f0; }
+.past-btn {
+  background:#eef2f7; color:#64748b; border:1px solid #dde3ed; border-radius:20px;
+  font-size:11px; font-weight:700; padding:3px 12px; cursor:pointer; font-family:inherit;
+}
+.past-btn:hover { background:#e2e8f0; }
+.today-row > td { background:#fffbeb !important; box-shadow: inset 3px 0 0 #f59e0b; }
 .school-label {
   display: inline-block;
   font-size: 10px;
@@ -1036,6 +1045,51 @@ function toggleU12() {
   }
 }
 
+// ── 過ぎた日を自動で閉じる ──────────────────────────────
+function initPastRows() {
+  var now = new Date();
+  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  document.querySelectorAll('[id^="m20"]').forEach(function (sec) {
+    var mm = sec.id.match(/^m(\d{4})-(\d{2})$/);
+    if (!mm) return;
+    var year = parseInt(mm[1], 10), month = parseInt(mm[2], 10);
+    var tbody = sec.querySelector('table.event-table tbody');
+    if (!tbody) return;
+    var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+    var pastCount = 0, todayRow = null;
+    rows.forEach(function (tr) {
+      var cell = tr.querySelector('.td-date');
+      if (!cell) return;
+      var dm = cell.textContent.match(/(\d+)\s*月\s*(\d+)\s*日/);
+      if (!dm) return;
+      var d = new Date(year, month - 1, parseInt(dm[2], 10));
+      if (d < today) { tr.classList.add('past-row'); pastCount++; }
+      else if (d.getTime() === today.getTime()) { tr.classList.add('today-row'); todayRow = tr; }
+    });
+    if (pastCount > 0) {
+      var bar = document.createElement('tr');
+      bar.className = 'past-bar';
+      var td = document.createElement('td');
+      td.colSpan = 2;
+      var btn = document.createElement('button');
+      btn.className = 'past-btn';
+      btn.textContent = '\u25B6 終了した予定 ' + pastCount + '件を表示';
+      btn.onclick = function () {
+        var on = tbody.classList.toggle('show-past');
+        btn.textContent = (on ? '\u25BC 終了した予定 ' : '\u25B6 終了した予定 ') + pastCount + (on ? '件を隠す' : '件を表示');
+      };
+      td.appendChild(btn);
+      bar.appendChild(td);
+      tbody.insertBefore(bar, tbody.firstChild);
+    }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPastRows);
+} else {
+  initPastRows();
+}
+
 // ── スムーズスクロール & アクティブナビ ──────────────────
 function toggleMonth(bodyId, headingEl) {
   const body = document.getElementById(bodyId);
@@ -1121,7 +1175,11 @@ var details = {
       <tr><td>試合開始</td><td>14:00〜</td></tr>
       <tr><td>試合形式</td><td>20分1本×複数回（本数は当日決定）</td></tr>
       <tr><td>ユニフォーム</td><td>白／緑</td></tr>
-    </table>`
+      <tr><td>車の誘導</td><td><span style="color:#dc2626;font-weight:700;">JAのテント下へ誘導（12台）</span><br><span style="font-size:11px;color:#94a3b8;">当日案内人が誘導します</span></td></tr>
+    </table>
+    <div class="modal-notes">
+      <span style="color:#dc2626;font-weight:700;">▪ 駐車場はJAのテント下です。いつもと場所が異なるためご注意ください</span>
+    </div>`
   },
 
   '2026-08-01': {
