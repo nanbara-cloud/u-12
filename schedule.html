@@ -549,7 +549,7 @@ footer {
     <div class="badge">2026年度</div>
     <h1>⚽ 松戸旭SC 年間スケジュール</h1>
     <div class="sub">松戸旭サッカークラブ｜45期生</div>
-    <div class="updated">最終更新：2026年8月1日</div>
+    <div class="updated">最終更新：2026年9月26日</div>
   </div>
 </header>
 
@@ -900,10 +900,10 @@ footer {
     <tbody>
       <tr class="row-sat"><td class="td-date">10月 3日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ AM　グランド使用不可</div></div></td></tr>
       <tr class="row-sun" style="outline:2px solid #b8860b;outline-offset:-1px;"><td class="td-date">10月 4日（日）</td><td ><div class="multi-row"><div><span class="tag tag-zenkoku">全日本U-12</span>県大会 1･2回戦　<b>ホワイト</b>　9:00〜<button class="detail-btn" onclick="openDetail('2026-10-04-zenkoku')">詳細</button></div><div><span class="tag tag-practice">練習</span>レッド TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ソフトと被り</span></div></div></td></tr>
-      <tr class="row-sat"><td class="td-date">10月10日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span>後期 第1節　<span style="font-size:11px;color:var(--text-sub);">レッド対象</span></div><div><span class="tag tag-practice">練習</span>ホワイト TR　10:00〜13:00<button class="detail-btn" onclick="openDetail('2026-10-10-tr')">詳細</button></div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">10月10日（土）</td><td><div class="multi-row"><div><span class="tag tag-sl">江戸川SL</span><span class="team-red">RED</span> 後期 第1節　7:00集合（設営）<button class="detail-btn" onclick="openDetail('2026-10-10-sl')">詳細</button></div><div><span class="tag tag-practice">練習</span>ホワイト TR　10:00〜13:00<button class="detail-btn" onclick="openDetail('2026-10-10-tr')">詳細</button></div></div></td></tr>
       <tr class="row-sun" style="outline:2px solid #b8860b;outline-offset:-1px;"><td class="td-date">10月11日（日）</td><td><div class="multi-row"><div><span class="tag tag-zenkoku">全日本U-12</span>県大会 1･2回戦　<b>レッド</b>　10:00〜<button class="detail-btn" onclick="openDetail('2026-10-11-zenkoku')">詳細</button></div><div><span class="tag tag-practice">練習</span>ホワイト TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr><td class="td-date">10月12日（月・祝）</td><td><div class="multi-row"><div><span class="tag tag-tokatsu">東葛</span>東葛リーグ 予選Iグループ　8:05集合<button class="detail-btn" onclick="openDetail('2026-10-12-tokatsu')">詳細</button></div><div><span class="tag tag-holiday">祝日</span>スポーツの日</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ソフト予備日</div></div></td></tr>
-      <tr class="row-sat"><td class="td-date">10月17日（土）</td><td><span class="tag tag-camp">大会</span>第5回 きぼレオン杯　11:00〜16:00<button class="detail-btn" onclick="openDetail('2026-10-17')">詳細</button></td></tr>
+      <tr class="row-sat"><td class="td-date">10月17日（土）</td><td><span class="tag tag-camp">大会</span>第5回 きぼレオン杯　11:00集合（試合 13:00・14:00）<button class="detail-btn" onclick="openDetail('2026-10-17')">詳細</button></td></tr>
       <tr class="row-sun"><td class="td-date">10月18日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>後期 第3節　10:00<button class="detail-btn" onclick="openDetail('2026-10-18-u12l')">詳細</button></div><div style="font-size:11px;color:var(--text-sub);">会場：浦安市立高洲小学校</div><div style="color:#dc2626;font-size:11px;font-weight:700;"><span style="font-size:11px;">⚠ ５丁目運動会</span></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">10月24日（土）</td><td><span class="tag tag-matsudo">松戸L</span>2nd（秋）1日目【6年】　8:30集合<button class="detail-btn" onclick="openDetail('2026-10-24-ml')">詳細</button></td></tr>
       <tr class="row-sun"><td class="td-date">10月25日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>後期 第4節　10:00 / 13:00<button class="detail-btn" onclick="openDetail('2026-10-25-u12l')">詳細</button></div><div style="font-size:11px;color:var(--text-sub);">会場：ESグリーンテックフットボールフィールド（柏市）</div><div style="color:#dc2626;font-size:11px;font-weight:700;">⚠ ５丁目運動会予備日</div></div></td></tr>
@@ -1680,19 +1680,50 @@ var details = {
     html: `<div style="background:#fef3c7;border-radius:6px;padding:8px 12px;margin-bottom:10px;color:#b45309;font-size:12px;font-weight:700;">前回（第4回）優勝チームとして招待されています</div>
     <table>
       <tr><td>会場</td><td>古ヶ崎スポーツ広場 サッカー場2<br><span style="font-size:11px;color:#94a3b8;">〒271-0068 千葉県松戸市古ヶ崎2441</span><br><a href="https://maps.google.com/?q=千葉県松戸市古ヶ崎2441+古ヶ崎スポーツ広場" target="_blank" style="color:#1d4ed8;">Googleマップで開く</a></td></tr>
-      <tr><td>時間</td><td>11:00〜16:00</td></tr>
-      <tr><td>選手集合</td><td><span style="color:#d97706;font-weight:700;">後日連絡</span><br><span style="font-size:11px;color:#94a3b8;">試合順が決まり次第ご案内します</span></td></tr>
+      <tr><td>時間</td><td>11:00開場〜15:00表彰式<br><span style="font-size:11px;color:#94a3b8;">15:15〜 希望チームでTM／17:00 全日程終了・解散</span></td></tr>
+      <tr><td>選手集合</td><td><span style="color:#dc2626;font-weight:700;">11:00　旭町小学校</span><br><span style="font-size:11px;color:#94a3b8;">現地集合の方は 11:15 古ヶ崎スポーツ広場／11:45 開会式に参加</span></td></tr>
       <tr><td>参加チーム</td><td><b>松戸旭SC</b>（第4回優勝）／ラビットキッカーズ／きぼうSC</td></tr>
       <tr><td>試合形式</td><td><span style="color:#dc2626;font-weight:700;">11人制・フルコート</span>／3チーム総当たり／20分ハーフ</td></tr>
       <tr><td>ボール・ゴール</td><td><span style="color:#dc2626;font-weight:700;">4号球／大人用ゴール使用</span></td></tr>
       <tr><td>順位決定</td><td>勝点制（勝3・分1・負0）<br><span style="font-size:11px;color:#94a3b8;">並んだ場合は 得失点差 → 総得点 の順</span></td></tr>
       <tr><td>参加費</td><td>2,000円／チーム<br><span style="font-size:11px;color:#94a3b8;">当日受付にて支払い</span></td></tr>
-      <tr><td>ユニフォーム</td><td>基本は<b>白</b>（トップユニ）<br><span style="color:#dc2626;font-size:11px;font-weight:700;">⚠ 着て来ないこと！会場で着替えます</span><br><span style="font-size:11px;color:#94a3b8;">サブユニ・サブソックスも必ず持参</span></td></tr>
+      <tr><td>ユニフォーム</td><td>通常の<b>白</b><br><span style="font-size:11px;color:#94a3b8;">トップユニではありません</span></td></tr>
+    </table>
+    <div style="font-size:12px;font-weight:700;color:#1a3a6b;margin:14px 0 4px;">当日タイムライン</div>
+    <table style="width:100%;border-collapse:collapse;margin-top:4px;">
+      <thead><tr>
+        <th style="width:64px;background:#1a3a6b;color:#fff;font-size:11px;padding:5px;">時刻</th>
+        <th style="background:#1a3a6b;color:#fff;font-size:11px;padding:5px;">旭の担当</th>
+        <th style="background:#1a3a6b;color:#fff;font-size:11px;padding:5px;">審判</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="text-align:center;font-weight:700;font-size:12px;background:#f1f5f9;">11:45</td>
+            <td style="padding:5px 6px;font-size:11px;font-weight:700;">開会式（入場はセレモニー形式）</td>
+            <td style="padding:5px 6px;font-size:11px;">―</td></tr>
+        <tr><td style="text-align:center;font-weight:700;font-size:12px;background:#f1f5f9;">12:00</td>
+            <td style="background:#dbeafe;padding:5px 6px;"><span style="display:inline-block;background:#1d4ed8;color:#fff;font-size:9px;font-weight:700;border-radius:3px;padding:1px 5px;">審判</span><br><span style="font-size:11px;color:#1d4ed8;font-weight:700;">ラビット × きぼうSC</span></td>
+            <td style="padding:5px 6px;font-size:11px;"><span style="color:#dc2626;font-weight:700;">主審：松戸旭SC</span><br>副審：当該チーム</td></tr>
+        <tr><td style="text-align:center;font-weight:700;font-size:12px;background:#f1f5f9;">13:00</td>
+            <td style="background:#dcfce7;padding:5px 6px;"><span style="display:inline-block;background:#15803d;color:#fff;font-size:9px;font-weight:700;border-radius:3px;padding:1px 5px;">試合</span><br><span style="font-size:11px;color:#15803d;font-weight:700;">vs ラビットキッカーズ</span></td>
+            <td style="padding:5px 6px;font-size:11px;">主審：きぼうSC<br><span style="color:#dc2626;font-weight:700;">副審：当該チーム（旭）</span></td></tr>
+        <tr><td style="text-align:center;font-weight:700;font-size:12px;background:#f1f5f9;">14:00</td>
+            <td style="background:#dcfce7;padding:5px 6px;"><span style="display:inline-block;background:#15803d;color:#fff;font-size:9px;font-weight:700;border-radius:3px;padding:1px 5px;">試合</span><br><span style="font-size:11px;color:#15803d;font-weight:700;">vs きぼうSC</span></td>
+            <td style="padding:5px 6px;font-size:11px;">主審：ラビット<br><span style="color:#dc2626;font-weight:700;">副審：当該チーム（旭）</span></td></tr>
+        <tr><td style="text-align:center;font-weight:700;font-size:12px;background:#f1f5f9;">15:00</td>
+            <td style="padding:5px 6px;font-size:11px;font-weight:700;">表彰式</td>
+            <td style="padding:5px 6px;font-size:11px;">―</td></tr>
+        <tr><td style="text-align:center;font-weight:700;font-size:12px;background:#f1f5f9;">15:15</td>
+            <td style="padding:5px 6px;font-size:11px;">希望チームでTM（17:00 全日程終了・解散）</td>
+            <td style="padding:5px 6px;font-size:11px;">―</td></tr>
+      </tbody>
     </table>
     <div class="modal-notes">
       <span style="color:#dc2626;font-weight:700;">⚠ 8人制ではなく11人制・フルコートです。普段と人数・コートサイズが違うため事前に周知をお願いします</span><br>
       ▪ 参加費2,000円は当日受付で支払い（集金の要否は別途連絡）<br>
-      ▪ 案内発信日：2026年8月24日
+      <span style="color:#dc2626;font-weight:700;">▪ 12:00の第1試合は旭が主審を担当（審判服着用）。コーチは11:20までに現地到着をお願いします</span><br>
+      ▪ 20分ハーフ／4審対応／メンバー交代自由／当日参加者全員出場<br>
+      ▪ 緊急連絡先：きぼうSC 進藤さん（090-7580-2384）<br>
+      ▪ 案内発信日：2026年8月24日（修正版）
     </div>`
   },
 
@@ -1774,6 +1805,38 @@ var details = {
       ▪ 当日案内人がいます。指示に従ってください<br>
       ▪ 相手チームはフロントにチーム名を掲示（要案内）<br>
       ▪ 天候・状況により休憩を相談
+    </div>`
+  },
+
+  /* ── 10/10 江戸川SL 後期第1節 RED ── */
+  '2026-10-10-sl': {
+    title: '10月10日（土）江戸川SL 後期第1節【RED】',
+    html: `<table>
+      <tr><td>集合時間</td><td>7:00　<span style="color:#dc2626;font-weight:700;">※設営</span></td></tr>
+      <tr><td>集合場所</td><td>旭町小学校</td></tr>
+      <tr><td>試合会場</td><td>三郷市番匠免グラウンド<br><a href="https://maps.google.com/maps?q=三郷市番匠免グラウンド" target="_blank" style="font-size:11px;color:#16a34a;font-weight:700;">🗺 Googleマップで開く</a></td></tr>
+      <tr><td>終了予定</td><td>13:30頃</td></tr>
+    </table>
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">8:30〜</span><span>⚽ <strong>松戸旭</strong> vs 三郷　<span style="font-size:11px;color:#64748b;">A面</span></span></div>
+    <div class="modal-match-row"><span class="match-time">10:10〜</span><span>⚽ DUC vs <strong>松戸旭</strong>　<span style="font-size:11px;color:#64748b;">B面</span></span></div>
+    <div class="modal-match-row"><span class="match-time">11:50〜</span><span>⚽ 南流山 vs <strong>松戸旭</strong>　<span style="font-size:11px;color:#64748b;">B面</span></span></div>
+    <div class="modal-section-title">審判当番</div>
+    <div class="modal-match-row"><span class="match-time">8:30〜</span><span>🟡 松戸旭 vs 三郷（当該チーム審判）　<span style="font-size:11px;color:#64748b;">A面</span></span></div>
+    <div class="modal-match-row"><span class="match-time">11:00〜</span><span>🟡 つつみ vs 越谷　<span style="font-size:11px;color:#64748b;">B面／DUCと担当</span></span></div>
+    <div class="modal-match-row"><span class="match-time">12:40〜</span><span>🟡 草加東 vs つつみ　<span style="font-size:11px;color:#64748b;">B面／南流山と担当</span></span></div>
+    <div class="modal-section-title">参加メンバー（RED）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;padding:6px 0;">
+      <div>ナルキ</div><div>コウヤ</div>
+      <div>トラト</div><div>アイト</div>
+      <div>コウガ</div><div>ユウタ</div>
+      <div>ナリムネ</div><div>ソウイチロウ</div>
+      <div>ユウト</div><div>ソウスケ</div>
+    </div>
+    <div class="modal-notes">
+      ※ 第1試合のため設営と一緒に移動します。<br>
+      ※ ユニフォーム・車出しは決まり次第追記します。<br>
+      ※ 時間はあくまで目安。準備でき次第、開始を早める場合があります。
     </div>`
   },
 
