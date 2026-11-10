@@ -939,7 +939,7 @@ footer {
   <table class="event-table">
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
-      <tr class="row-sat"><td class="td-date">12月 5日（土）</td><td><span class="tag tag-spare">予備日</span>江戸川SL 後期 予備日</td></tr>
+      <tr class="row-sat"><td class="td-date">12月 5日（土）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>第2回 SSCチャレンジリーグ（PM）　<span style="font-size:11px;color:#d97706;font-weight:700;">詳細は後日連絡</span><button class="detail-btn" onclick="openDetail('2026-12-05')">詳細</button></div><div><span class="tag tag-spare">予備日</span>江戸川SL 後期 予備日</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">12月 6日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">12月12日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>中学生とTR　<span style="font-size:11px;color:#d97706;font-weight:700;">時間は後日連絡</span></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">12月13日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>後期 第5節　09:00 / 11:00<button class="detail-btn" onclick="openDetail('2026-12-13-u12l')">詳細</button></div><div style="color:#15803d;font-size:11px;font-weight:700;">🏠 松戸旭SC 会場提供（ホーム開催）</div></div></td></tr>
@@ -2017,6 +2017,18 @@ var details = {
       <tr><td>当日のコーチ</td><td><span style="display:inline-block;background:#e0f2fe;color:#075985;font-size:11px;font-weight:700;border-radius:4px;padding:3px 8px;margin:2px 3px 2px 0;white-space:nowrap;">南原</span><span style="display:inline-block;background:#e0f2fe;color:#075985;font-size:11px;font-weight:700;border-radius:4px;padding:3px 8px;margin:2px 3px 2px 0;white-space:nowrap;">菅原</span><span style="display:inline-block;background:#e0f2fe;color:#075985;font-size:11px;font-weight:700;border-radius:4px;padding:3px 8px;margin:2px 3px 2px 0;white-space:nowrap;">石井</span><span style="display:inline-block;background:#e0f2fe;color:#075985;font-size:11px;font-weight:700;border-radius:4px;padding:3px 8px;margin:2px 3px 2px 0;white-space:nowrap;">会田</span><br><span style="font-size:11px;color:#94a3b8;font-weight:700;">4名</span></td></tr>
       <tr><td>時間・場所</td><td><span style="color:#d97706;font-weight:700;">調整中</span><br><span style="font-size:11px;color:#94a3b8;">旭町小は3年東葛決勝のため使用不可</span></td></tr>
     </table>`
+  },
+  '2026-12-05': {
+    title: '12月5日（土）第2回 SSCチャレンジリーグ U-12',
+    html: `<table>
+      <tr><td>主催</td><td>新松戸SC</td></tr>
+      <tr><td>時間</td><td>午後（詳細は後日連絡）</td></tr>
+      <tr><td>試合会場</td><td>松戸市立馬橋北小学校（前回と同じ）</td></tr>
+      <tr><td>集合時間</td><td><span style="color:#d97706;font-weight:700;">後日連絡</span></td></tr>
+      <tr><td>ユニフォーム</td><td><span style="color:#d97706;font-weight:700;">後日連絡</span></td></tr>
+      <tr><td>参加費</td><td>検討中（2,000円 → 3,000〜4,000円に変更し個人賞を増やす案あり）</td></tr>
+    </table>
+    <div class="modal-notes">江戸川SL後期の予備日と重なっています。</div>`
   },
   '2026-10-10-tr': {
     title: '10月10日（土）ホワイト 通常練習　詳細',
