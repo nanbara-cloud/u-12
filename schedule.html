@@ -939,7 +939,7 @@ footer {
   <table class="event-table">
     <thead><tr><th style="width:90px">日付</th><th>予定</th></tr></thead>
     <tbody>
-      <tr class="row-sat"><td class="td-date">12月 5日（土）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>第2回 SSCチャレンジリーグ（PM）　<span style="font-size:11px;color:#d97706;font-weight:700;">詳細は後日連絡</span><button class="detail-btn" onclick="openDetail('2026-12-05')">詳細</button></div><div><span class="tag tag-spare">予備日</span>江戸川SL 後期 予備日</div></div></td></tr>
+      <tr class="row-sat"><td class="td-date">12月 5日（土）</td><td><div class="multi-row"><div><span class="tag tag-camp">大会</span>第2回 SSCチャレンジカップ　11:30会場集合<button class="detail-btn" onclick="openDetail('2026-12-05')">詳細</button></div><div style="font-size:11px;color:var(--text-sub);">会場：馬橋北小学校／試合 12:00・13:20・14:40／審判 12:40・14:00・15:20</div><div><span class="tag tag-spare">予備日</span>江戸川SL 後期 予備日</div></div></td></tr>
       <tr class="row-sun"><td class="td-date">12月 6日（日）</td><td><div class="multi-row"><div><span class="tag tag-practice">練習</span>TR　13:00〜<button class="detail-btn" onclick="openDetail('practice')">詳細</button></div></div></td></tr>
       <tr class="row-sat"><td class="td-date">12月12日（土）</td><td ><div class="multi-row"><div><span class="tag tag-practice">練習</span>中学生とTR　<span style="font-size:11px;color:#d97706;font-weight:700;">時間は後日連絡</span></div></div></td></tr>
       <tr class="row-sun"><td class="td-date">12月13日（日）</td><td><div class="multi-row"><div><span class="tag tag-u12">U-12L</span>後期 第5節　09:00 / 11:00<button class="detail-btn" onclick="openDetail('2026-12-13-u12l')">詳細</button></div><div style="color:#15803d;font-size:11px;font-weight:700;">🏠 松戸旭SC 会場提供（ホーム開催）</div></div></td></tr>
@@ -2038,16 +2038,49 @@ var details = {
     </table>`
   },
   '2026-12-05': {
-    title: '12月5日（土）第2回 SSCチャレンジリーグ U-12',
+    title: '12月5日（土）第2回 SSCチャレンジカップ U-12',
     html: `<table>
       <tr><td>主催</td><td>新松戸SC</td></tr>
-      <tr><td>時間</td><td>午後（詳細は後日連絡）</td></tr>
-      <tr><td>試合会場</td><td>松戸市立馬橋北小学校（前回と同じ）</td></tr>
-      <tr><td>集合時間</td><td><span style="color:#d97706;font-weight:700;">後日連絡</span></td></tr>
+      <tr><td>試合会場</td><td>松戸市立馬橋北小学校</td></tr>
+      <tr><td>会場集合</td><td><span style="color:#dc2626;font-weight:700;">11:30</span>（集合・ウォーミングアップ開始）</td></tr>
+      <tr><td>チーム集合</td><td><span style="color:#d97706;font-weight:700;">後日連絡</span></td></tr>
       <tr><td>ユニフォーム</td><td><span style="color:#d97706;font-weight:700;">後日連絡</span></td></tr>
-      <tr><td>参加費</td><td>検討中（2,000円 → 3,000〜4,000円に変更し個人賞を増やす案あり）</td></tr>
+      <tr><td>大会形式</td><td>8人制　4チーム総当たりリーグ戦（全6試合）<br><span style="font-size:11px;color:#94a3b8;">松戸旭SC／新松戸SC／ラビット／矢切</span></td></tr>
+      <tr><td>試合時間</td><td>15分ハーフ（15-5-15）／試合間隔40分（入れ替え5分）</td></tr>
+      <tr><td>参加費</td><td>1チーム 3,000円（受付時）</td></tr>
+      <tr><td>駐車台数</td><td>4台まで（超過は近隣コインP）</td></tr>
+      <tr><td>中止連絡</td><td>小雨決行。中止の場合は当日8:00までに連絡あり</td></tr>
     </table>
-    <div class="modal-notes">江戸川SL後期の予備日と重なっています。</div>`
+    <div class="modal-section-title">試合スケジュール</div>
+    <div class="modal-match-row"><span class="match-time">11:30〜</span><span>集合・アップ</span></div>
+    <div class="modal-match-row"><span class="match-time">12:00〜12:35</span><span>⚽ <strong>松戸旭</strong> vs ラビット</span></div>
+    <div class="modal-match-row"><span class="match-time">12:40〜13:15</span><span>🚩 審判（新松戸SC vs ラビット）<br><span style="font-size:11px;color:#94a3b8;">旭・矢切で担当　※矢切は応相談</span></span></div>
+    <div class="modal-match-row"><span class="match-time">13:20〜13:55</span><span>⚽ 矢切 vs <strong>松戸旭</strong></span></div>
+    <div class="modal-match-row"><span class="match-time">14:00〜14:35</span><span>🚩 審判（矢切 vs ラビット）<br><span style="font-size:11px;color:#94a3b8;">新松戸SC・旭で担当</span></span></div>
+    <div class="modal-match-row"><span class="match-time">14:40〜15:15</span><span>⚽ 新松戸SC vs <strong>松戸旭</strong></span></div>
+    <div class="modal-match-row"><span class="match-time">15:20〜15:55</span><span>🚩 審判（新松戸SC vs 矢切）<br><span style="font-size:11px;color:#94a3b8;">旭・ラビットで担当</span></span></div>
+    <div class="modal-match-row"><span class="match-time">15:55〜</span><span>🏆 表彰式・閉会</span></div>
+    <div class="modal-section-title">審判</div>
+    <table>
+      <tr><td>担当</td><td>試合のない2チームから各2名（合計4名）<br><span style="font-size:11px;color:#94a3b8;">旭は第2・第4・第6試合の3回</span></td></tr>
+      <tr><td>役割</td><td>当日の打ち合わせで決定</td></tr>
+      <tr><td>フラッグ</td><td>新松戸SCが用意</td></tr>
+    </table>
+    <div class="modal-section-title">順位・表彰</div>
+    <table>
+      <tr><td>勝ち点</td><td>勝ち3点／引き分け2点／負け0点</td></tr>
+      <tr><td>順位決定</td><td>勝ち点 → 得失点差 → 同一対戦結果 → 同着の場合はPK戦</td></tr>
+      <tr><td>表彰</td><td>優勝：トロフィー・賞状／2位〜4位：賞状</td></tr>
+    </table>
+    <div class="modal-notes" style="margin-top:8px;">
+      ▪ 全員出場（前後半いずれかはフル出場できるように）<br>
+      ▪ フィールド選手はユニフォーム着用。GK・ユニフォームの色が重なる場合はビブス可<br>
+      ▪ 送迎の場合も校内に入って乗り降り（路上での乗り降りは危険）<br>
+      ▪ 校内・周辺道路 全面禁煙<br>
+      ▪ 水道は校内の屋外設備を利用可<br>
+      ▪ トイレは新松戸南公園の公衆トイレ<br>
+      ▪ 江戸川SL後期の予備日と重なっています
+    </div>`
   },
   '2026-10-10-tr': {
     title: '10月10日（土）ホワイト 通常練習　詳細',
